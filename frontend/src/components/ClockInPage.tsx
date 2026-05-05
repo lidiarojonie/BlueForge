@@ -9,7 +9,6 @@ interface ClockEvent {
 
 function ClockInPage() {
     const { customer: user } = useUser();
-
     const [isClockedIn, setIsClockedIn] = useState(false);
     const [note, setNote] = useState('');
     const [loading, setLoading] = useState(true);
@@ -78,7 +77,7 @@ function ClockInPage() {
     if (loading) {
         return (
             <div className="clockin-page">
-                <h2>⏱️ Fichajes</h2>
+                <h2>Fichajes</h2>
                 <p>Cargando estado...</p>
             </div>
         );
@@ -86,46 +85,66 @@ function ClockInPage() {
 
     return (
         <div className="clockin-page">
-            <h2>⏱️ Fichajes</h2>
-            <p className="clockin-status">
-                Estado actual: {isClockedIn
-                    ? <span className="status-in">✅ Fichaje de entrada activo</span>
-                    : <span className="status-out">⏸️ Sin fichaje activo</span>
-                }
-            </p>
+            <h2>Fichajes</h2>
 
-            <div className="clockin-form">
-                <label htmlFor="clockNote">Incidencia (opcional):</label>
-                <textarea
-                    id="clockNote"
-                    className="clockin-textarea"
-                    value={note}
-                    onChange={(e) => setNote(e.target.value)}
-                    placeholder="Escribe una incidencia si la hay..."
-                    rows={3}
-                    disabled={submitting}
-                />
-
-                <button
-                    className={`clockin-button ${isClockedIn ? 'clock-out' : 'clock-in'}`}
-                    onClick={handleClock}
-                    disabled={submitting}
-                >
-                    {submitting
-                        ? 'Registrando...'
-                        : isClockedIn
-                            ? '🔴 Fichar salida'
-                            : '🟢 Fichar entrada'
-                    }
-                </button>
-            </div>
-
-            {confirmation && (
-                <div className="clockin-confirmation">
-                    <p><strong>{confirmation.message}</strong></p>
-                    <p>Hora registrada: {confirmation.time}</p>
+            <div className="clockin-container">
+                <div className="comite-card schedule-sidebar">
+                    <h2 className="comite-card-title">DIAS Y HORARIOS</h2>
+                    <p>Información detallada sobre tu jornada laboral, turnos y horarios de trabajo asignados.</p>
+                    <div className="schedule-info">
+                        <div className="schedule-item">
+                            <span>Lunes - Jueves:</span>
+                            <span>08:00 - 17:30</span>
+                        </div>
+                        <div className="schedule-item">
+                            <span>Viernes:</span>
+                            <span>08:00 - 14:00</span>
+                        </div>
+                    </div>
                 </div>
-            )}
+
+                <div className="clockin-main-content">
+                    <p className="clockin-status">
+                        Estado actual: {isClockedIn
+                            ? <span className="status-in">✅ Fichaje de entrada activo</span>
+                            : <span className="status-out">⏸️ Sin fichaje activo</span>
+                        }
+                    </p>
+
+                    <div className="clockin-form">
+                        <label htmlFor="clockNote">Incidencia (opcional):</label>
+                        <textarea
+                            id="clockNote"
+                            className="clockin-textarea"
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                            placeholder="Escribe una incidencia si la hay..."
+                            rows={3}
+                            disabled={submitting}
+                        />
+
+                        <button
+                            className={`clockin-button ${isClockedIn ? 'clock-out' : 'clock-in'}`}
+                            onClick={handleClock}
+                            disabled={submitting}
+                        >
+                            {submitting
+                                ? 'Registrando...'
+                                : isClockedIn
+                                    ? '🔴 Fichar salida'
+                                    : '🟢 Fichar entrada'
+                            }
+                        </button>
+                    </div>
+
+                    {confirmation && (
+                        <div className="clockin-confirmation">
+                            <p><strong>{confirmation.message}</strong></p>
+                            <p>Hora registrada: {confirmation.time}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
