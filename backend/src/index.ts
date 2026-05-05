@@ -341,9 +341,6 @@ app.post("/api/auth/register", async (req: Request<{}, {}, {
         }
 
         let role = 'customer';
-        if (email.toLowerCase().endsWith('@empleado.com')) {
-            role = 'employee';
-        }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -387,7 +384,7 @@ app.post("/api/auth/login", async (req: Request<{}, {}, { identifier?: string; e
         }
 
         const userResult = await pool.query(
-            "SELECT id, username, email, password, role FROM customers WHERE email = $1 OR username = $2",
+            "SELECT id, username, email, password, role FROM usuario WHERE email = $1 OR username = $2",
             [loginIdentifier, loginIdentifier]
         );
 
