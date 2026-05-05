@@ -1,151 +1,168 @@
+/* GLOBAL */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #222;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #090909;
+    color: #f4f4f4;
 }
 
-.site-header {
-  padding: 1.5rem;
-  background-color: #222;
-  color: white;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
+button {
+    font-family: inherit;
 }
 
-.header-title {
-  flex: 1;
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: #090909;
 }
 
-.site-header h1 {
-  margin-bottom: 0.25rem;
-  font-size: 1.75rem;
+.HeaderSuperior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    background-color: #101010;
 }
 
-.site-header p {
-  font-size: 0.95rem;
-  color: #ddd;
+.RedesSociales,
+.AD-HeaderSuperior {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.header-info {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  white-space: nowrap;
+.logo-redes {
+    width: 22px;
+    height: auto;
 }
 
-.user-info {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.AD-HeaderSuperior a {
+    color: #d0d0d0;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
 }
 
-.user-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #e5e7eb;
+.AD-HeaderSuperior a:hover {
+    opacity: 1;
 }
 
-.logout-btn {
-  background-color: rgba(239, 68, 68, 0.8);
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.HeaderPrincipal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 24px;
 }
 
-.logout-btn:hover {
-  background-color: #dc2626;
+.MenuLogo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-.auth-buttons {
-  display: flex;
-  gap: 0.75rem;
+.imagenLogo {
+    height: 50px;
 }
 
-.login-btn,
-.register-btn {
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
+.desplegadorLateral {
+    height: 40px;
+    cursor: pointer;
 }
 
-.login-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.HeaderPrincipal input[type="text"] {
+    flex: 1;
+    max-width: 440px;
+    min-width: 220px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: none;
+    background: #1d1d1d;
+    color: #f9f9f9;
 }
 
-.login-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+.HeaderPrincipal input[type="text"]::placeholder {
+    color: #8d98a6;
 }
 
-.register-btn {
-  background-color: #10b981;
-  color: white;
+.AccionesHeader {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 1.2rem;
 }
 
-.register-btn:hover {
-  background-color: #059669;
+.boton-login,
+.boton-registrar {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.nav-link-btn {
-  background-color: transparent;
-  color: #e5e7eb;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
+.boton-login {
+    background: transparent;
+    color: #f4f4f4;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.nav-link-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  border-color: rgba(255, 255, 255, 0.4);
+.boton-login:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #f4f4f4;
 }
 
-.cart-counter {
-  position: relative;
+.boton-registrar {
+    background: #0c42c1;
+    color: #fff;
+    border: none;
 }
 
-.counter-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 28px;
+.boton-registrar:hover {
+    background: #0a359a;
+    transform: translateY(-1px);
+}
+
+.counter-badge-reto {
+  position: absolute;
+  top: -8px;
+  right: -8px;
   background-color: #f97316;
   color: white;
   border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
   font-weight: bold;
-  font-size: 0.85rem;
 }
+
+.cart-container-reto {
+  position: relative;
+}
+
+.user-info-reto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -221,15 +238,16 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
 }
 
 .product-card {
-  background-color: white;
-  padding: 1rem;
+  background-color: #121212;
+  padding: 1.5rem;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -237,6 +255,7 @@ body {
   flex-grow: 1;
   border: none;
   border-radius: 0;
+  color: #f4f4f4;
 }
 
 .product-image-container {
@@ -295,8 +314,8 @@ body {
 .product-actions {
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem 1rem 1rem 1rem;
-  background-color: #f9f9f9;
+  padding: 0.8rem 1.5rem 1.5rem;
+  background-color: #0e0e0e;
 }
 
 .product-actions button {
@@ -383,16 +402,19 @@ body {
 }
 
 .formulario-producto {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin: 1rem;
+  background-color: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 1rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .formulario-producto h3 {
-  margin-bottom: 0.8rem;
-  color: #333;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .form-horizontal {
@@ -412,24 +434,26 @@ body {
 }
 
 .form-group label {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #555;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #8d98a6;
   white-space: nowrap;
 }
 
 .form-group input {
-  padding: 0.45rem 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  padding: 12px 16px;
+  background: #1d1d1d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #f9f9f9;
   width: 100%;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: #0c42c1;
+  box-shadow: 0 0 0 3px rgba(12, 66, 193, 0.2);
 }
 
 .form-actions {
@@ -438,15 +462,15 @@ body {
 }
 
 .form-actions button {
-  padding: 0.5rem 1.2rem;
-  background-color: #3b82f6;
+  padding: 12px 24px;
+  background-color: #0c42c1;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: bold;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .form-actions button:hover {

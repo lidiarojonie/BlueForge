@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Product } from './types.ts';
-import ProductCard from './components/ProductCard';
-import CartSummary from './components/CartSummary';
+import ProductCard from './components/ProductCard.tsx';
+import CartSummary from './components/CartSummary.tsx';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './context/CartContext.tsx';
 import { useUser } from './context/UserContext.tsx';

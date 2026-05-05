@@ -106,6 +106,38 @@ header {
     font-size: 1.2rem;
 }
 
+.boton-login,
+.boton-registrar {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.boton-login {
+    background: transparent;
+    color: #f4f4f4;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.boton-login:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #f4f4f4;
+}
+
+.boton-registrar {
+    background: #0c42c1;
+    color: #fff;
+    border: none;
+}
+
+.boton-registrar:hover {
+    background: #0a359a;
+    transform: translateY(-1px);
+}
+
 /* BANNER */
 
 .banner {

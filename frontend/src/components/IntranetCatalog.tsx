@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import type { Product } from '../types.ts';
-import ProductCard from './ProductCard';
+import ProductCard from './ProductCard.tsx';
 import { useUser } from '../context/UserContext.tsx';
 import './admin.css';
 
