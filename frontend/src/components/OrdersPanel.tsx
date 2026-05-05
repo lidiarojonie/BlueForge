@@ -182,13 +182,24 @@ function OrdersPanel() {
                                             value={order.status}
                                             onChange={(e) => handleStatusChange(order.id, e.target.value)}
                                             style={{ 
-                                                color: STATUS_COLORS[order.status],
+                                                backgroundColor: STATUS_COLORS[order.status],
+                                                color: 'white',
                                                 fontWeight: 'bold',
-                                                borderColor: STATUS_COLORS[order.status]
+                                                border: 'none',
+                                                padding: '4px 8px',
+                                                borderRadius: '6px',
+                                                cursor: 'pointer'
                                             }}
                                         >
                                             {Object.entries(STATUS_LABELS).map(([value, label]) => (
-                                                <option key={value} value={value} style={{ color: STATUS_COLORS[value] }}>
+                                                <option 
+                                                    key={value} 
+                                                    value={value} 
+                                                    style={{ 
+                                                        color: STATUS_COLORS[value], 
+                                                        backgroundColor: 'white' 
+                                                    }}
+                                                >
                                                     {label}
                                                 </option>
                                             ))}

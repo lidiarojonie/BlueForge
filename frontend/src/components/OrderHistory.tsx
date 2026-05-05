@@ -192,7 +192,10 @@ function OrderHistory() {
                   <td>
                     <span
                       className="status-badge"
-                      style={{ backgroundColor: STATUS_COLORS[order.status] }}
+                      style={{ 
+                        backgroundColor: STATUS_COLORS[order.status],
+                        color: 'white'
+                      }}
                       title={order.status}
                     >
                       {STATUS_LABELS[order.status] || order.status}
