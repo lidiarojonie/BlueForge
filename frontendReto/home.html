@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueForge</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="HeaderSuperior">
+        <div class="RedesSociales">
+            <a href="https://www.instagram.com/instagram/" class="logoRedes">
+                <img class="logo-redes" src="imgs/instagram.jpg" alt="Instagram logo"> 
+            </a>
+
+            <a href="https://x.com/X" class="logoRedes">
+                <img class="logo-redes" src="imgs/twitter.jpg" alt="Twitter logo"> 
+            </a>
+
+            <a href="https://www.tiktok.com/@tiktok" class="logoRedes">
+                <img class="logo-redes" src="imgs/tiktok.jpg" alt="TikTok logo"> 
+            </a>
+        </div>
+
+        <!-- Top header shortcuts -->
+        <div class="AD-HeaderSuperior">
+            <a href="#" class="AD-SobreNosotros">About us</a>
+            <a href="#" class="AD-Contacto">Contact</a>
+        </div>
+    </div>
+
+    <div class = "HeaderPrincipal">
+        <div class="MenuLogo">
+            <img class="desplegadorLateral" src="imgs/menuLateral.png" alt="Menu icon">
+            <img class="imagenLogo" src="imgs/Logo.jpg" alt="BlueForge logo">
+        </div>
+        <input type="text" placeholder="Search...">
+        <div class = "AccionesHeader">
+            <span>🛒</span>
+            <span>👤</span>
+        </div>
+    </div>
+</header>
+
+<!-- BANNER -->
+
+<div class="banner">
+    <img class="ImagenBanner" src="imgs/imgaenBanner.jpg" alt="Banner image">
+    <div class="overlayBanner">
+        <h1 class="TextoBanner">YOUR CONTROLLER,<br>YOUR RULES</h1>
+        <div class="BotonesBanner">
+            <button class="BotonBannerPersonalizar">PERSONALIZE</button>
+            <button class="BotonBannerCatalogo">CATALOG</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- TIPOS DE CATALOGO -->
+
+<div class="gallery-container">
+    <a href="/playstation" class="card ps">
+        <img src="imgs/placeholder.png" alt="PlayStation">
+        <span class="label">PlayStation</span>
+    </a>
+
+    <a href="/nintendo" class="card nintendo">
+        <img src="imgs/placeholder.png" alt="Nintendo">
+        <span class="label">Nintendo</span>
+    </a>
+
+    <a href="/xbox" class="card xbox">
+        <img src="imgs/placeholder.png" alt="XBox">
+        <span class="label">XBox</span>
+    </a>
+
+    <a href="/pc" class="card pc">
+        <img src="imgs/placeholder.png" alt="PC">
+        <span class="label">PC</span>
+    </a>
+</div>
+
+<!-- FEATURED CAROUSEL -->
+
+<section class="carousel-section">
+    <div class="carousel-header">
+        <h2>Featured</h2>
+        <div class="carousel-controls">
+            <button class="carousel-arrow left-arrow" type="button" aria-label="Previous">‹</button>
+            <button class="carousel-arrow right-arrow" type="button" aria-label="Next">›</button>
+        </div>
+    </div>
+    <div class="carousel-wrapper">
+        <div class="carousel" id="featuredCarousel">
+            <article class="carousel-item">
+                <img src="imgs/placeholder.png" alt="Featured product 1">
+                <div class="item-info">
+                    <p class="item-name">PlayStation Pro</p>
+                    <p class="item-price">$299</p>
+                </div>
+            </article>
+            <article class="carousel-item">
+                <img src="imgs/placeholder.png" alt="Featured product 2">
+                <div class="item-info">
+                    <p class="item-name">Nintendo Switch</p>
+                    <p class="item-price">$249</p>
+                </div>
+            </article>
+            <article class="carousel-item">
+                <img src="imgs/placeholder.png" alt="Featured product 3">
+                <div class="item-info">
+                    <p class="item-name">Xbox Elite</p>
+                    <p class="item-price">$279</p>
+                </div>
+            </article>
+            <article class="carousel-item">
+                <img src="imgs/placeholder.png" alt="Featured product 4">
+                <div class="item-info">
+                    <p class="item-name">Gaming PC</p>
+                    <p class="item-price">$699</p>
+                </div>
+            </article>
+            <article class="carousel-item">
+                <img src="imgs/placeholder.png" alt="Featured product 5">
+                <div class="item-info">
+                    <p class="item-name">Arcade Kit</p>
+                    <p class="item-price">$149</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer-container">
+    <div class="footer-col">
+        <h3>Catalog</h3>
+        <ul>
+        <li><a href="#">PlayStation</a></li>
+        <li><a href="#">Nintendo</a></li>
+        <li><a href="#">Xbox</a></li>
+        <li><a href="#">PC</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-col">
+        <h3>Of interest</h3>
+        <ul>
+        <li><a href="#">Common questions</a></li>
+        <li><a href="#">About us</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Tiktok</a></li>
+        <li><a href="#">X</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-col">
+        <h3>Staff</h3>
+        <ul>
+        <li><a href="#">Employee area</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-bottom">
+        <p>BlueForge.CO</p>
+    </div>
+    </footer>
+
+<script>
+    const carousel = document.getElementById('featuredCarousel');
+    const scrollAmount = 360;
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
