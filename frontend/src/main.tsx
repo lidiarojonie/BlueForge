@@ -20,6 +20,7 @@ import OrdersPanel from './components/OrdersPanel.tsx';
 import IntranetCatalog from './components/IntranetCatalog.tsx';
 import OrderSuccess from './components/OrderSuccess.tsx';
 import AddProductPage from './components/AddProductPage.tsx';
+import ComiteSection from './components/ComiteSection.tsx';
 import { UserProvider, useUser } from './context/UserContext.tsx';
 import PrivateRoute from './components/PrivateRoute.tsx';
 
@@ -73,6 +74,7 @@ function AppContent() {
           <Route path="catalogo" element={<IntranetCatalog />} />
           <Route path="catalogo/nuevo" element={<AddProductPage />} />
           <Route path="historico" element={<ClockHistory />} />
+          <Route path="comite" element={<ComiteSection />} />
         </Route>
         
         <Route path="/admin/users" element={

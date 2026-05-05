@@ -66,6 +66,12 @@ function IntranetLayout() {
                     >
                         Histórico
                     </NavLink>
+                    <NavLink
+                        to="/intranet/comite"
+                        className={({ isActive }) => isActive ? "intranet-nav-link active" : "intranet-nav-link"}
+                    >
+                        Comité
+                    </NavLink>
                 </nav>
             </header>
 
