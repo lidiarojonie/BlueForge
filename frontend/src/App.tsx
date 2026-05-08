@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import type { Product } from './types.ts';
 import ProductCard from './components/ProductCard.tsx';
-import CartSummary from './components/CartSummary.tsx';
-import { useNavigate } from 'react-router-dom';
+import CartSummary from './components/CartSummary.tsx'; 
+import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 import { useCart } from './context/CartContext.tsx';
 import { useUser } from './context/UserContext.tsx';
 
-function App() {
+
+
+function StoreFront() {
   const navigate = useNavigate();
-  const { cart, addToCart, updateQuantity, removeFromCart } = useCart();
+  const { cart, addToCart } = useCart();
   const { customer } = useUser();
   const [products, setProducts] = useState<Product[]>([]);
   
@@ -19,7 +21,6 @@ function App() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  // Actualizar desde aqui
   const loadProducts = () => {
     fetch('http://localhost:3000/api/products')
       .then(response => response.json())
@@ -30,16 +31,12 @@ function App() {
   const handleUpdateStock = (product: Product): void => {
     const input = window.prompt(`Stock actual: ${product.stock}. Nuevo stock: `);
     if (input === null) return;
-
     const newStock = parseInt(input);
-
     if (isNaN(newStock) || newStock < 0) {
-      alert("El stock en debe ser un numero mayor o igual a 0");
+      alert("El stock debe ser un numero mayor o igual a 0");
       return;
     }
-
     const updatedProduct = { ...product, stock: newStock };
-
     fetch(`http://localhost:3000/api/products/${product.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -52,11 +49,8 @@ function App() {
       })
       .then(() => loadProducts())
       .catch((error) => console.error("Error: ", error));
-
   };
-  // Hasta aqui
 
-  // Añaidir "Authentication" : `Bearer ${sessionStorage.getItem("token")}` a los headers de las peticiones fetch que lo requieran (POST, PUT, DELETE)
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -72,9 +66,7 @@ function App() {
     fetch('http://localhost:3000/api/products', {
       credentials: 'include',
       method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newProduct)
     })
       .then(res => res.json())
@@ -88,10 +80,7 @@ function App() {
   };
 
   const handleDelete = (id: number): void => {
-    if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) {
-      return;
-    }
-
+    if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) return;
     fetch(`http://localhost:3000/api/products/${id}`, {
       method: "DELETE",
       credentials: 'include'
@@ -107,7 +96,7 @@ function App() {
   return (
     <>
       {customer?.role === 'admin' && (
-        <div className='formulario-producto'>
+        <div className='formulario-producto' style={{ padding: '2rem', background: '#f5f5f5', color: '#333' }}>
           <h3>Añadir producto</h3>
           <form onSubmit={handleSubmit} className="form-horizontal">
             <div className="form-group">
@@ -141,7 +130,6 @@ function App() {
         </div>
       )}
 
-      {/* Actualizar a partir de aqui */}
       <div className='products-grid'>
         {products.map((product) => (
           <ProductCard 
@@ -155,7 +143,13 @@ function App() {
         ))}
       </div>
     </>
-  )
+  );
+}
+
+function App() {
+  return (
+    <StoreFront />
+  );
 }
 
 export default App;
