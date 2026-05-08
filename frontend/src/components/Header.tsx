@@ -12,40 +12,40 @@ import menuIcon from '../imgs/menuLateral.png';
 import mainLogo from '../imgs/Logo.jpg';
 
 function Header() {
-  const navigate = useNavigate();
-  const { cart, cartCount, updateQuantity, removeFromCart } = useCart();
-  const { customer, setCustomer } = useUser();
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const location = useLocation();
+    const navigate = useNavigate();
+    const { cart, cartCount, updateQuantity, removeFromCart } = useCart();
+    const { customer, setCustomer } = useUser();
+    const [isCartOpen, setIsCartOpen] = useState(false);
+    const location = useLocation();
 
   // No mostrar el header global en la intranet
-  if (location.pathname.startsWith('/intranet')) {
-    return null;
-  }
-
-  const toggleCart = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch('http://localhost:3000/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include'
-      });
-      setCustomer(null);
-      navigate('/');
-    } catch (err) {
-      console.error("Error al cerrar sesión:", err);
-      setCustomer(null);
-      navigate('/');
+    if (location.pathname.startsWith('/intranet')) {
+        return null;
     }
-  };
 
-  return (
+    const toggleCart = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsCartOpen(!isCartOpen);
+    };
+
+const handleLogout = async () => {
+    try {
+        await fetch('http://localhost:3000/api/auth/logout', {
+            method: 'POST',
+            credentials: 'include'
+        });
+        setCustomer(null);
+        navigate('/');
+        } catch (err) {
+            console.error("Error al cerrar sesión:", err);
+            setCustomer(null);
+            navigate('/');
+        }
+};
+
+return (
     <>
-      <header>
+    <header>
         <div className="HeaderSuperior">
             <div className="RedesSociales">
                 <a href="https://www.instagram.com/instagram/" className="logoRedes" target="_blank" rel="noopener noreferrer">
@@ -71,11 +71,11 @@ function Header() {
             <div className="MenuLogo">
                 <img className="desplegadorLateral" src={menuIcon} alt="Menu icon" />
                 <img 
-                  className="imagenLogo" 
-                  src={mainLogo} 
-                  alt="BlueForge logo" 
-                  onClick={() => navigate('/')} 
-                  style={{ cursor: 'pointer' }}
+                    className="imagenLogo" 
+                    src={mainLogo} 
+                    alt="BlueForge logo" 
+                    onClick={() => navigate('/')} 
+                    style={{ cursor: 'pointer' }}
                 />
             </div>
             <input type="text" placeholder="Search..." />
@@ -117,9 +117,9 @@ function Header() {
                 />
             </div>
         )}
-      </header>
+    </header>
     </>
-  );
+    );
 }
 
 export default Header;
