@@ -1,11 +1,18 @@
 import React from 'react';
 import './intranet.css';
 
+import Placeholder from '../imgs/placeholder.png';
+
 const ComiteSection: React.FC = () => {
     return (
         <div className="comite-section">
             <div className="comite-header">
+            <div className="organigrama">
                 <h2>COMITÉ DE EMPRESA</h2>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHN4vtaC3uXTm3Hxmhw2NXB0_LWJfYjtXa9g&s" alt="Icono de comité" className="comite-icon" />
+            </div>
+
+                <h2>DOCUMENTOS DE INTERÉS</h2>
                 <p>Información relevante para el empleado, convenios y horarios.</p>
             </div>
 
@@ -13,7 +20,9 @@ const ComiteSection: React.FC = () => {
                 <div className="comite-card">
                     <h2 className="comite-card-title">CONVENIO COLECTIVO</h2>
                     <p>Consulta el convenio colectivo vigente aplicable a tu categoría profesional.</p>
-                    <button className="intranet-action-button">Ver Documento</button>
+                    <button className="intranet-action-button" onClick={() => window.open("https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1309373420303", "_blank")}>
+                        Ver Documento
+                    </button>
                 </div>
 
                 <div className="comite-card">
