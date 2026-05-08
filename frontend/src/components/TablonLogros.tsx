@@ -1,122 +1,111 @@
 import { motion } from 'framer-motion';
-import { Award, Target, CheckCircle2, Clock, ArrowLeft, Zap, ShieldCheck } from 'lucide-react';
+import { Award, Target, ArrowLeft, Laptop, HeartPulse, ShieldCheck, Sun, Wallet, Monitor } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function TablonLogros() {
     const navigate = useNavigate();
 
-    const logros = [
-        {
-            title: "Reducción de Jornada a 38.5h",
-            status: "Conseguido",
-            date: "Abril 2026",
-            desc: "Un hito histórico en BlueForge. Hemos conseguido reducir la jornada semanal manteniendo el 100% del salario base y complementos.",
-            icon: <Award className="text-green-400" />,
-            color: "green"
-        },
-        {
-            title: "Plus de Nocturnidad Mejorado",
-            status: "Conseguido",
-            date: "Enero 2026",
-            desc: "Aumento del 15% en el valor de la hora nocturna para el equipo de mantenimiento de servidores.",
-            icon: <ShieldCheck className="text-green-400" />,
-            color: "green"
-        }
-    ];
-
-    const peleas = [
-        {
-            title: "Jornada Intensiva de Verano",
-            status: "En Negociación",
-            progress: 65,
-            desc: "Buscamos un horario de 07:00 a 15:00 durante Julio y Agosto para mejorar la conciliación familiar.",
-            icon: <Clock className="text-orange-400" />
-        },
-        {
-            title: "Teletrabajo Híbrido (2 días)",
-            status: "Propuesta Enviada",
-            progress: 30,
-            desc: "Estamos peleando para que los departamentos técnicos tengan 2 días de trabajo remoto a la semana.",
-            icon: <Zap className="text-blue-400" />
-        }
-    ];
-
     return (
-        <div className="w-full p-8 font-sans pb-24 bg-[#050505]">
-            <div className="max-w-5xl mx-auto space-y-12">
+        <div className="w-full p-8 font-sans pb-32 bg-[#050505] min-h-screen">
+            <div className="max-w-7xl mx-auto space-y-16">
                 
-                <button 
-                    onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-gray-500 hover:text-cyan-400 transition-colors mb-4"
-                >
-                    <ArrowLeft size={20} /> Volver a Inicio
+                <button onClick={() => navigate(-1)} className="flex items-center gap-3 text-gray-500 hover:text-cyan-400 transition-colors font-bold text-lg mb-4">
+                    <ArrowLeft size={24} /> Volver al panel del Comité
                 </button>
 
-                <header>
-                    <h2 className="text-4xl font-black text-white">Tablón de <span className="text-cyan-400">Actualidad</span></h2>
-                    <p className="text-gray-400 mt-2">Transparencia total sobre nuestras victorias y los objetivos que tenemos en el punto de mira.</p>
+                <header className="space-y-4">
+                    <h2 className="text-5xl font-black text-white">Tablón de <span className="text-cyan-400">Transparencia</span></h2>
+                    <p className="text-gray-400 text-xl max-w-3xl leading-relaxed">
+                        Aquí rendimos cuentas. Este es el resumen de las victorias que hemos conseguido para la plantilla y las negociaciones que tenemos actualmente sobre la mesa con la dirección de BlueForge.
+                    </p>
                 </header>
 
-                {/* LOGROS CONSEGUIDOS */}
-                <section className="space-y-6">
-                    <h3 className="text-xl font-bold text-green-400 flex items-center gap-2">
-                        <CheckCircle2 size={24} /> Victorias de la Plantilla
-                    </h3>
-                    <div className="grid grid-cols-1 gap-4">
-                        {logros.map((l, i) => (
-                            <motion.div 
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                key={i}
-                                className="bg-zinc-900/40 border border-green-500/20 p-6 rounded-2xl flex gap-6 items-start"
-                            >
-                                <div className="p-4 bg-green-500/10 rounded-2xl border border-green-500/20 uppercase font-black text-xs">
-                                    {l.icon}
-                                </div>
-                                <div>
-                                    <div className="flex items-center gap-3 mb-1">
-                                        <h4 className="text-xl font-bold text-white">{l.title}</h4>
-                                        <span className="text-[10px] bg-green-500 text-black px-2 py-0.5 rounded font-bold uppercase">{l.date}</span>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">{l.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                {/* SECCIÓN 1: VICTORIAS (3 ÍTEMS) */}
+                <section className="space-y-8">
+                    <div className="flex items-center gap-4 border-b border-white/10 pb-4">
+                        <Award className="text-green-400" size={32} />
+                        <h3 className="text-3xl font-bold text-white">Acuerdos Conseguidos</h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Victoria 1 */}
+                        <motion.div whileHover={{ y: -5 }} className="bg-gradient-to-br from-green-900/20 to-zinc-900 border border-green-500/20 p-10 rounded-3xl shadow-xl flex flex-col gap-4">
+                            <div className="p-4 bg-green-500/10 rounded-2xl text-green-400 w-fit"><ShieldCheck size={32} /></div>
+                            <h4 className="text-2xl font-bold text-white">Reducción a 38.5h</h4>
+                            <p className="text-gray-400 leading-relaxed flex-grow">
+                                Hito histórico alcanzado este año. Hemos conseguido reducir la jornada laboral semanal manteniendo el 100% de las tablas salariales.
+                            </p>
+                        </motion.div>
+
+                        {/* Victoria 2 */}
+                        <motion.div whileHover={{ y: -5 }} className="bg-gradient-to-br from-green-900/20 to-zinc-900 border border-green-500/20 p-10 rounded-3xl shadow-xl flex flex-col gap-4">
+                            <div className="p-4 bg-green-500/10 rounded-2xl text-green-400 w-fit"><Laptop size={32} /></div>
+                            <h4 className="text-2xl font-bold text-white">Plus de Teletrabajo</h4>
+                            <p className="text-gray-400 leading-relaxed flex-grow">
+                                Se ha firmado un acuerdo de 40€ mensuales libres de impuestos para cubrir gastos de luz e internet los días de trabajo en remoto.
+                            </p>
+                        </motion.div>
+
+                        {/* Victoria 3 */}
+                        <motion.div whileHover={{ y: -5 }} className="bg-gradient-to-br from-green-900/20 to-zinc-900 border border-green-500/20 p-10 rounded-3xl shadow-xl flex flex-col gap-4">
+                            <div className="p-4 bg-green-500/10 rounded-2xl text-green-400 w-fit"><HeartPulse size={32} /></div>
+                            <h4 className="text-2xl font-bold text-white">Seguro Médico Privado</h4>
+                            <p className="text-gray-400 leading-relaxed flex-grow">
+                                La empresa asume el 100% del coste de la póliza de salud básica para todos los empleados con más de 6 meses de antigüedad.
+                            </p>
+                        </motion.div>
                     </div>
                 </section>
 
-                {/* PELEANDO POR ELLO */}
-                <section className="space-y-6 pt-6">
-                    <h3 className="text-xl font-bold text-orange-400 flex items-center gap-2">
-                        <Target size={24} /> Próximos Desafíos
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {peleas.map((p, i) => (
-                            <div key={i} className="bg-zinc-900/60 border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                    {p.icon}
-                                </div>
-                                <h4 className="text-lg font-bold text-white mb-2">{p.title}</h4>
-                                <p className="text-gray-400 text-xs mb-6 leading-relaxed">{p.desc}</p>
-                                
-                                <div className="space-y-2">
-                                    <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                                        <span>Progreso Negociación</span>
-                                        <span>{p.progress}%</span>
-                                    </div>
-                                    <div className="w-full h-1.5 bg-black rounded-full overflow-hidden border border-white/5">
-                                        <motion.div 
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${p.progress}%` }}
-                                            className="h-full bg-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
-                                        />
-                                    </div>
-                                </div>
+                {/* SECCIÓN 2: EN PROCESO (3 ÍTEMS) */}
+                <section className="space-y-8 pt-8">
+                    <div className="flex items-center gap-4 border-b border-white/10 pb-4">
+                        <Target className="text-orange-400" size={32} />
+                        <h3 className="text-3xl font-bold text-white">Objetivos en Negociación (2026)</h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Lucha 1 */}
+                        <div className="bg-zinc-900/60 border border-white/5 p-10 rounded-3xl shadow-lg flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 bg-orange-500/10 rounded-xl text-orange-400"><Sun size={28} /></div>
+                                <h4 className="text-xl font-bold text-white">Jornada Intensiva de Verano</h4>
                             </div>
-                        ))}
+                            <p className="text-gray-400 text-sm flex-grow">Exigimos horario de 08:00 a 15:00 durante los meses de Julio y Agosto completos.</p>
+                            <div className="space-y-2">
+                                <div className="flex justify-between text-xs font-bold text-gray-500 uppercase tracking-wider"><span>Estado</span> <span>Avanzado (80%)</span></div>
+                                <div className="w-full h-2 bg-black rounded-full overflow-hidden"><div className="h-full bg-orange-500 w-[80%] rounded-full" /></div>
+                            </div>
+                        </div>
+
+                        {/* Lucha 2 */}
+                        <div className="bg-zinc-900/60 border border-white/5 p-10 rounded-3xl shadow-lg flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 bg-orange-500/10 rounded-xl text-orange-400"><Wallet size={28} /></div>
+                                <h4 className="text-xl font-bold text-white">Retribución Flexible</h4>
+                            </div>
+                            <p className="text-gray-400 text-sm flex-grow">Implementación de tickets restaurante, cheque guardería y tarjeta transporte exentos de IRPF.</p>
+                            <div className="space-y-2">
+                                <div className="flex justify-between text-xs font-bold text-gray-500 uppercase tracking-wider"><span>Estado</span> <span>En estudio (40%)</span></div>
+                                <div className="w-full h-2 bg-black rounded-full overflow-hidden"><div className="h-full bg-orange-500 w-[40%] rounded-full" /></div>
+                            </div>
+                        </div>
+
+                        {/* Lucha 3 */}
+                        <div className="bg-zinc-900/60 border border-white/5 p-10 rounded-3xl shadow-lg flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 bg-orange-500/10 rounded-xl text-orange-400"><Monitor size={28} /></div>
+                                <h4 className="text-xl font-bold text-white">Renovación de Equipos</h4>
+                            </div>
+                            <p className="text-gray-400 text-sm flex-grow">Buscamos asegurar un presupuesto fijo anual para sillas ergonómicas y monitores 4K para prevención visual.</p>
+                            <div className="space-y-2">
+                                <div className="flex justify-between text-xs font-bold text-gray-500 uppercase tracking-wider"><span>Estado</span> <span>Borrador (15%)</span></div>
+                                <div className="w-full h-2 bg-black rounded-full overflow-hidden"><div className="h-full bg-orange-500 w-[15%] rounded-full" /></div>
+                            </div>
+                        </div>
                     </div>
                 </section>
+
             </div>
         </div>
     );

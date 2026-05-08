@@ -8,19 +8,27 @@ import { ProductDetail } from './components/ProductDetail.tsx';
 import CheckoutPage from './components/CheckoutPage.tsx';
 import NotFound from './NotFound.tsx';
 import { CartProvider } from './context/CartContext.tsx';
+
+
+
+// --- INTRANET COMPONENTES ---
 import IntranetLayout from './components/IntranetLayout.tsx';
 import IntranetHome from './components/IntranetHome.tsx';
 import ClockInPage from './components/ClockInPage.tsx';
 import ClockHistory from './components/ClockHistory.tsx';
+import OrdersPanel from './components/OrdersPanel.tsx';
+import IntranetCatalog from './components/IntranetCatalog.tsx';
+import AddProductPage from './components/AddProductPage.tsx';
+import ComiteSection from './components/ComiteSection.tsx';
+import TablonLogros from './components/TablonLogros.tsx'; 
+import DerechosSection from './components/DerechosSection.tsx'; 
+
+// --- ADMIN & USER COMPONENTES ---
 import AdminUsers from './components/AdminUsers.tsx';
 import LoginPage from './components/LoginPage.tsx';
 import RegisterPage from './components/RegisterPage.tsx';
 import OrderHistory from './components/OrderHistory.tsx';
-import OrdersPanel from './components/OrdersPanel.tsx';
-import IntranetCatalog from './components/IntranetCatalog.tsx';
 import OrderSuccess from './components/OrderSuccess.tsx';
-import AddProductPage from './components/AddProductPage.tsx';
-import ComiteSection from './components/ComiteSection.tsx';
 import { UserProvider, useUser } from './context/UserContext.tsx';
 import PrivateRoute from './components/PrivateRoute.tsx';
 
@@ -63,12 +71,18 @@ function AppContent() {
           </PrivateRoute>
         } />
         
+        {/* 🔥 AQUÍ ESTÁ EL BLOQUE DE LA INTRANET 🔥 */}
         <Route path="/intranet" element={
           <PrivateRoute roles={["employee", "admin"]}>
             <IntranetLayout />
           </PrivateRoute>
         }>
           <Route index element={<IntranetHome />} />
+          
+          {/* ¡NUESTRAS RUTAS DE IPE1 / FOL POR FIN EN SU SITIO! */}
+          <Route path="logros" element={<TablonLogros />} />
+          <Route path="derechos" element={<DerechosSection />} />
+          
           <Route path="fichajes" element={<ClockInPage />} />
           <Route path="pedidos" element={<OrdersPanel />} />
           <Route path="catalogo" element={<IntranetCatalog />} />
@@ -89,6 +103,7 @@ function AppContent() {
           </PrivateRoute>
         } />
         
+        {/* EL PORTERO DEL 404 AZUL */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
