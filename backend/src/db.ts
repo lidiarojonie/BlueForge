@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import { Pool } from "pg";
-// los import solo cargan el módulo, no ejecutan nada todavía
+
 
 dotenv.config(); // ← esta llamada es la que realmente lee el .env
 
@@ -10,5 +10,5 @@ export const pool = new Pool({
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    ssl: { rejectUnauthorized: false }, // ← necesario para AWS RDS
+    ssl: { rejectUnauthorized: false }, 
 });

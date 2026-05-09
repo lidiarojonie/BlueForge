@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PlayCircle, Users, MessageSquare, Briefcase, ChevronRight, Mail } from "lucide-react";
 
 export default function IntranetHome() {
+    const navigate = useNavigate();
     return (
         <div className="w-full bg-[#050505] text-gray-100 p-8 pb-24 font-sans selection:bg-cyan-500/30">
             <div className="max-w-7xl mx-auto space-y-16">
@@ -87,7 +89,7 @@ export default function IntranetHome() {
                                 </div>
                             </div>
 
-{/* Dept 3 */}
+                            {/* Dept 3 */}
                             <div className="flex flex-col items-center w-full md:w-1/3">
                                 <div className="bg-zinc-900 p-5 rounded-2xl border border-white/10 text-center w-full shadow-lg">
                                     <img src="https://i.pravatar.cc/150?img=44" alt="RRHH" className="w-12 h-12 rounded-full mx-auto mb-2 border border-white/20" />
@@ -114,11 +116,14 @@ export default function IntranetHome() {
                             <h3 className="text-3xl font-bold text-white">¿Tienes dudas legales o laborales?</h3>
                             <p className="text-gray-400 max-w-md">Tu consulta es totalmente confidencial. El Comité de Empresa está aquí para asesorarte sobre convenios, bajas o cualquier conflicto.</p>
                         </div>
-                        <button className="px-8 py-4 bg-cyan-500 text-black font-black rounded-2xl hover:bg-cyan-400 transition-all flex items-center gap-3 group shadow-[0_10px_30px_rgba(34,211,238,0.2)]">
+                        <button 
+                         onClick={() => navigate('/intranet/contacto-comite')}
+                        className="px-8 py-4 bg-cyan-500 text-black font-black rounded-2xl hover:bg-cyan-400 transition-all flex items-center gap-3 group shadow-[0_10px_30px_rgba(34,211,238,0.2)]"
+>
                             <Mail size={20} />
-                            ENVIAR MENSAJE AL COMITÉ
+                         ENVIAR MENSAJE AL COMITÉ
                             <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-                        </button>
+                            </button>
                     </div>
                 </section>
             </div>

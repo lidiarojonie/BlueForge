@@ -1,125 +1,112 @@
-import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import CartSummary from './CartSummary';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { ShoppingCart, User } from 'lucide-react';
 
-// Importar imágenes
-import instagramLogo from '../imgs/instagram.jpg';
-import twitterLogo from '../imgs/twitter.jpg';
-import tiktokLogo from '../imgs/tiktok.jpg';
-import menuIcon from '../imgs/menuLateral.png';
 import mainLogo from '../imgs/Logo.jpg';
 
 function Header() {
-    const navigate = useNavigate();
-    const { cart, cartCount, updateQuantity, removeFromCart } = useCart();
-    const { customer, setCustomer } = useUser();
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    const location = useLocation();
+  const navigate = useNavigate();
+  const { cartCount } = useCart();
+  const { customer, setCustomer } = useUser();
+  const location = useLocation();
 
-  // No mostrar el header global en la intranet
-    if (location.pathname.startsWith('/intranet')) {
-        return null;
-    }
+  if (location.pathname.startsWith('/intranet')) return null;
 
-    const toggleCart = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setIsCartOpen(!isCartOpen);
-    };
+  const handleLogout = async () => {
+      try {
+          await fetch('http://localhost:3000/api/auth/logout', { method: 'POST', credentials: 'include' });
+          setCustomer(null);
+          navigate('/');
+      } catch (err) {
+          setCustomer(null);
+          navigate('/');
+      }
+  };
 
-const handleLogout = async () => {
-    try {
-        await fetch('http://localhost:3000/api/auth/logout', {
-            method: 'POST',
-            credentials: 'include'
-        });
-        setCustomer(null);
-        navigate('/');
-        } catch (err) {
-            console.error("Error al cerrar sesión:", err);
-            setCustomer(null);
-            navigate('/');
-        }
-};
+  return (
+    <header className="fixed top-0 w-full z-50 font-sans shadow-2xl">
+      
+      {/* 🟢 TOP BAR - INFO ONLY */}
+      <div className="bg-cyan-500 text-black text-center py-2 text-xs md:text-sm font-black uppercase tracking-widest">
+         LEVEL UP YOUR GAME - FREE SHIPPING ON ORDERS OVER 150€
+      </div>
 
-return (
-    <>
-    <header>
-        <div className="HeaderSuperior">
-            <div className="RedesSociales">
-                <a href="https://www.instagram.com/instagram/" className="logoRedes" target="_blank" rel="noopener noreferrer">
-                    <img className="logo-redes" src={instagramLogo} alt="Instagram logo" /> 
-                </a>
-
-                <a href="https://x.com/X" className="logoRedes" target="_blank" rel="noopener noreferrer">
-                    <img className="logo-redes" src={twitterLogo} alt="Twitter logo" /> 
-                </a>
-
-                <a href="https://www.tiktok.com/@tiktok" className="logoRedes" target="_blank" rel="noopener noreferrer">
-                    <img className="logo-redes" src={tiktokLogo} alt="TikTok logo" /> 
-                </a>
-            </div>
-
-            <div className="AD-HeaderSuperior">
-                <a href="#" className="AD-SobreNosotros">About us</a>
-                <a href="#" className="AD-Contacto">Contact</a>
-            </div>
+      {/* ⬛ MAIN NAVIGATION */}
+      <div className="bg-[#0b0c10] px-8 py-4 flex justify-between items-center border-b border-white/5">
+        
+        {/* LOGO */}
+        <div className="flex-shrink-0">
+            <img 
+              className="h-12 md:h-16 lg:h-20 cursor-pointer hover:brightness-125 transition-all rounded-md" 
+              src={mainLogo} 
+              alt="BlueForge" 
+              onClick={() => navigate('/')} 
+            />
         </div>
 
-        <div className="HeaderPrincipal">
-            <div className="MenuLogo">
-                <img className="desplegadorLateral" src={menuIcon} alt="Menu icon" />
-                <img 
-                    className="imagenLogo" 
-                    src={mainLogo} 
-                    alt="BlueForge logo" 
-                    onClick={() => navigate('/')} 
-                    style={{ cursor: 'pointer' }}
-                />
-            </div>
-            <input type="text" placeholder="Search..." />
-            <div className="AccionesHeader">
-                {!customer ? (
-                    <>
-                        <button className="boton-login" onClick={() => navigate('/login')}>LogIn</button>
-                        <button className="boton-registrar" onClick={() => navigate('/register')}>Registrar</button>
-                    </>
-                ) : (
-                    <div className="user-info-reto">
-                        <span onClick={() => navigate('/mis-pedidos')} style={{cursor: 'pointer'}}>👤 {customer.username}</span>
-                        <button className="boton-login" onClick={handleLogout}>Logout</button>
-                    </div>
-                )}
-                <div className="cart-container-reto" onClick={toggleCart} style={{ cursor: 'pointer' }}>
-                    <span style={{ fontSize: '1.5rem' }}>🛒</span>
-                    {cartCount > 0 && (
-                        <span className="counter-badge-reto">{cartCount}</span>
-                    )}
-                </div>
-            </div>
-        </div>
+        {/* CENTER LINKS - CLICKABLE WITH POINTER CURSOR */}
+        <nav className="hidden lg:flex items-center gap-12">
+            <button 
+              onClick={() => navigate('/personalizador?mando=ps4')} 
+              className="text-sm font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
+            >
+                PS4 CUSTOM
+            </button>
+            <button 
+              onClick={() => navigate('/personalizador?mando=ps5')} 
+              className="text-sm font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
+            >
+                PS5 CUSTOM
+            </button>
+            <button 
+              onClick={() => navigate('/personalizador?mando=xbox')} 
+              className="text-sm font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
+            >
+                XBOX ELITE
+            </button>
+            <button 
+              className="text-sm font-bold text-gray-200 hover:text-white transition-colors uppercase tracking-widest cursor-pointer"
+            >
+                CONTACT
+            </button>
+        </nav>
 
-        {isCartOpen && (
-            <div className="cart-dropdown">
-                <CartSummary
-                    cart={cart}
-                    onUpdateQuantity={updateQuantity}
-                    onRemove={removeFromCart}
-                    onConfirm={() => {
-                        setIsCartOpen(false);
-                        if (customer) {
-                            navigate('/checkout');
-                        } else {
-                            navigate('/login');
-                        }
-                    }}
-                />
+        {/* ACTIONS */}
+        <div className="flex items-center gap-6 flex-shrink-0">
+          {!customer ? (
+            <div className="flex items-center gap-3">
+              <button onClick={() => navigate('/login')} className="hidden md:block text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest cursor-pointer">Log In</button>
+              <button onClick={() => navigate('/register')} className="flex items-center justify-center w-12 h-12 md:w-10 md:h-10 rounded-full border border-gray-600 hover:border-cyan-400 hover:text-cyan-400 text-gray-300 transition-colors cursor-pointer">
+                  <User size={18} />
+              </button>
             </div>
-        )}
+          ) : (
+            <div className="flex items-center gap-4">
+              <span onClick={() => navigate('/mis-pedidos')} className="flex items-center gap-2 text-xs font-black text-white cursor-pointer hover:text-cyan-400">
+                <User size={16} className="text-cyan-500" /> {customer.username}
+              </span>
+              <button onClick={handleLogout} className="text-xs font-bold text-gray-500 hover:text-red-500 uppercase cursor-pointer">Logout</button>
+            </div>
+          )}
+
+          <div 
+            className="relative cursor-pointer group flex items-center gap-2" 
+            onClick={() => navigate(customer ? '/checkout' : '/login')}
+          >
+            <div className="flex items-center justify-center w-12 h-12 md:w-10 md:h-10 rounded-full bg-transparent hover:bg-white/5 transition-colors">
+                <ShoppingCart size={24} className="text-white group-hover:text-cyan-400 transition-colors" />
+            </div>
+            {cartCount > 0 && (
+              <span className="absolute top-0 right-0 bg-cyan-500 text-black text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full transform translate-x-1 -translate-y-1">
+                {cartCount}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
     </header>
-    </>
-    );
+  );
 }
 
 export default Header;
