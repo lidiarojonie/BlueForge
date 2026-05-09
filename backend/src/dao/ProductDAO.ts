@@ -12,8 +12,8 @@ export class ProductDAO {
                 p.stock, 
                 p.active, 
                 AVG(r.rating) AS average_rating
-            FROM base_products p
-            LEFT JOIN reviews r ON p.base_product_id = r.base_product_id
+            FROM blueforge.base_products p
+            LEFT JOIN blueforge.reviews r ON p.base_product_id = r.base_product_id
             WHERE p.active = TRUE
             GROUP BY p.base_product_id
             ORDER BY p.base_product_id ASC

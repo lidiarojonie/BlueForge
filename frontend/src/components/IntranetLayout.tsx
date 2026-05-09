@@ -8,7 +8,6 @@ function IntranetLayout() {
     const navigate = useNavigate(); // [cite: 67]
     const location = useLocation(); // <--- Nueva constante para vigilar la ruta
 
-    // 🔥 EL ARREGLO DEL SCROLL 🔥
     // Este efecto se ejecuta cada vez que 'location' (la URL) cambia
     useEffect(() => {
         // Intentamos subir el scroll de todas las formas posibles

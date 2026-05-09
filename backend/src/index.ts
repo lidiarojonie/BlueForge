@@ -116,6 +116,29 @@ app.post("/api/auth/login", async (req: Request, res: Response) => {
         res.status(500).json({ error: "Error interno en login" });
     }
 });
+// Obtener todos los pedidos (Solo empleados y admins)
+app.get("/api/orders", authenticateToken, requireRole("admin", "employee"), async (req: AuthRequest, res: Response) => {
+    try {
+        const orders = await OrderDAO.getAllOrders();
+        res.json(orders);
+    } catch (error) {
+        console.error("Error obteniendo pedidos:", error);
+        res.status(500).json({ error: "Error al obtener pedidos" });
+    }
+});
+
+// Cambiar el estado de un pedido (Solo empleados y admins)
+app.put("/api/orders/:id/status", authenticateToken, requireRole("admin", "employee"), async (req: AuthRequest, res: Response) => {
+    try {
+        const orderId = Number(req.params.id);
+        const { status } = req.body;
+        await OrderDAO.updateOrderStatus(orderId, status);
+        res.json({ message: "Estado actualizado correctamente" });
+    } catch (error) {
+        console.error("Error actualizando pedido:", error);
+        res.status(500).json({ error: "Error al actualizar pedido" });
+    }
+});
 
 app.get("/api/auth/me", authenticateToken, (req: AuthRequest, res: Response) => {
     res.json({ customer: req.customer });
