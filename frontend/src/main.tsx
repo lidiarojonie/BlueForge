@@ -8,6 +8,7 @@ import { ProductDetail } from './components/ProductDetail.tsx';
 import CheckoutPage from './components/CheckoutPage.tsx';
 import NotFound from './NotFound.tsx';
 import { CartProvider } from './context/CartContext.tsx';
+import Home from './components/Home.tsx';
 
 // --- INTRANET COMPONENTES ---
 import IntranetLayout from './components/IntranetLayout.tsx';
@@ -47,7 +48,8 @@ function AppContent() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/catalogo" element={<App />} />
         <Route path="product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
