@@ -127,6 +127,7 @@ export default function IntranetHome() {
                     </div>
                 </section>
             </div>
+
         </div>
     );
 }

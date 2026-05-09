@@ -1,0 +1,267 @@
+.videoBanner {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+    display: block;
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+}
+
+.overlayBanner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 28px;
+    background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+.TextoBanner {
+    margin: 0;
+    font-size: clamp(3rem, 4vw, 4.8rem);
+    line-height: 0.9;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.BotonesBanner {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.BotonBannerPersonalizar,
+.BotonBannerCatalogo {
+    border-radius: 14px;
+    padding: 20px 36px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    min-width: 170px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.BotonBannerPersonalizar {
+    background-color: #0c42c1;
+    color: #fff;
+}
+
+.BotonBannerCatalogo {
+    background-color: #f9f9f9;
+    color: #111;
+}
+
+.BotonBannerPersonalizar:hover,
+.BotonBannerCatalogo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* CATEGORY CARDS */
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: 1.8fr 1.8fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 18px;
+    padding: 24px;
+    background: #111111;
+}
+
+.carousel-section {
+    padding: 28px 24px 24px;
+    background: #0e0e0e;
+}
+
+.carousel-section h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f4f4f4;
+}
+
+.carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.carousel-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(21, 21, 21, 0.9);
+    color: #f4f4f4;
+    font-size: 1.6rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    scroll-snap-align: start;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #121212;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.04);
+}
+
+.item-info {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    background: #0f0f0f;
+    flex: 1;
+}
+
+.item-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.item-price {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #8eb3ff;
+    font-weight: 600;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+}
+
+.carousel-item {
+    flex: 0 0 min(320px, 80%);
+    height: 220px;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.04);
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    display: block;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ps {
+    grid-row: 1 / span 2;
+}
+
+.nintendo {
+    grid-row: 1 / span 2;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.label {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 10px 14px;
+    border-radius: 999px;
+}
