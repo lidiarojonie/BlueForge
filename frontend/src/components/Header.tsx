@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import CartSummary from './CartSummary';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 
@@ -13,9 +11,9 @@ import mainLogo from '../imgs/Logo.jpg';
 
 function Header() {
   const navigate = useNavigate();
-  const { cart, cartCount, updateQuantity, removeFromCart } = useCart();
+  // Ya solo necesitamos el cartCount para la burbuja roja
+  const { cartCount } = useCart(); 
   const { customer, setCustomer } = useUser();
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
 
   // No mostrar el header global en la intranet
@@ -23,9 +21,14 @@ function Header() {
     return null;
   }
 
-  const toggleCart = (e: React.MouseEvent) => {
+  // NUEVA FUNCIÓN: Al hacer clic al carrito, vamos directos al checkout
+  const handleCartClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsCartOpen(!isCartOpen);
+    if (customer) {
+        navigate('/checkout'); // Si está logueado, va al pedido
+    } else {
+        navigate('/login');    // Si no, le pedimos que inicie sesión
+    }
   };
 
   const handleLogout = async () => {
@@ -91,7 +94,9 @@ function Header() {
                         <button className="boton-login" onClick={handleLogout}>Logout</button>
                     </div>
                 )}
-                <div className="cart-container-reto" onClick={toggleCart} style={{ cursor: 'pointer' }}>
+                
+                {/* BOTÓN DEL CARRITO ACTUALIZADO */}
+                <div className="cart-container-reto" onClick={handleCartClick} style={{ cursor: 'pointer' }}>
                     <span style={{ fontSize: '1.5rem' }}>🛒</span>
                     {cartCount > 0 && (
                         <span className="counter-badge-reto">{cartCount}</span>
@@ -99,24 +104,6 @@ function Header() {
                 </div>
             </div>
         </div>
-
-        {isCartOpen && (
-            <div className="cart-dropdown">
-                <CartSummary
-                    cart={cart}
-                    onUpdateQuantity={updateQuantity}
-                    onRemove={removeFromCart}
-                    onConfirm={() => {
-                        setIsCartOpen(false);
-                        if (customer) {
-                            navigate('/checkout');
-                        } else {
-                            navigate('/login');
-                        }
-                    }}
-                />
-            </div>
-        )}
       </header>
     </>
   );

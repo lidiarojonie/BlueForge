@@ -9,8 +9,6 @@ import CheckoutPage from './components/CheckoutPage.tsx';
 import NotFound from './NotFound.tsx';
 import { CartProvider } from './context/CartContext.tsx';
 
-
-
 // --- INTRANET COMPONENTES ---
 import IntranetLayout from './components/IntranetLayout.tsx';
 import IntranetHome from './components/IntranetHome.tsx';
@@ -21,7 +19,8 @@ import IntranetCatalog from './components/IntranetCatalog.tsx';
 import AddProductPage from './components/AddProductPage.tsx';
 import ComiteSection from './components/ComiteSection.tsx';
 import TablonLogros from './components/TablonLogros.tsx'; 
-import DerechosSection from './components/DerechosSection.tsx'; 
+import DerechosSection from './components/DerechosSection.tsx';
+import ContactoComite from './components/ContactoComite.tsx';
 
 // --- ADMIN & USER COMPONENTES ---
 import AdminUsers from './components/AdminUsers.tsx';
@@ -39,7 +38,7 @@ function AppContent() {
     return (
       <div className="loading-screen">
         <div className="loading-spinner"></div>
-        <p>Iniciando CustomShop...</p>
+        <p>Iniciando BlueForge...</p>
       </div>
     );
   }
@@ -53,25 +52,11 @@ function AppContent() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         
-        <Route path="checkout" element={
-          <PrivateRoute>
-            <CheckoutPage />
-          </PrivateRoute>
-        } />
-
-        <Route path="/mis-pedidos" element={
-          <PrivateRoute>
-            <OrderHistory />
-          </PrivateRoute>
-        } />
-
-        <Route path="/order-success" element={
-          <PrivateRoute>
-            <OrderSuccess />
-          </PrivateRoute>
-        } />
+        <Route path="checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
+        <Route path="/mis-pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
+        <Route path="/order-success" element={<PrivateRoute><OrderSuccess /></PrivateRoute>} />
         
-        {/* 🔥 AQUÍ ESTÁ EL BLOQUE DE LA INTRANET 🔥 */}
+        {/* 🔥 EL BLOQUE DE LA INTRANET 🔥 */}
         <Route path="/intranet" element={
           <PrivateRoute roles={["employee", "admin"]}>
             <IntranetLayout />
@@ -79,9 +64,10 @@ function AppContent() {
         }>
           <Route index element={<IntranetHome />} />
           
-          {/* ¡NUESTRAS RUTAS DE IPE1 / FOL POR FIN EN SU SITIO! */}
+          {/* AQUÍ ESTÁN LAS RUTAS QUE FALTABAN (Sin la barra / inicial) */}
           <Route path="logros" element={<TablonLogros />} />
           <Route path="derechos" element={<DerechosSection />} />
+          <Route path="contacto-comite" element={<ContactoComite />} />
           
           <Route path="fichajes" element={<ClockInPage />} />
           <Route path="pedidos" element={<OrdersPanel />} />
@@ -91,19 +77,9 @@ function AppContent() {
           <Route path="comite" element={<ComiteSection />} />
         </Route>
         
-        <Route path="/admin/users" element={
-          <PrivateRoute roles={["admin"]}>
-            <AdminUsers />
-          </PrivateRoute>
-        } />
-
-        <Route path="/admin/orders" element={
-          <PrivateRoute roles={["employee", "admin"]}>
-            <OrdersPanel />
-          </PrivateRoute>
-        } />
+        <Route path="/admin/users" element={<PrivateRoute roles={["admin"]}><AdminUsers /></PrivateRoute>} />
+        <Route path="/admin/orders" element={<PrivateRoute roles={["employee", "admin"]}><OrdersPanel /></PrivateRoute>} />
         
-        {/* EL PORTERO DEL 404 AZUL */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
