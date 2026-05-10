@@ -7,7 +7,7 @@ import { Zap } from 'lucide-react';
 import instagramLogo from '../imgs/instagram.jpg';
 import twitterLogo from '../imgs/twitter.jpg';
 import tiktokLogo from '../imgs/tiktok.jpg';
-import mainLogo from '../imgs/Logo.jpg';
+import mainLogo from '../imgs/new_logo.png';
 
 import ps5Img from '../imgs/ps5_custom.png';
 import xboxImg from '../imgs/xbox_custom.png';
@@ -21,7 +21,7 @@ const featured = [
         image: ps5Img, 
         color: "text-cyan-400",
         bgDiagonal: "from-cyan-600/60 to-blue-900/10",
-        glowColor: "rgba(34,211,238,0.4)" // Cyan glow
+        glowColor: "rgba(34,211,238,0.4)" 
     },
     {
         id: 'xbox',
@@ -30,7 +30,7 @@ const featured = [
         image: xboxImg, 
         color: "text-green-400",
         bgDiagonal: "from-green-600/60 to-emerald-900/10",
-        glowColor: "rgba(74,222,128,0.4)" // Green glow
+        glowColor: "rgba(74,222,128,0.4)" 
     },
     {
         id: 'ps4',
@@ -39,7 +39,7 @@ const featured = [
         image: ps4Img, 
         color: "text-blue-500",
         bgDiagonal: "from-blue-600/60 to-indigo-900/10",
-        glowColor: "rgba(59,130,246,0.4)" // Blue glow
+        glowColor: "rgba(59,130,246,0.4)" 
     }
 ];
 
@@ -56,15 +56,14 @@ export default function Home() {
         <div className="bg-[#050505] min-h-screen text-white overflow-x-hidden relative">
 
             {/* ===================================== */}
-            {/* 1. HERO SECTION (Massive & Spaced)    */}
+            {/* 1. HERO SECTION                       */}
             {/* ===================================== */}
-            <section className="relative h-screen flex items-center justify-center pt-24">
+            <section className="relative h-screen flex items-center justify-center pt-24 overflow-hidden">
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                     <div className={`absolute top-[-20%] right-[-10%] w-[70%] h-[150%] bg-gradient-to-bl ${featured[idx].bgDiagonal} -rotate-12 blur-3xl opacity-80 transition-all duration-1000`}></div>
                     <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(transparent,transparent_2px,#fff_3px,#fff_3px)] mix-blend-overlay"></div>
                 </div>
 
-                {/* Grid con más espacio (gap-12) y sin márgenes negativos */}
                 <div className="max-w-[90rem] mx-auto px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 w-full relative">
                     
                     {/* TEXTS (Left) */}
@@ -93,23 +92,22 @@ export default function Home() {
                         </motion.div>
                     </div>
 
-                    {/* FLOATING CONTROLLER (Right - No longer a button) */}
+                    {/* FLOATING CONTROLLER (Right) */}
                     <div className="relative flex items-center justify-center order-1 lg:order-2 h-[450px] md:h-[700px] pointer-events-none lg:col-span-6 z-10">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={featured[idx].id}
-                                initial={{opacity:0, scale:0.7, x: 100}}
+                                initial={{opacity:0, scale:0.8, x: 100}}
                                 animate={{opacity:1, scale:1, x: 0, y: [0, -20, 0]}}
-                                exit={{opacity:0, scale:1.2, x: -100}}
+                                exit={{opacity:0, scale:0.8, x: -100}}
                                 transition={{ duration: 0.6, type: "spring", y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
                                 className="relative z-10 w-full flex justify-center"
                             >
                                 <img 
                                     src={featured[idx].image} 
                                     alt="Pro Controller" 
-                                    /* Nota: He cambiado shadow- por drop-shadow para evitar la sombra rectangular */
                                     className="w-[110%] lg:w-[120%] max-w-[900px] object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.8)]"
-                                    style={{ filter: `drop-shadow(0 0 30px ${featured[idx].glowColor})` }}
+                                    style={{ clipPath: 'inset(2px)' }}
                                 />
                             </motion.div>
                         </AnimatePresence>
@@ -192,7 +190,7 @@ export default function Home() {
             <footer className="bg-[#050505] border-t border-white/10 pt-20 pb-10">
                 <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div className="space-y-6">
-                        <img src={mainLogo} alt="BlueForge Logo" className="h-12" />
+                        <img src={mainLogo} alt="BlueForge Logo" className="h-20 md:h-24 drop-shadow-[0_0_15px_rgba(34,211,238,0.2)] mb-4" />
                         <p className="text-gray-500 text-sm leading-relaxed">
                             Elite custom controllers crafted for professional gamers and esports enthusiasts. Rule your game.
                         </p>
