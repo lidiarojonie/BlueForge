@@ -1,7 +1,7 @@
 import { useEffect } from 'react'; // 
-import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'; // 
+import { NavLink, Outlet, useNavigate, useLocation, Link } from 'react-router-dom'; // 
 import { useUser } from '../context/UserContext.tsx'; // 
-import { LogOut, User, ShieldAlert } from 'lucide-react'; // [cite: 66]
+import { LogOut, User, ShieldAlert, Home } from 'lucide-react'; // [cite: 66]
 
 function IntranetLayout() {
     const { customer: user, setCustomer } = useUser(); // [cite: 67]
@@ -47,6 +47,14 @@ function IntranetLayout() {
                     </div>
 
                     <div className="flex items-center gap-4">
+                        <Link
+                            to="/"
+                            className="flex items-center gap-2 px-4 py-2 bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 hover:text-white border border-white/10 transition-all font-medium text-sm"
+                        >
+                            <Home size={16} />
+                            <span className="hidden sm:inline">Volver a la web</span>
+                        </Link>
+
                         <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-zinc-900 rounded-full border border-white/5">
                             <User size={16} className="text-cyan-400" /> {/* [cite: 75] */}
                             <span className="text-sm font-medium text-gray-300">
