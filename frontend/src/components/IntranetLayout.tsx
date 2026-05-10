@@ -34,7 +34,7 @@ function IntranetLayout() {
 
     return (
         <div className="min-h-screen bg-[#050505] flex flex-col font-sans"> {/* [cite: 70] */}
-            
+
             <header className="sticky top-0 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/10 shadow-lg"> {/* [cite: 71] */}
                 <div className="flex justify-between items-center px-6 lg:px-12 py-4"> {/* [cite: 72] */}
                     <div className="flex items-center gap-3">
@@ -53,7 +53,7 @@ function IntranetLayout() {
                                 {user?.username ?? "Empleado"} {/* [cite: 75, 76] */}
                             </span>
                         </div>
-                        <button 
+                        <button
                             onClick={handleLogout}
                             className="flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500 hover:text-white border border-red-500/20 transition-all font-medium text-sm shadow-[0_0_10px_rgba(239,68,68,0.1)] hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]"
                         > {/* [cite: 77] */}
@@ -67,19 +67,18 @@ function IntranetLayout() {
                     {[
                         { path: "/intranet", name: "Bienvenida", end: true }, // [cite: 80]
                         { path: "/intranet/fichajes", name: "Fichajes" }, // [cite: 80]
+                        { path: "/intranet/historico", name: "Histórico" }, // [cite: 81]
                         { path: "/intranet/pedidos", name: "Pedidos" }, // [cite: 81]
                         { path: "/intranet/catalogo", name: "Catálogo" }, // [cite: 81]
-                        { path: "/intranet/historico", name: "Histórico" }, // [cite: 81]
                         { path: "/intranet/comite", name: "Comité" } // [cite: 81]
                     ].map((item) => (
                         <NavLink
                             key={item.name}
                             to={item.path}
                             end={item.end} // [cite: 82, 83]
-                            className={({ isActive }) => 
-                                `py-3 text-sm font-medium whitespace-nowrap transition-all border-b-2 ${
-                                    isActive 
-                                    ? "text-cyan-400 border-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" 
+                            className={({ isActive }) =>
+                                `py-3 text-sm font-medium whitespace-nowrap transition-all border-b-2 ${isActive
+                                    ? "text-cyan-400 border-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
                                     : "text-gray-400 border-transparent hover:text-gray-200 hover:border-gray-600"
                                 }` // [cite: 84, 85]
                             }
