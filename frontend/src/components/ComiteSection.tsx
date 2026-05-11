@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Scale, FileText, Award, ExternalLink, ShieldCheck, HelpCircle, ArrowRight, PlayCircle, MessageSquare, Mail, ChevronRight } from 'lucide-react';
+import { Scale, FileText, Award, ExternalLink, ShieldCheck, HelpCircle, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ComiteSection() {
@@ -9,7 +9,7 @@ export default function ComiteSection() {
         <div className="w-full p-8 font-sans pb-24 bg-[#050505]">
             <div className="max-w-7xl mx-auto space-y-20">
                 
-                {/* 1. PRESENTACIÓN */}
+                {/* PRESENTACIÓN */}
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="space-y-6">
                         <h2 className="text-5xl font-black text-white">Tu voz, tu <span className="text-cyan-400">Comité</span></h2>
@@ -35,22 +35,7 @@ export default function ComiteSection() {
                     </div>
                 </section>
 
-                {/* 2. VÍDEO INTRODUCTORIO */}
-                <section className="relative aspect-[21/9] bg-zinc-900 rounded-[3rem] border border-white/10 overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-                        <motion.button whileHover={{ scale: 1.1 }} className="p-6 bg-cyan-500 rounded-full text-black shadow-[0_0_40px_rgba(34,211,238,0.5)] mb-6">
-                            <PlayCircle size={48} />
-                        </motion.button>
-                        <h2 className="text-3xl font-black text-white tracking-widest uppercase italic text-center drop-shadow-lg">
-                            Tutorial del <span className="text-cyan-400">Comité v1.0</span>
-                        </h2>
-                        <p className="mt-2 text-gray-300 font-medium tracking-wide">Aprende a gestionar tus derechos en menos de 2 minutos.</p>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1500" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" alt="background" />
-                </section>
-
-                {/* 3. ORGANIGRAMA DEL COMITÉ */}
+                {/* ORGANIGRAMA DEL COMITÉ */}
                 <section className="space-y-12 bg-zinc-900/30 p-12 rounded-[3rem] border border-white/5">
                     <h3 className="text-center text-2xl font-black uppercase tracking-[0.2em] text-white">Miembros Electos del Comité</h3>
                     
@@ -82,7 +67,7 @@ export default function ComiteSection() {
                     </div>
                 </section>
 
-                {/* 4. LOS BOTONES PREMIUM */}
+                {/* 🔥 LOS NUEVOS BOTONES PREMIUM 🔥 */}
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
                     {/* Tarjeta 1: Derechos */}
@@ -106,7 +91,7 @@ export default function ComiteSection() {
                         </div>
                     </motion.button>
 
-                    {/* 🔥 Tarjeta 2: Logros (RENOMBRADA Y ACTUALIZADA) 🔥 */}
+                    {/* Tarjeta 2: Logros */}
                     <motion.button 
                         whileHover={{ y: -10, scale: 1.02 }}
                         onClick={() => navigate('/intranet/logros')} 
@@ -117,13 +102,13 @@ export default function ComiteSection() {
                             <div className="p-5 bg-green-400 text-black rounded-2xl w-fit shadow-[0_0_30px_rgba(74,222,128,0.5)] mb-8 transition-transform group-hover:scale-110">
                                 <Award size={40} />
                             </div>
-                            <h4 className="text-3xl font-black text-white mb-4">Mejoras y Logros</h4>
+                            <h4 className="text-3xl font-black text-white mb-4">Transparencia</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                Compara las mejoras conseguidas frente al convenio base y revisa los objetivos de negociación actuales.
+                                Rendición de cuentas. Repasa los hitos históricos conseguidos y los objetivos que estamos negociando hoy mismo.
                             </p>
                         </div>
                         <div className="relative z-10 mt-10 flex items-center gap-3 text-green-400 font-black text-sm uppercase tracking-widest group-hover:gap-6 transition-all">
-                            Ver avances <ArrowRight size={20} />
+                            Ver victorias <ArrowRight size={20} />
                         </div>
                     </motion.button>
 
@@ -155,29 +140,6 @@ export default function ComiteSection() {
                     </div>
 
                 </section>
-
-                {/* 5. CONTACTO COMITÉ */}
-                <section className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-[3rem] border border-cyan-500/20 p-16">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-                        <div className="space-y-6">
-                            <div className="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 border border-cyan-500/20">
-                                <MessageSquare size={32} />
-                            </div>
-                            <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter">¿Tienes dudas legales <br/> o laborales?</h3>
-                            <p className="text-gray-400 max-w-md text-lg">
-                                Tu consulta es totalmente confidencial. El Comité está aquí para asesorarte sobre convenios, bajas o conflictos.
-                            </p>
-                        </div>
-                        <button 
-                            onClick={() => navigate('/intranet/contacto-comite')}
-                            className="px-10 py-6 bg-cyan-500 text-black font-black rounded-3xl hover:bg-cyan-400 transition-all flex items-center gap-4 group shadow-[0_20px_50px_rgba(34,211,238,0.3)] uppercase tracking-widest"
-                        >
-                            <Mail size={24} /> ENVIAR MENSAJE
-                            <ChevronRight className="group-hover:translate-x-2 transition-transform" />
-                        </button>
-                    </div>
-                </section>
-
             </div>
         </div>
     );
