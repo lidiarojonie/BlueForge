@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useUser } from '../context/UserContext';
-import { MapPin, Plus, CheckCircle2, CreditCard, ShoppingBag, ArrowLeft, Truck, Wallet, Landmark } from 'lucide-react';
+import { MapPin, Plus, CheckCircle2, CreditCard, ShoppingBag, ArrowLeft, Truck, Wallet, Landmark, Trash2 } from 'lucide-react';
 
 interface OrderItem {
   product_id: number;
@@ -20,7 +20,7 @@ interface Address {
 
 export default function CheckoutPage() {
     const navigate = useNavigate();
-    const { cart, clearCart } = useCart();
+    const { cart, clearCart, removeFromCart } = useCart();
     const { customer } = useUser();
 
     // 1. Empezamos con la libreta de direcciones VACÍA
@@ -279,7 +279,16 @@ export default function CheckoutPage() {
                                             <p className="text-white text-sm font-bold line-clamp-1">{item.product.name}</p>
                                             <p className="text-gray-500 text-xs mt-1">Cant: {item.quantity}</p>
                                         </div>
-                                        <p className="text-cyan-400 font-bold">€{(getPrice(item.product.price) * item.quantity).toFixed(2)}</p>
+                                        <div className="flex flex-col items-end gap-2">
+                                            <p className="text-cyan-400 font-bold">€{(getPrice(item.product.price) * item.quantity).toFixed(2)}</p>
+                                            <button 
+                                                onClick={() => removeFromCart(item.product.id)}
+                                                className="text-zinc-600 hover:text-red-500 transition-colors p-1"
+                                                title="Eliminar producto"
+                                            >
+                                                <Trash2 size={16} />
+                                            </button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>

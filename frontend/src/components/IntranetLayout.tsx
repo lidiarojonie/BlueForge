@@ -107,6 +107,31 @@ function IntranetLayout() {
                         </div>
                     </div>
                 </div>
+
+                <nav className="flex gap-8 px-6 lg:px-12 overflow-x-auto scrollbar-hide"> {/* [cite: 79] */}
+                    {[
+                        { path: "/intranet", name: "Bienvenida", end: true }, // [cite: 80]
+                        { path: "/intranet/fichajes", name: "Fichajes" }, // [cite: 80]
+                        { path: "/intranet/historico", name: "Histórico" }, // [cite: 81]
+                        { path: "/intranet/pedidos", name: "Pedidos" }, // [cite: 81]
+                        { path: "/intranet/catalogo", name: "Catálogo" }, // [cite: 81]
+                        { path: "/intranet/comite", name: "Comité" } // [cite: 81]
+                    ].map((item) => (
+                        <NavLink
+                            key={item.name}
+                            to={item.path}
+                            end={item.end} // [cite: 82, 83]
+                            className={({ isActive }) =>
+                                `py-3 text-sm font-medium whitespace-nowrap transition-all border-b-2 ${isActive
+                                    ? "text-cyan-400 border-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                                    : "text-gray-400 border-transparent hover:text-gray-200 hover:border-gray-600"
+                                }` // [cite: 84, 85]
+                            }
+                        >
+                            {item.name}
+                        </NavLink>
+                    ))}
+                </nav>
             </header>
 
             <main className="flex-1 w-full relative z-0">

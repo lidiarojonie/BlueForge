@@ -9,6 +9,7 @@ import CheckoutPage from './components/CheckoutPage.tsx';
 import NotFound from './NotFound.tsx';
 import { CartProvider } from './context/CartContext.tsx';
 import Home from './components/Home.tsx';
+import CustomControllerPage from './components/CustomControllerPage.tsx';
 
 // --- INTRANET COMPONENTES ---
 import IntranetLayout from './components/IntranetLayout.tsx';
@@ -53,6 +54,7 @@ function AppContent() {
         <Route path="product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/personalizador" element={<CustomControllerPage />} />
         
         <Route path="checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
         <Route path="/mis-pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
