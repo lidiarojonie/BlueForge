@@ -1,5 +1,19 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Edit3, AlertOctagon, Briefcase, Calendar, Heart, Baby, Map, ShieldAlert } from 'lucide-react';
+import {
+    ArrowLeft,
+    Edit3,
+    AlertOctagon,
+    Briefcase,
+    Calendar,
+    Heart,
+    Baby,
+    Map,
+    ShieldAlert,
+    Stethoscope,
+    Siren,
+    FileSignature,
+    Users
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function DerechosSection() {
@@ -8,13 +22,13 @@ export default function DerechosSection() {
     return (
         <div className="w-full p-8 font-sans pb-32 bg-[#050505] min-h-screen">
             <div className="max-w-7xl mx-auto space-y-16">
-                
+
                 <button onClick={() => navigate(-1)} className="flex items-center gap-3 text-gray-500 hover:text-cyan-400 transition-colors font-bold text-lg mb-4">
                     <ArrowLeft size={24} /> Volver al panel del Comité
                 </button>
 
                 <header className="space-y-4">
-                    <h2 className="text-5xl font-black text-white">Guía de <span className="text-cyan-400">Derechos Laborales</span></h2>
+                    <h2 className="text-5xl font-black text-white italic uppercase tracking-tighter">Guía de <span className="text-cyan-400">Derechos Laborales</span></h2>
                     <p className="text-gray-400 text-xl max-w-3xl leading-relaxed">
                         Conoce el marco legal que protege tu contrato. Hemos traducido el Estatuto de los Trabajadores a un lenguaje claro para que sepas cómo reaccionar ante cambios, despidos o necesidades personales.
                     </p>
@@ -24,28 +38,28 @@ export default function DerechosSection() {
                 <section className="space-y-8">
                     <div className="flex items-center gap-4 border-b border-white/10 pb-4">
                         <Edit3 className="text-blue-400" size={32} />
-                        <h3 className="text-3xl font-bold text-white">Modificaciones de tu Contrato</h3>
+                        <h3 className="text-3xl font-bold text-white uppercase tracking-wider italic">Modificaciones de tu Contrato</h3>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-zinc-900 transition-all">
-                            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><Briefcase size={28}/></div>
+                        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-zinc-900 transition-all shadow-xl">
+                            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><Briefcase size={28} /></div>
                             <h4 className="text-xl font-bold text-white mb-4">Movilidad Funcional</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
                                 La empresa te cambia de funciones. Si te mandan tareas de una categoría superior por más de 6 meses (en un año), <span className="text-white font-bold">tienes derecho a reclamar el ascenso y el sueldo correspondiente.</span>
                             </p>
                         </div>
 
-                        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-zinc-900 transition-all">
-                            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><Map size={28}/></div>
+                        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-zinc-900 transition-all shadow-xl">
+                            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><Map size={28} /></div>
                             <h4 className="text-xl font-bold text-white mb-4">Movilidad Geográfica</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
                                 Traslado forzoso que requiere cambiar de residencia. Tienes 3 opciones: Aceptar (te pagan gastos), Recurrir ante el juzgado, o <span className="text-white font-bold">Extinguir el contrato cobrando 20 días por año trabajado.</span>
                             </p>
                         </div>
 
-                        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-zinc-900 transition-all">
-                            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><AlertOctagon size={28}/></div>
+                        <div className="bg-zinc-900/50 border border-white/5 p-8 rounded-3xl hover:bg-zinc-900 transition-all shadow-xl">
+                            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><AlertOctagon size={28} /></div>
                             <h4 className="text-xl font-bold text-white mb-4">Modificación Sustancial</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
                                 Cambios drásticos en horario, turnos o salario. Requiere justificación económica de la empresa y 15 días de preaviso. <span className="text-white font-bold">Puedes rescindir tu contrato con indemnización si te perjudica.</span>
@@ -58,24 +72,24 @@ export default function DerechosSection() {
                 <section className="space-y-8 pt-8">
                     <div className="flex items-center gap-4 border-b border-white/10 pb-4">
                         <AlertOctagon className="text-red-400" size={32} />
-                        <h3 className="text-3xl font-bold text-white">Extinción y Despidos</h3>
+                        <h3 className="text-3xl font-bold text-white uppercase tracking-wider italic">Extinción y Despidos</h3>
                     </div>
 
-                    <div className="bg-gradient-to-br from-red-900/10 to-zinc-900 border border-red-500/20 p-10 rounded-3xl shadow-2xl">
+                    <div className="bg-gradient-to-br from-red-900/10 to-zinc-900 border border-red-500/20 p-10 rounded-[2.5rem] shadow-2xl">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                             <div className="space-y-4">
                                 <h4 className="text-2xl font-black text-red-400 border-b border-red-500/20 pb-2">Despido Objetivo</h4>
                                 <p className="text-gray-400 text-sm">Por causas técnicas, económicas o falta de adaptación del empleado a las nuevas tecnologías.</p>
                                 <div className="bg-black/50 p-4 rounded-xl text-white font-mono text-sm border border-white/5">
-                                    💰 Indemnización: <br/><span className="text-lg text-cyan-400">20 días / año</span><br/>(Máximo 12 mensualidades)
+                                    💰 Indemnización: <br /><span className="text-lg text-cyan-400">20 días / año</span><br />(Máximo 12 mensualidades)
                                 </div>
                             </div>
-                            
+
                             <div className="space-y-4">
                                 <h4 className="text-2xl font-black text-orange-400 border-b border-orange-500/20 pb-2">Despido Disciplinario</h4>
                                 <p className="text-gray-400 text-sm">Por incumplimiento grave y culpable del trabajador (faltas repetidas, desobediencia, ofensas).</p>
                                 <div className="bg-black/50 p-4 rounded-xl text-white font-mono text-sm border border-white/5">
-                                    💰 Indemnización: <br/><span className="text-lg text-orange-400">0 días</span><br/>(Solo tienes derecho al finiquito)
+                                    💰 Indemnización: <br /><span className="text-lg text-orange-400">0 días</span><br />(Solo tienes derecho al finiquito)
                                 </div>
                             </div>
 
@@ -83,44 +97,75 @@ export default function DerechosSection() {
                                 <h4 className="text-2xl font-black text-purple-400 border-b border-purple-500/20 pb-2">Colectivo (ERE)</h4>
                                 <p className="text-gray-400 text-sm">Despido objetivo masivo que afecta a gran parte de la plantilla. Exige negociación previa con el Comité.</p>
                                 <div className="bg-black/50 p-4 rounded-xl text-white font-mono text-sm border border-white/5">
-                                    💰 Indemnización: <br/><span className="text-lg text-purple-400">Negociable</span><br/>(Mínimo 20 días / año)
+                                    💰 Indemnización: <br /><span className="text-lg text-purple-400">Negociable</span><br />(Mínimo 20 días / año)
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* PÍLDORAS DE PERMISOS RETRIBUIDOS */}
+                {/* INFOGRAFÍA 3: PERMISOS RETRIBUIDOS (AMPLIADO) */}
                 <section className="space-y-8 pt-8">
                     <div className="flex items-center gap-4 border-b border-white/10 pb-4">
                         <ShieldAlert className="text-cyan-400" size={32} />
-                        <h3 className="text-3xl font-bold text-white">Píldoras de Permisos Diarios</h3>
+                        <h3 className="text-3xl font-bold text-white uppercase tracking-wider italic">Permisos Retribuidos y Derechos de Interés</h3>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg">
+
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-cyan-500/30 transition-all">
                             <Calendar className="text-cyan-400 mb-6" size={36} />
                             <h4 className="text-xl font-bold text-white mb-3">Vacaciones</h4>
                             <p className="text-gray-400 text-sm">23 días laborables al año según Convenio TIC. Debes preavisar con al menos 2 meses de antelación.</p>
                         </div>
 
-                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg">
+                        {/* CORREGIDO: Matrimonio y Pareja de Hecho */}
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-pink-500/30 transition-all">
                             <Heart className="text-pink-400 mb-6" size={36} />
-                            <h4 className="text-xl font-bold text-white mb-3">Matrimonio</h4>
-                            <p className="text-gray-400 text-sm">15 días naturales de permiso 100% retribuido desde el primer día laborable tras formalizar el enlace.</p>
+                            <h4 className="text-xl font-bold text-white mb-3">Matrimonio o Pareja de Hecho</h4>
+                            <p className="text-gray-400 text-sm">15 días naturales 100% retribuidos desde el primer día laborable tras formalizar el enlace o registro oficial.</p>
                         </div>
 
-                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg">
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-green-500/30 transition-all">
                             <Baby className="text-green-400 mb-6" size={36} />
                             <h4 className="text-xl font-bold text-white mb-3">Lactancia</h4>
-                            <p className="text-gray-400 text-sm">Derecho a 1 hora de ausencia diaria hasta los 9 meses del bebé, o acumularlo en días completos.</p>
+                            <p className="text-gray-400 text-sm">Derecho a 1 hora de ausencia diaria hasta los 9 meses del bebé, o acumularlo en jornadas completas.</p>
                         </div>
 
-                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg">
-                            <ShieldAlert className="text-orange-400 mb-6" size={36} />
-                            <h4 className="text-xl font-bold text-white mb-3">Mudanza</h4>
-                            <p className="text-gray-400 text-sm">1 día laborable de permiso retribuido por traslado de domicilio habitual justificado.</p>
+                        {/* NUEVO: Hospitalización familiar (5 días) */}
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-red-400/30 transition-all">
+                            <Stethoscope className="text-red-400 mb-6" size={36} />
+                            <h4 className="text-xl font-bold text-white mb-3">Hospitalización</h4>
+                            <p className="text-gray-400 text-sm">5 días hábiles por accidente, enfermedad grave, hospitalización o intervención quirúrgica de familiares hasta 2º grado.</p>
                         </div>
+
+                        {/* NUEVO: Fuerza Mayor */}
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-orange-500/30 transition-all">
+                            <Siren className="text-orange-500 mb-6" size={36} />
+                            <h4 className="text-xl font-bold text-white mb-3">Fuerza Mayor</h4>
+                            <p className="text-gray-400 text-sm">Hasta 4 días al año (por horas o días enteros) por motivos familiares urgentes e imprevisibles que requieran tu presencia.</p>
+                        </div>
+
+                        {/* NUEVO: Deber Inexcusable */}
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-purple-500/30 transition-all">
+                            <FileSignature className="text-purple-500 mb-6" size={36} />
+                            <h4 className="text-xl font-bold text-white mb-3">Deber Inexcusable</h4>
+                            <p className="text-gray-400 text-sm">El tiempo indispensable para cumplir deberes públicos (votar, juicios, renovar DNI). Requiere justificante.</p>
+                        </div>
+
+                        {/* NUEVO: Nacimiento y Cuidado (Baja) */}
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-blue-400/30 transition-all">
+                            <Users className="text-blue-400 mb-6" size={36} />
+                            <h4 className="text-xl font-bold text-white mb-3">Nacimiento (Baja)</h4>
+                            <p className="text-gray-400 text-sm">16 semanas de baja retribuida e intransferible por nacimiento, adopción o acogimiento de un menor.</p>
+                        </div>
+
+                        <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-yellow-500/30 transition-all">
+                            <Map className="text-yellow-500 mb-6" size={36} />
+                            <h4 className="text-xl font-bold text-white mb-3">Mudanza</h4>
+                            <p className="text-gray-400 text-sm">1 día laborable de permiso 100% retribuido por motivo de traslado del domicilio habitual justificado.</p>
+                        </div>
+
                     </div>
                 </section>
 

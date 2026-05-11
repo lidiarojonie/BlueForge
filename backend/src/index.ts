@@ -86,7 +86,7 @@ app.post("/api/auth/register", async (req: Request, res: Response) => {
 
         const role = email.toLowerCase().endsWith('@empleado.com') ? 'employee' : 'customer';
         const hashedPassword = await bcrypt.hash(password, 10);
-        
+
         const user = await UserDAO.createUser(username, email, hashedPassword, role);
         const token = jwt.sign({ id: user.id, username: user.username, role: user.role } as JwtPayload, JWT_SECRET, { expiresIn: "2h" });
 
