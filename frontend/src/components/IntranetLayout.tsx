@@ -15,18 +15,19 @@ import {
 import mainLogo from '../imgs/new_logo.png';
 
 function IntranetLayout() {
-    const { customer: user, setCustomer } = useUser();
-    const navigate = useNavigate();
-    const location = useLocation();
+    const { customer: user, setCustomer } = useUser(); // [cite: 67]
+    const navigate = useNavigate(); // [cite: 67]
+    const location = useLocation(); // <--- Nueva constante para vigilar la ruta
 
     // Este efecto se ejecuta cada vez que 'location' (la URL) cambia
     useEffect(() => {
+        // Intentamos subir el scroll de todas las formas posibles
         window.scrollTo(0, 0);
         document.documentElement.scrollTo(0, 0);
         document.body.scrollTo(0, 0);
     }, [location.pathname]);
 
-    const handleLogout = async () => {
+    const handleLogout = async () => { // [cite: 68]
         try {
             await fetch('http://localhost:3000/api/auth/logout', {
                 method: 'POST',
@@ -129,13 +130,20 @@ function IntranetLayout() {
                                 <LogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
                             </button>
                         </div>
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500 hover:text-white border border-red-500/20 transition-all font-medium text-sm shadow-[0_0_10px_rgba(239,68,68,0.1)] hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]"
+                        > {/* [cite: 77] */}
+                            <LogOut size={16} /> {/* [cite: 78] */}
+                            <span className="hidden sm:inline">Cerrar sesión</span>
+                        </button>
                     </div>
 
                 </div>
             </header>
 
-            <main className="flex-1 w-full relative z-0">
-                <Outlet />
+            <main className="flex-1 w-full relative z-0"> {/*  */}
+                <Outlet /> {/*  */}
             </main>
         </div>
     );
