@@ -1,0 +1,95 @@
+### BASE ###
+Base: https://xcontrollers.es/wp-content/uploads/2017/10/COMPLETO-PARA-WEB-1110x800.png
+
+### CARCASA ###
+Blanco: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-mate-blanco.png
+Negro: https://xcontrollers.es/wp-content/uploads/2017/09/defecto-ps4.png
+Azul Pitufo: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-mate-azul-pitufo.png
+Amarillo: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-mate-mocus-yellow.png
+Naranja: https://xcontrollers.es/wp-content/uploads/2017/11/carcasa-mate-race-orange2.png
+Rosa: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-mate-snob-pink.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-mate-red.png
+Verde: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-mate-mamba-green.png
+Perlado Lime Gold: https://xcontrollers.es/wp-content/uploads/2017/11/carcasa-perlado-lime-gold-CORREGIDO.png
+Perlado Purple: https://xcontrollers.es/wp-content/uploads/2017/11/carcasa-perlado-purple-CORREGIDO.png
+Perlado Cobalt Blue: https://xcontrollers.es/wp-content/uploads/2017/11/carcasa-perlado-cobalt-blue-CORREGIDO.png
+Perlado Brandywine: https://xcontrollers.es/wp-content/uploads/2017/11/carcasa-perlado-bandywine-CORREGIDO.png
+Perlado Organic Green: https://xcontrollers.es/wp-content/uploads/2017/11/carcasa-perlado-organic-green-CORREGIDO.png
+
+### BOTONES ###
+Blancos: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-blanco.png
+Negros: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-negro.png
+Rosas: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-rosa.png
+Azul Claro: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-azul-claro.png
+Azul Oscuro: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-azul-oscuro.png
+Verde: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-verde.png
+Naranja: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-naranja.png
+Morado: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-morado.png
+Amarillo: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-amarillo.png
+Rojos: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-rojo.png
+Cromado Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-rojo.png
+Cromado Dorado: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-dorado.png
+Cromado Plata: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-plata.png
+Cromado Azul: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-azul.png
+Cromado Verde: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-verde.png
+
+### CRUCETA ###
+Blanco: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-blanco.png
+Negro: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-negro.png
+Azul Claro: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-azul-claro.png
+Azul Oscuro: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-azul-oscuro.png
+Verde: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-verde.png
+Naranja: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-naranja.png
+Morado: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-morado.png
+Amarillo: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-amarillo.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-rojo.png
+Cromado Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-rojo.png
+Cromado Dorado: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-dorado.png
+Cromado Plata: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-plata.png
+Cromado Azul: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-azul.png
+Cromado Verde: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-verde.png
+
+### JOYSTICKS ###
+Seta Blanco (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-blanco.png
+Seta Blanco (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-blanco.png
+Seta Negro (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-negro.png
+Seta Negro (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-negro.png
+Seta Azul Oscuro (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-azul-oscuro.png
+Seta Azul Oscuro (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-azul-oscuro.png
+Seta Verde (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-verde.png
+Seta Verde (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-verde.png
+Seta Morado (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-morado.png
+Seta Morado (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-morado.png
+Seta Amarillo (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-amarillo.png
+Seta Amarillo (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-amarillo.png
+Seta Rojo (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-rojo.png
+Seta Rojo (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-rojo.png
+Seta Rosa (Izq): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-izquierdo-rosa.png
+Seta Rosa (Der): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-derecho-rosa.png
+Seta Naranja (Izq): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-izquierdo-naranja.png
+Seta Naranja (Der): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-derecho-naranja.png
+Seta Azul Claro (Izq): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-iquierdo-azul-claro.png
+Seta Azul Claro (Der): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-derecho-azul-claro.png
+
+Base Negro (Izq): https://xcontrollers.es/wp-content/uploads/2018/01/base-negro-izda.png
+Base Negro (Der): https://xcontrollers.es/wp-content/uploads/2018/01/base-negro-dcha.png
+Base Rojo (Izq): https://xcontrollers.es/wp-content/uploads/2018/01/base-rojo-izda.png
+Base Rojo (Der): https://xcontrollers.es/wp-content/uploads/2018/01/base-rojo-dcha.png
+Base Azul (Izq): https://xcontrollers.es/wp-content/uploads/2018/01/base-azul-izda.png
+Base Azul (Der): https://xcontrollers.es/wp-content/uploads/2018/01/base-azul-dcha.png
+Base Verde (Izq): https://xcontrollers.es/wp-content/uploads/2018/01/base-verde-izda.png
+Base Verde (Der): https://xcontrollers.es/wp-content/uploads/2018/01/base-verde-dcha.png
+Base Blanco (Izq): https://xcontrollers.es/wp-content/uploads/2018/01/base-blanco-izda.png
+Base Blanco (Der): https://xcontrollers.es/wp-content/uploads/2018/01/base-blanco-dcha.png
+
+### TEXTURAS ###
+Carbono: https://xcontrollers.es/wp-content/uploads/2017/10/carcasa-textura-carbono-1.png
+Pollock: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-pollock.png
+Graffiti: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/graffiti-ps4.png
+Dollar: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-dollar.png
+Blood: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-blood.png
+Fresh: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-fresh.png
+Snake: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-snake-2.png
+Joker: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-jocker-7.png
+Catrina: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-catrina-1.png
+Garras: https://xcontrollers.es/wp-content/uploads/2017/10/carcasa-transparente-garra-4.png

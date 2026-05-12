@@ -1,0 +1,120 @@
+### BASE ###
+Base: https://xcontrollers.es/wp-content/uploads/2020/11/PS5-COMPLETO-PARA-WEB-1110x800.png
+
+### CARCASA ###
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Blanco.png
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Verde.png
+Amarillo: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Amarillo.png
+Rosa: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Rosa.png
+Naranja: https://xcontrollers.es/wp-content/uploads/2020/11/colores-simples/Naranja.png
+Brandywine: https://xcontrollers.es/wp-content/uploads/2020/11/colores-perlados/Brandywine.png
+Cobalt-Blue: https://xcontrollers.es/wp-content/uploads/2020/11/colores-perlados/Cobalt-Blue.png
+Lime-Gold: https://xcontrollers.es/wp-content/uploads/2020/11/colores-perlados/Lime-Gold.png
+Purple: https://xcontrollers.es/wp-content/uploads/2020/11/colores-perlados/Purple.png
+Organic-Green: https://xcontrollers.es/wp-content/uploads/2020/11/colores-perlados/Organic-Green.png
+
+### BOTONES ###
+Negros: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Negros.png
+Blancos: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Blancos.png
+Rojos: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Rojos.png
+Amarillo: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Amarillo.png
+Azul-claro: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Azul-claro.png
+Azul-Oscuro: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Azul-Oscuro.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Verde.png
+Rosas: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Rosas.png
+Naranja: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Naranja.png
+Morado: https://xcontrollers.es/wp-content/uploads/2020/11/botones/Morado.png
+
+### CRUCETA ###
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Negro.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Blanco.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Rojo.png
+Azul-claro: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Azul-claro.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Verde.png
+Amarillo: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Amarillo.png
+Naranja: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Naranja.png
+Morado: https://xcontrollers.es/wp-content/uploads/2020/11/cruceta/Morado.png
+
+### JOYSTICKS ###
+
+# BASES (IZQUIERDA)
+Base Negro (Izq): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Base/Negro.png
+Base Rojo (Izq): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Base/Rojo.png
+Base Azul (Izq): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Base/Azul.png
+Base Verde (Izq): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Base/Verde.png
+Base Blanco (Izq): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Base/Blanco.png
+
+# BASES (DERECHA)
+Base Negro (Der): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Base/Negro.png
+Base Rojo (Der): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Base/Rojo.png
+Base Azul (Der): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Base/Azul.png
+Base Verde (Der): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Base/Verde.png
+Base Blanco (Der): https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Base/Blanco.png
+
+# SETAS CÓNCAVO BAJO (IZQUIERDA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/IZQUIERDA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/IZQUIERDA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/IZQUIERDA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/IZQUIERDA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/IZQUIERDA/Setas/Blanco.png
+
+# SETAS CÓNCAVO ALTO (IZQUIERDA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/IZQUIERDA/Setas/Blanco.png
+
+# SETAS CONVEXO BAJO (IZQUIERDA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/IZQUIERDA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/IZQUIERDA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/IZQUIERDA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/IZQUIERDA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/IZQUIERDA/Setas/Blanco.png
+
+# SETAS CONVEXO ALTO (IZQUIERDA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/IZQUIERDA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/IZQUIERDA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/IZQUIERDA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/IZQUIERDA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/IZQUIERDA/Setas/Blanco.png
+
+# SETAS CÓNCAVO BAJO (DERECHA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/DERECHA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/DERECHA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/DERECHA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/DERECHA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-bajo/DERECHA/Setas/Blanco.png
+
+# SETAS CÓNCAVO ALTO (DERECHA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Concavo-alto/DERECHA/Setas/Blanco.png
+
+# SETAS CONVEXO BAJO (DERECHA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/DERECHA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/DERECHA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/DERECHA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/DERECHA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-bajo/DERECHA/Setas/Blanco.png
+
+# SETAS CONVEXO ALTO (DERECHA)
+Negro: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/DERECHA/Setas/Negro.png
+Rojo: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/DERECHA/Setas/Rojo.png
+Azul: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/DERECHA/Setas/Azul.png
+Verde: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/DERECHA/Setas/Verde.png
+Blanco: https://xcontrollers.es/wp-content/uploads/2020/11/joysticks/Convexo-alto/DERECHA/Setas/Blanco.png
+
+### TEXTURAS ###
+Carbono: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Carbono.png
+Pollock: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Pollock.png
+Blood: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Blood.png
+Fresh: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Fresh.png
+Dollar: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Dollar.png
+Joker: https://xcontrollers.es/wp-content/uploads/2020/11/texturas-colores-simples/Joker.png
+Snake: https://xcontrollers.es/wp-content/uploads/2020/11/texturas-colores-simples/Snake.png
