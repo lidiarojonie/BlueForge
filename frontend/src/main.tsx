@@ -23,6 +23,7 @@ import ComiteSection from './components/ComiteSection.tsx';
 import TablonLogros from './components/TablonLogros.tsx'; 
 import DerechosSection from './components/DerechosSection.tsx';
 import ContactoComite from './components/ContactoComite.tsx';
+import ContactPage from './components/ContactPage.tsx';
 
 // --- ADMIN & USER COMPONENTES ---
 import AdminUsers from './components/AdminUsers.tsx';
@@ -55,6 +56,7 @@ function AppContent() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/personalizador" element={<CustomControllerPage />} />
+        <Route path="/contacto" element={<ContactPage />} />
         
         <Route path="checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
         <Route path="/mis-pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
