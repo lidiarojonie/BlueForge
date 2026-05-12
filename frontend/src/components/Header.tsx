@@ -75,8 +75,9 @@ function Header() {
                     <Lock size={18} /> INTRANET
                 </button>
             ) : (
-                <button 
-                  className="text-base font-bold text-gray-200 hover:text-white transition-colors uppercase tracking-widest cursor-pointer"
+               <button 
+                  onClick={() => navigate('/contacto')}
+                  className="text-base font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
                 >
                     CONTACT
                 </button>

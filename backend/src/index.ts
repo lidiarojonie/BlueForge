@@ -170,6 +170,14 @@ app.post("/api/clock", authenticateToken, requireRole("admin", "employee"), asyn
         res.status(500).json({ error: "Error interno" });
     }
 });
+app.get("/api/clock/history", authenticateToken, requireRole("admin", "employee"), async (req: AuthRequest, res: Response) => {
+    try {
+        const history = await ClockDAO.getHistory(req.customer!.id);
+        res.json(history);
+    } catch (err) {
+        res.status(500).json({ error: "Error al cargar el historial" });
+    }
+});
 
 // ==========================================
 // RUTAS DE PEDIDOS (NUEVO - SOLUCIONA EL 404)

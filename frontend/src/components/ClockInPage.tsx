@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Square, Clock, AlertCircle, CalendarDays, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { useUser } from '../context/UserContext.tsx';
 
 export default function ClockInPage() {
+    const { customer: user } = useUser();
     const [isClockedIn, setIsClockedIn] = useState(false);
     const [note, setNote] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
     // Obtenemos la fecha REAL de hoy
     const today = new Date();
-    // El calendario empieza mostrando el mes actual real
     const [currentDate, setCurrentDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1)); 
 
     // BASE DE DATOS DE FESTIVOS 2026 (Mes: [Días]) - Enero es 0, Mayo es 4.
@@ -23,6 +25,19 @@ export default function ClockInPage() {
         11: [6, 8, 24, 25, 31]
     };
 
+    // Consultar el estado actual al cargar la página
+    useEffect(() => {
+        fetch('http://localhost:3000/api/clock/status', { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => {
+                // Asumimos que el backend devuelve algo como { isClockedIn: true/false }
+                if (data && data.isClockedIn !== undefined) {
+                    setIsClockedIn(data.isClockedIn);
+                }
+            })
+            .catch(err => console.error("Error al obtener estado de fichaje:", err));
+    }, []);
+
     const prevMonth = () => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
     const nextMonth = () => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
 
@@ -36,9 +51,31 @@ export default function ClockInPage() {
     const blanks = Array.from({ length: startDay }, (_, i) => null);
     const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
-    const handleClock = () => {
-        setIsClockedIn(!isClockedIn);
-        setNote('');
+    const handleClock = async () => {
+        if (isSubmitting) return;
+        setIsSubmitting(true);
+        
+        const actionType = isClockedIn ? 'out' : 'in';
+        
+        try {
+            const response = await fetch('http://localhost:3000/api/clock', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ type: actionType, note })
+            });
+
+            if (response.ok) {
+                setIsClockedIn(!isClockedIn);
+                setNote('');
+            } else {
+                console.error("Error en el servidor al registrar el fichaje");
+            }
+        } catch (error) {
+            console.error("Error de conexión:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -92,12 +129,10 @@ export default function ClockInPage() {
                                     const monthHolidays = holidays2026[currentDate.getMonth()] || [];
                                     const isHoliday = monthHolidays.includes(day);
                                     
-                                    // Comprobamos si el día que estamos dibujando es HOY en la vida real
                                     const isToday = day === today.getDate() && 
                                                     currentDate.getMonth() === today.getMonth() && 
                                                     currentDate.getFullYear() === today.getFullYear();
 
-                                    // Lógica de colores
                                     let bgClass = "bg-zinc-800/50 text-gray-400 hover:bg-zinc-700 transition-colors cursor-pointer";
                                     
                                     if (isToday) {
@@ -154,14 +189,21 @@ export default function ClockInPage() {
 
                         <button 
                             onClick={handleClock}
-                            className={`w-full flex items-center justify-center gap-3 py-6 rounded-2xl font-black text-xl transition-all ${
+                            disabled={isSubmitting}
+                            className={`w-full flex items-center justify-center gap-3 py-6 rounded-2xl font-black text-xl transition-all disabled:opacity-50 ${
                                 isClockedIn 
                                 ? "bg-red-500/10 text-red-400 border border-red-500/50 hover:bg-red-500 hover:text-white" 
                                 : "bg-cyan-500 text-black border border-cyan-500 hover:bg-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.2)]"
                             }`}
                         >
-                            {isClockedIn ? <Square size={24} /> : <Play size={24} />}
-                            {isClockedIn ? 'DETENER JORNADA' : 'FICHAR ENTRADA'}
+                            {isSubmitting ? (
+                                'PROCESANDO...'
+                            ) : (
+                                <>
+                                    {isClockedIn ? <Square size={24} /> : <Play size={24} />}
+                                    {isClockedIn ? 'DETENER JORNADA' : 'FICHAR ENTRADA'}
+                                </>
+                            )}
                         </button>
                     </motion.div>
 

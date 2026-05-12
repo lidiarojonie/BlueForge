@@ -15,4 +15,12 @@ export class ClockDAO {
             [userId, type, note]
         );
     }
+    
+static async getHistory(userId: number) {
+        const result = await pool.query(
+            "SELECT clock_event_id AS id, clock_type AS type, incident AS note, recorded_at FROM clock_events WHERE user_id = $1 ORDER BY recorded_at DESC",
+            [userId]
+        );
+        return result.rows;
+    }
 }
