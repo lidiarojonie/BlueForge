@@ -25,12 +25,12 @@ function CartSummary({ cart, onUpdateQuantity, onRemove, onConfirm }: CartSummar
   return (
     <div className="cart-summary-container">
       <div className="cart-summary-header">
-        <h2>Resumen del Carrito</h2>
+        <h2>Cart Summary</h2>
       </div>
 
       {cart.length === 0 ? (
         <div className="cart-empty-message">
-          <p>El carrito está vacío.</p>
+          <p>Your cart is empty.</p>
         </div>
       ) : (
         <>
@@ -48,7 +48,7 @@ function CartSummary({ cart, onUpdateQuantity, onRemove, onConfirm }: CartSummar
                   <button
                     className="cart-quantity-button"
                     onClick={() => onUpdateQuantity(item.product.id, -1)}
-                    title="Disminuir cantidad"
+                    title="Decrease quantity"
                   >
                     −
                   </button>
@@ -56,14 +56,14 @@ function CartSummary({ cart, onUpdateQuantity, onRemove, onConfirm }: CartSummar
                   <button
                     className="cart-quantity-button"
                     onClick={() => onUpdateQuantity(item.product.id, 1)}
-                    title="Aumentar cantidad"
+                    title="Increase quantity"
                   >
                     +
                   </button>
                   <button
                     className="cart-remove-button"
                     onClick={() => onRemove(item.product.id)}
-                    title="Eliminar del carrito"
+                    title="Remove from cart"
                   >
                     ✕
                   </button>
@@ -82,7 +82,7 @@ function CartSummary({ cart, onUpdateQuantity, onRemove, onConfirm }: CartSummar
               onClick={onConfirm}
               disabled={cart.length === 0}
             >
-              Ir a pagar
+              Proceed to Checkout
             </button>
           </div>
         </>

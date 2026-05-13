@@ -57,34 +57,34 @@ function Checkout() {
 
     return (
         <div className="checkout">
-            <h2>Carrito de Compras</h2>
+            <h2>Cart</h2>
             {cart.length === 0 ? (
-                <p>El carrito esta vacio</p>
+                <p>Your cart is empty.</p>
             ) : (
                 <>
                 <ul className="checkout-list">
                     {cart.map(item => (
                         <li key={item.product.id} className="checkout-item">
                             <span className="checkout-item-name">{item.product.name}</span> 
-                            <span className="checkout-item-quantity">Cantidad: {item.quantity}</span>
-                            <span className="checkout-item-price">Precio: ${(item.product.price * item.quantity).toFixed(2)}</span>
+                            <span className="checkout-item-quantity">Quantity: {item.quantity}</span>
+                            <span className="checkout-item-price">Price: ${ (item.product.price * item.quantity).toFixed(2) }</span>
                         </li>
                     ))}
                 </ul>
 
                 <div className="checkout-address">
-                    <label htmlFor="address">Direccion de Envio:</label>
+                    <label htmlFor="address">Shipping Address:</label>
                     <input
                         type="text"
                         id="address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Ingresa tu dirección"
+                        placeholder="Enter your shipping address"
                     />
                 </div>
                 <div className="checkout-total">Total: <strong>${total.toFixed(2)}</strong></div>
                 <button className="checkout-button" onClick={handleCheckout}>
-                    Pagar
+                    Proceed to Checkout
                 </button>
                 </>
             )}

@@ -65,7 +65,7 @@ export default function CheckoutPage() {
         const selectedAddress = savedAddresses.find(a => a.id === selectedAddressId);
         
         if (!selectedAddress) {
-            setError('Por favor, añade y selecciona una dirección de envío');
+            setError('Please, add and select a shipping address');
             return;
         }
 
@@ -98,7 +98,7 @@ export default function CheckoutPage() {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(data.error || 'Error al crear el pedido');
+                setError(data.error || 'Error creating the order');
                 setIsLoading(false);
                 return;
             }
@@ -107,7 +107,7 @@ export default function CheckoutPage() {
             navigate('/order-success');
 
         } catch (err) {
-            setError('Error de conexión. Por favor, intenta de nuevo.');
+            setError('Conexion error. Please, try again.');
             console.error('Error:', err);
         } finally {
             setIsLoading(false);
@@ -118,10 +118,10 @@ export default function CheckoutPage() {
         return (
             <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center text-white p-8">
                 <ShoppingBag size={64} className="text-gray-600 mb-6" />
-                <h2 className="text-3xl font-black mb-4">Tu carrito está vacío</h2>
-                <p className="text-gray-400 mb-6">No hay productos en tu carrito. Vuelve a la tienda y añade algunos productos.</p>
+                <h2 className="text-3xl font-black mb-4">Your cart is empty</h2>
+                <p className="text-gray-400 mb-6">Your cart hasn't got any items. Go back to the store and add some products.</p>
                 <button onClick={() => navigate('/')} className="px-6 py-3 bg-cyan-500 text-black font-bold rounded-xl hover:bg-cyan-400 transition-colors">
-                    ← Volver a la tienda
+                    ← Go back to the store
                 </button>
             </div>
         );
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
             <div className="max-w-6xl mx-auto space-y-8">
                 
                 <button onClick={() => navigate(-1)} className="flex items-center gap-3 text-gray-500 hover:text-cyan-400 transition-colors font-bold text-lg">
-                    <ArrowLeft size={24} /> Volver al carrito
+                    <ArrowLeft size={24} /> Go back to the cart
                 </button>
 
                 <header className="border-b border-white/10 pb-6">
@@ -191,7 +191,7 @@ export default function CheckoutPage() {
 
                             {isAddingAddress ? (
                                 <form onSubmit={handleSaveAddress} className="bg-black/40 p-6 rounded-2xl border border-white/5 space-y-4 animate-in fade-in zoom-in duration-300">
-                                    <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Añadir Dirección</h4>
+                                    <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Add Adress</h4>
                                     <div className="grid grid-cols-2 gap-4">
                                         <input required type="text" placeholder="Alias (Ej: Casa, Oficina...)" value={newAddress.alias} onChange={e => setNewAddress({...newAddress, alias: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
                                         <input required type="text" placeholder="Calle y número" value={newAddress.street} onChange={e => setNewAddress({...newAddress, street: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
@@ -210,7 +210,7 @@ export default function CheckoutPage() {
                                     onClick={() => { setIsAddingAddress(true); setSelectedAddressId(0); }}
                                     className="w-full py-4 border-2 border-dashed border-white/10 hover:border-cyan-500/50 rounded-2xl text-gray-400 hover:text-cyan-400 transition-all flex items-center justify-center gap-2 font-bold bg-black/20"
                                 >
-                                    <Plus size={20} /> Añadir otra dirección
+                                    <Plus size={20} /> Add other address
                                 </button>
                             )}
                         </section>
@@ -218,7 +218,7 @@ export default function CheckoutPage() {
                         {/* SECCIÓN 2: MÉTODOS DE PAGO */}
                         <section className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 shadow-xl">
                             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                <CreditCard className="text-cyan-400" /> 2. Método de Pago
+                                <CreditCard className="text-cyan-400" /> 2. Paying method
                             </h2>
                             
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -228,7 +228,7 @@ export default function CheckoutPage() {
                                     className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex flex-col items-center justify-center gap-3 text-center ${paymentMethod === 'card' ? 'border-cyan-500 bg-cyan-500/10 text-cyan-400' : 'border-white/10 hover:border-white/30 text-gray-400 bg-black/50'}`}
                                 >
                                     <CreditCard size={32} />
-                                    <span className="font-bold text-sm">Tarjeta</span>
+                                    <span className="font-bold text-sm">Credit Card</span>
                                 </div>
 
                                 {/* Opción: PayPal */}
@@ -246,20 +246,20 @@ export default function CheckoutPage() {
                                     className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex flex-col items-center justify-center gap-3 text-center ${paymentMethod === 'transfer' ? 'border-green-500 bg-green-500/10 text-green-400' : 'border-white/10 hover:border-white/30 text-gray-400 bg-black/50'}`}
                                 >
                                     <Landmark size={32} />
-                                    <span className="font-bold text-sm">Transferencia</span>
+                                    <span className="font-bold text-sm">Transfer</span>
                                 </div>
                             </div>
 
                             {/* Detalles dinámicos según el método elegido */}
                             <div className="mt-6 p-5 bg-black/50 rounded-2xl border border-white/5">
                                 {paymentMethod === 'card' && (
-                                    <p className="text-gray-400 text-sm">El pago se procesará de forma segura a través de nuestra pasarela cifrada al finalizar el pedido. Aceptamos Visa, MasterCard y American Express.</p>
+                                    <p className="text-gray-400 text-sm">The payment will be processed securely through our encrypted payment gateway upon completion of the order. We accept Visa, MasterCard and American Express.</p>
                                 )}
                                 {paymentMethod === 'paypal' && (
-                                    <p className="text-gray-400 text-sm">Serás redirigido a la página de PayPal para completar la compra de forma segura con tu cuenta o saldo.</p>
+                                    <p className="text-gray-400 text-sm">You will be redirected to the PayPal page to complete the purchase securely with your account or balance.</p>
                                 )}
                                 {paymentMethod === 'transfer' && (
-                                    <p className="text-gray-400 text-sm">Te enviaremos un correo con el número de cuenta (IBAN). Tu pedido se enviará una vez confirmemos la recepción de los fondos (puede tardar 1-2 días hábiles).</p>
+                                    <p className="text-gray-400 text-sm">We will send you an email with the account number (IBAN). Your order will be shipped once we confirm the receipt of the funds (it may take 1-2 business days).</p>
                                 )}
                             </div>
                         </section>
@@ -269,7 +269,7 @@ export default function CheckoutPage() {
                     {/* COLUMNA DERECHA: RESUMEN DEL PEDIDO */}
                     <div className="lg:col-span-1">
                         <div className="bg-zinc-900/80 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl sticky top-24">
-                            <h2 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">Resumen de Compra</h2>
+                            <h2 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">Purchase summary</h2>
                             
                             <div className="space-y-4 mb-6 max-h-[40vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
                                 {cart.map((item) => (
@@ -299,7 +299,7 @@ export default function CheckoutPage() {
                                     <span>€{calculateTotal().toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-gray-400">
-                                    <span>Envío</span>
+                                    <span>Shipping</span>
                                     <span className="text-green-400 font-bold">Gratis</span>
                                 </div>
                                 <div className="flex justify-between text-white text-2xl font-black pt-4 border-t border-white/10">
@@ -314,10 +314,10 @@ export default function CheckoutPage() {
                                 className="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-black text-lg rounded-2xl transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                             >
                                 {isLoading ? (
-                                    <>Procesando Pedido...</>
+                                    <>Processing order...</>
                                 ) : (
                                     <>
-                                        {paymentMethod === 'paypal' ? 'PAGAR CON PAYPAL' : 'COMPLETAR PEDIDO'} 
+                                        {paymentMethod === 'paypal' ? 'PAY WITH PAYPAL' : 'COMPLETE ORDER'} 
                                         <CheckCircle2 size={24} />
                                     </>
                                 )}
