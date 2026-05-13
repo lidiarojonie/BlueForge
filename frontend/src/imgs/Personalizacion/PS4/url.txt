@@ -31,18 +31,12 @@ Rojos: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-rojo.png
 ### CRUCETA ###
 Blanco: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-blanco.png
 Negro: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-negro.png
-Azul Claro: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-azul-claro.png
-Azul Oscuro: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-azul-oscuro.png
+Azul: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-azul-claro.png
 Verde: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-verde.png
 Naranja: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-naranja.png
 Morado: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-morado.png
 Amarillo: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-amarillo.png
 Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-rojo.png
-Cromado Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-rojo.png
-Cromado Dorado: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-dorado.png
-Cromado Plata: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-plata.png
-Cromado Azul: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-azul.png
-Cromado Verde: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-cromado-verde.png
 
 ### JOYSTICKS ###
 Seta Blanco (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-blanco.png
@@ -76,5 +70,3 @@ Blood: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-blood.
 Fresh: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-fresh.png
 Snake: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-snake-2.png
 Joker: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-jocker-7.png
-Catrina: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-catrina-1.png
-Garras: https://xcontrollers.es/wp-content/uploads/2017/10/carcasa-transparente-garra-4.png
