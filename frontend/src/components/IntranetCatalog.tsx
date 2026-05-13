@@ -312,11 +312,11 @@ export default function IntranetCatalog() {
                                         <div>
                                             <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">Tipo de Pieza</label>
                                             <select required value={formData.category} onChange={e => setFormData({ ...formData, category: e.target.value })} className="w-full mt-2 bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-cyan-500 outline-none appearance-none">
-                                                <option value="shell">Carcasa</option>
-                                                <option value="buttons">Botones</option>
+                                                <option value="shell">Shells</option>
+                                                <option value="buttons">Buttons</option>
                                                 <option value="joysticks">Joysticks</option>
-                                                <option value="triggers">Gatillos</option>
-                                                <option value="d_pad">Cruceta</option>
+                                                <option value="triggers">Triggers</option>
+                                                <option value="d_pad">D-Pad</option>
                                             </select>
                                         </div>
                                     )}
