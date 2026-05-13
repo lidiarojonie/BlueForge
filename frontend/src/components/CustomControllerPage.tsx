@@ -165,7 +165,7 @@ export default function CustomControllerPage() {
             stock: 99,
             image_url: baseImgUrl // Base image as placeholder
         });
-        alert(`¡Custom controller added to the cart!`);
+        alert(`¡Custom Controller added to the cart!`);
     };
 
     return (
@@ -325,8 +325,8 @@ export default function CustomControllerPage() {
                                     <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3">Top part color</p>
                                     <div className="flex flex-wrap gap-4 mb-8">
                                         {[
-                                            { key: 'Black', bg: '#1a1a1a' }, { key: 'White', bg: '#FFF' },
-                                            { key: 'Red', bg: '#CC0000' }, { key: 'Blue', bg: '#1565C0' }, { key: 'Green', bg: '#2E7D32' }
+                                            { key: 'Negro', bg: '#1a1a1a' }, { key: 'Blanco', bg: '#FFF' },
+                                            { key: 'Rojo', bg: '#CC0000' }, { key: 'Azul', bg: '#1565C0' }, { key: 'Verde', bg: '#2E7D32' }
                                         ].map(color => (
                                             <button
                                                 key={`seta-${color.key}`}
@@ -357,7 +357,7 @@ export default function CustomControllerPage() {
                             {/* CRUCETA */}
                             {activeTab === 'D-Pad' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
-                                    <h3 className="text-xl font-bold mb-6">Cruceta (D-Pad)</h3>
+                                    <h3 className="text-xl font-bold mb-6">D-Pad</h3>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
                                         {[
                                             { key: 'Black', bg: '#1a1a1a', label: 'Black' },
