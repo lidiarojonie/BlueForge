@@ -1,68 +1,150 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { ShoppingCart } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 
 const B = 'https://xcontrollers.es/wp-content/uploads/';
 
-const LAYERS: Record<string, Record<string, string>> = {
+const LAYERS_PS5: Record<string, Record<string, string>> = {
     carcasa: {
-        'Blanco':        B + '2020/11/colores-simples/Blanco.png',
-        'Negro':         B + '2020/11/colores-simples/Negro.png',
-        'Rojo':          B + '2020/11/colores-simples/Rojo.png',
-        'Azul':          B + '2020/11/colores-simples/Azul.png',
-        'Verde':         B + '2020/11/colores-simples/Verde.png',
-        'Amarillo':      B + '2020/11/colores-simples/Amarillo.png',
-        'Rosa':          B + '2020/11/colores-simples/Rosa.png',
-        'Naranja':       B + '2020/11/colores-simples/Naranja.png',
-        'Brandywine':    B + '2020/11/colores-perlados/Brandywine.png',
-        'Cobalt-Blue':   B + '2020/11/colores-perlados/Cobalt-Blue.png',
-        'Lime-Gold':     B + '2020/11/colores-perlados/Lime-Gold.png',
-        'Purple':        B + '2020/11/colores-perlados/Purple.png',
+        'Blanco': B + '2020/11/colores-simples/Blanco.png',
+        'Negro': B + '2020/11/colores-simples/Negro.png',
+        'Rojo': B + '2020/11/colores-simples/Rojo.png',
+        'Azul': B + '2020/11/colores-simples/Azul.png',
+        'Verde': B + '2020/11/colores-simples/Verde.png',
+        'Amarillo': B + '2020/11/colores-simples/Amarillo.png',
+        'Rosa': B + '2020/11/colores-simples/Rosa.png',
+        'Naranja': B + '2020/11/colores-simples/Naranja.png',
+        'Brandywine': B + '2020/11/colores-perlados/Brandywine.png',
+        'Cobalt-Blue': B + '2020/11/colores-perlados/Cobalt-Blue.png',
+        'Lime-Gold': B + '2020/11/colores-perlados/Lime-Gold.png',
+        'Purple': B + '2020/11/colores-perlados/Purple.png',
         'Organic-Green': B + '2020/11/colores-perlados/Organic-Green.png',
     },
     botones: {
-        'Negros':      B + '2020/11/botones/Negros.png',
-        'Blancos':     B + '2020/11/botones/Blancos.png',
-        'Rojos':       B + '2020/11/botones/Rojos.png',
-        'Amarillo':    B + '2020/11/botones/Amarillo.png',
-        'Azul-claro':  B + '2020/11/botones/Azul-claro.png',
+        'Negros': B + '2020/11/botones/Negros.png',
+        'Blancos': B + '2020/11/botones/Blancos.png',
+        'Rojos': B + '2020/11/botones/Rojos.png',
+        'Amarillo': B + '2020/11/botones/Amarillo.png',
+        'Azul-claro': B + '2020/11/botones/Azul-claro.png',
         'Azul-Oscuro': B + '2020/11/botones/Azul-Oscuro.png',
-        'Verde':       B + '2020/11/botones/Verde.png',
-        'Rosas':       B + '2020/11/botones/Rosas.png',
-        'Naranja':     B + '2020/11/botones/Naranja.png',
-        'Morado':      B + '2020/11/botones/Morado.png',
+        'Verde': B + '2020/11/botones/Verde.png',
+        'Rosas': B + '2020/11/botones/Rosas.png',
+        'Naranja': B + '2020/11/botones/Naranja.png',
+        'Morado': B + '2020/11/botones/Morado.png',
     },
     cruceta: {
-        'Negro':      B + '2020/11/cruceta/Negro.png',
-        'Blanco':     B + '2020/11/cruceta/Blanco.png',
-        'Rojo':       B + '2020/11/cruceta/Rojo.png',
+        'Negro': B + '2020/11/cruceta/Negro.png',
+        'Blanco': B + '2020/11/cruceta/Blanco.png',
+        'Rojo': B + '2020/11/cruceta/Rojo.png',
         'Azul-claro': B + '2020/11/cruceta/Azul-claro.png',
-        'Verde':      B + '2020/11/cruceta/Verde.png',
-        'Amarillo':   B + '2020/11/cruceta/Amarillo.png',
-        'Naranja':    B + '2020/11/cruceta/Naranja.png',
-        'Morado':     B + '2020/11/cruceta/Morado.png',
+        'Verde': B + '2020/11/cruceta/Verde.png',
+        'Amarillo': B + '2020/11/cruceta/Amarillo.png',
+        'Naranja': B + '2020/11/cruceta/Naranja.png',
+        'Morado': B + '2020/11/cruceta/Morado.png',
     },
 };
 
-const TEXTURAS: Record<string, string | null> = {
-    'none':      null,
-    'Carbono':   B + '2020/11/texturas/Carbono.png',
-    'Pollock':   B + '2020/11/texturas/Pollock.png',
-    'Blood':     B + '2020/11/texturas/Blood.png',
-    'Fresh':     B + '2020/11/texturas/Fresh.png',
-    'Dollar':    B + '2020/11/texturas/Dollar.png',
-    'Joker':     B + '2020/11/texturas-colores-simples/Joker.png',
-    'Snake':     B + '2020/11/texturas-colores-simples/Snake.png',
+const TEXTURAS_PS5: Record<string, string | null> = {
+    'none': null,
+    'Carbono': B + '2020/11/texturas/Carbono.png',
+    'Pollock': B + '2020/11/texturas/Pollock.png',
+    'Blood': B + '2020/11/texturas/Blood.png',
+    'Fresh': B + '2020/11/texturas/Fresh.png',
+    'Dollar': B + '2020/11/texturas/Dollar.png',
+    'Joker': B + '2020/11/texturas-colores-simples/Joker.png',
+    'Snake': B + '2020/11/texturas-colores-simples/Snake.png',
 };
 
-function getJoyUrl(side: string, part: string, shape: string, color: string) {
+const LAYERS_PS4: Record<string, Record<string, string>> = {
+    carcasa: {
+        'Blanco': B + '2017/09/carcasa-mate-blanco.png',
+        'Negro': B + '2017/09/carcasa-mate-negro.png',
+        'Rojo': B + '2017/09/carcasa-mate-red.png',
+        'Azul': B + '2017/09/carcasa-mate-azul-pitufo.png',
+        'Verde': B + '2017/09/carcasa-mate-mamba-green.png',
+        'Amarillo': B + '2017/09/carcasa-mate-mocus-yellow.png',
+        'Rosa': B + '2017/09/carcasa-mate-snob-pink.png',
+        'Naranja': B + '2017/11/carcasa-mate-race-orange2.png',
+        'Brandywine': B + '2017/11/carcasa-perlado-bandywine-CORREGIDO.png',
+        'Cobalt-Blue': B + '2017/11/carcasa-perlado-cobalt-blue-CORREGIDO.png',
+        'Lime-Gold': B + '2017/11/carcasa-perlado-lime-gold-CORREGIDO.png',
+        'Purple': B + '2017/11/carcasa-perlado-purple-CORREGIDO.png',
+        'Organic-Green': B + '2017/11/carcasa-perlado-organic-green-CORREGIDO.png',
+    },
+    botones: {
+        'Negros': B + '2017/09/derecha-negro.png',
+        'Blancos': B + '2017/09/derecha-blanco.png',
+        'Rojos': B + '2017/09/derecha-rojo.png',
+        'Amarillo': B + '2017/09/derecha-amarillo.png',
+        'Azul-claro': B + '2017/09/derecha-azul-claro.png',
+        'Azul-Oscuro': B + '2017/09/derecha-azul-oscuro.png',
+        'Verde': B + '2017/09/derecha-verde.png',
+        'Rosas': B + '2017/09/derecha-rosa.png',
+        'Naranja': B + '2017/09/derecha-naranja.png',
+        'Morado': B + '2017/09/derecha-morado.png',
+    },
+    cruceta: {
+        'Negro': B + '2017/09/cruceta-negro.png',
+        'Blanco': B + '2017/09/cruceta-blanco.png',
+        'Rojo': B + '2017/09/cruceta-rojo.png',
+        'Azul-claro': B + '2017/09/cruceta-azul-claro.png',
+        'Verde': B + '2017/09/cruceta-verde.png',
+        'Amarillo': B + '2017/09/cruceta-amarillo.png',
+        'Naranja': B + '2017/09/cruceta-naranja.png',
+        'Morado': B + '2017/09/cruceta-morado.png',
+    },
+};
+
+const TEXTURAS_PS4: Record<string, string | null> = {
+    'none': null,
+    'Carbono': B + '2017/10/carcasa-textura-carbono-1.png',
+    'Pollock': B + '2017/09/carcasa-textura-pollock.png',
+    'Blood': B + '2017/09/carcasa-textura-blood.png',
+    'Fresh': B + '2017/09/carcasa-textura-fresh.png',
+    'Dollar': B + '2017/09/carcasa-textura-dollar.png',
+    'Joker': B + '2017/09/carcasa-transparente-jocker-7.png',
+    'Snake': B + '2017/09/carcasa-transparente-snake-2.png',
+};
+
+function getJoyUrlPS5(side: string, part: string, shape: string, color: string) {
     return B + '2020/11/joysticks/' + shape + '/' + side + '/' + part + '/' + color + '.png';
+}
+
+function getJoyUrlPS4(side: string, part: string, shape: string, color: string) {
+    const sBase = side === 'IZQUIERDA' ? 'izda' : 'dcha';
+    let bColor = color.toLowerCase();
+
+    // Map to available colors for interchangeable parts
+    if (bColor === 'azul-claro' || bColor === 'azul-oscuro') bColor = 'azul';
+    if (!['negro', 'rojo', 'azul', 'verde', 'blanco'].includes(bColor)) bColor = 'negro';
+
+    if (part === 'Base') {
+        return B + '2018/01/base-' + bColor + '-' + sBase + '.png';
+    } else {
+        const parts = shape.toLowerCase().split('-');
+        const shp = parts[0] || 'concavo';
+        const hgt = parts[1] || 'alto';
+
+        return B + `2018/01/seta-${bColor}-${hgt}-${shp}-${sBase}.png`;
+    }
 }
 
 export default function CustomControllerPage() {
     const { addToCart } = useCart();
+    const [searchParams] = useSearchParams();
+    const isPS4 = searchParams.get('mando') === 'ps4';
+
+    const activeLayers = isPS4 ? LAYERS_PS4 : LAYERS_PS5;
+    const activeTexturas = isPS4 ? TEXTURAS_PS4 : TEXTURAS_PS5;
+    const getJoyUrl = isPS4 ? getJoyUrlPS4 : getJoyUrlPS5;
+    const baseImgUrl = isPS4
+        ? B + '2017/10/COMPLETO-PARA-WEB-1110x800.png'
+        : B + '2020/11/PS5-COMPLETO-PARA-WEB-1110x800.png';
+    const controllerName = isPS4 ? 'PS4 DualShock Custom' : 'PS5 DualSense Custom';
+
     const [activeTab, setActiveTab] = useState<'carcasa' | 'botones' | 'joysticks' | 'cruceta' | 'textura'>('carcasa');
-    
+
     const [config, setConfig] = useState({
         carcasa: 'Blanco',
         botones: 'Negros',
@@ -76,12 +158,12 @@ export default function CustomControllerPage() {
     const handleAddToCart = () => {
         addToCart({
             id: Date.now(), // Generate a fake ID for custom product
-            name: `PS5 DualSense Custom`,
+            name: controllerName,
             description: `Carcasa: ${config.carcasa}, Botones: ${config.botones}, Joysticks: ${config.joy_shape} (${config.joy_seta}/${config.joy_base}), Cruceta: ${config.cruceta}, Textura: ${config.textura === 'none' ? 'Sin textura' : config.textura}`,
             price: 74.95,
             category: 'Mandos Custom',
             stock: 99,
-            image_url: B + '2020/11/PS5-COMPLETO-PARA-WEB-1110x800.png' // Base image as placeholder
+            image_url: baseImgUrl // Base image as placeholder
         });
         alert(`¡Mando personalizado añadido al carrito!`);
     };
@@ -90,21 +172,21 @@ export default function CustomControllerPage() {
         <div className="pt-32 pb-16 min-h-screen bg-[#050505] text-white">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Configurador de Mandos PS5</h1>
+                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Configurador de Mandos {isPS4 ? 'PS4' : 'PS5'}</h1>
                     <p className="text-gray-400 mt-2 text-lg">Crea el mando perfecto con colores, texturas y acabados exclusivos.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-zinc-900/50 p-8 rounded-3xl border border-white/10 shadow-2xl">
-                    
+
                     {/* LEFT: PREVIEW */}
                     <div className="flex flex-col items-center justify-center bg-[radial-gradient(ellipse_at_center,rgba(60,60,60,1)_0%,rgba(10,10,10,1)_100%)] rounded-2xl p-8 border border-white/5 relative overflow-hidden h-[400px] md:h-[500px]">
                         <div className="relative w-full max-w-[550px] aspect-[1110/720] overflow-hidden hover:scale-105 transition-transform duration-500 ease-out">
                             {/* BASE */}
-                            <img className="relative w-full h-auto z-0" src={B + "2020/11/PS5-COMPLETO-PARA-WEB-1110x800.png"} alt="PS5 Base" />
+                            <img className="relative w-full h-auto z-0" src={baseImgUrl} alt={`${isPS4 ? 'PS4' : 'PS5'} Base`} />
                             {/* CARCASA */}
-                            <img className="absolute top-0 left-0 w-full h-auto z-10 transition-opacity duration-300" src={LAYERS.carcasa[config.carcasa]} alt="Carcasa" />
+                            <img className="absolute top-0 left-0 w-full h-auto z-10 transition-opacity duration-300" src={activeLayers.carcasa[config.carcasa]} alt="Carcasa" />
                             {/* BOTONES */}
-                            <img className="absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-300" src={LAYERS.botones[config.botones]} alt="Botones" />
+                            <img className="absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-300" src={activeLayers.botones[config.botones]} alt="Botones" />
                             {/* JOYSTICK IZQ BASE */}
                             <img className="absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-300" src={getJoyUrl('IZQUIERDA', 'Base', 'Concavo-alto', config.joy_base)} alt="Joy Izq Base" />
                             {/* JOYSTICK DER BASE */}
@@ -114,10 +196,10 @@ export default function CustomControllerPage() {
                             {/* JOYSTICK DER SETA */}
                             <img className="absolute top-0 left-0 w-full h-auto z-30 transition-opacity duration-300" src={getJoyUrl('DERECHA', 'Setas', config.joy_shape, config.joy_seta)} alt="Joy Der Seta" />
                             {/* CRUCETA */}
-                            <img className="absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-300" src={LAYERS.cruceta[config.cruceta]} alt="Cruceta" />
+                            <img className="absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-300" src={activeLayers.cruceta[config.cruceta]} alt="Cruceta" />
                             {/* TEXTURA */}
-                            {TEXTURAS[config.textura] && (
-                                <img className="absolute top-0 left-0 w-full h-auto z-40 opacity-80 mix-blend-multiply transition-opacity duration-300" src={TEXTURAS[config.textura]!} alt="Textura" />
+                            {activeTexturas[config.textura] && (
+                                <img className="absolute top-0 left-0 w-full h-auto z-40 opacity-80 mix-blend-multiply transition-opacity duration-300" src={activeTexturas[config.textura]!} alt="Textura" />
                             )}
                         </div>
                     </div>
@@ -130,11 +212,10 @@ export default function CustomControllerPage() {
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab as any)}
-                                    className={`px-4 py-2 uppercase font-black text-sm tracking-widest transition-all rounded-lg ${
-                                        activeTab === tab 
-                                            ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(34,211,238,0.3)]' 
-                                            : 'text-gray-400 hover:text-white hover:bg-white/5'
-                                    }`}
+                                    className={`px-4 py-2 uppercase font-black text-sm tracking-widest transition-all rounded-lg ${activeTab === tab
+                                        ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(34,211,238,0.3)]'
+                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                        }`}
                                 >
                                     {tab}
                                 </button>
@@ -147,13 +228,13 @@ export default function CustomControllerPage() {
                             {activeTab === 'carcasa' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
                                     <h3 className="text-xl font-bold mb-4">Color de Carcasa</h3>
-                                    
+
                                     <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-6">Colores simples</p>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
                                         {['Blanco', 'Negro', 'Rojo', 'Azul', 'Verde', 'Amarillo', 'Rosa', 'Naranja'].map(color => (
                                             <div key={color} className="flex flex-col items-center gap-2">
                                                 <button
-                                                    onClick={() => setConfig({...config, carcasa: color})}
+                                                    onClick={() => setConfig({ ...config, carcasa: color })}
                                                     className={`w-12 h-12 rounded-full border-[3px] transition-all hover:scale-110 ${config.carcasa === color ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                     style={{
                                                         background: color === 'Blanco' ? '#FFF' : color === 'Negro' ? '#1a1a1a' : color === 'Rojo' ? '#CC0000' : color === 'Azul' ? '#1565C0' : color === 'Verde' ? '#2E7D32' : color === 'Amarillo' ? '#FFD700' : color === 'Rosa' ? '#E91E63' : '#E64A19'
@@ -175,7 +256,7 @@ export default function CustomControllerPage() {
                                         ].map(item => (
                                             <div key={item.key} className="flex flex-col items-center gap-2">
                                                 <button
-                                                    onClick={() => setConfig({...config, carcasa: item.key})}
+                                                    onClick={() => setConfig({ ...config, carcasa: item.key })}
                                                     className={`w-12 h-12 rounded-full border-[3px] overflow-hidden transition-all hover:scale-110 ${config.carcasa === item.key ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                 >
                                                     <img src={item.img} className="w-full h-full object-cover" alt={item.key} />
@@ -206,7 +287,7 @@ export default function CustomControllerPage() {
                                         ].map(color => (
                                             <div key={color.key} className="flex flex-col items-center gap-2">
                                                 <button
-                                                    onClick={() => setConfig({...config, botones: color.key})}
+                                                    onClick={() => setConfig({ ...config, botones: color.key })}
                                                     className={`w-12 h-12 rounded-full border-[3px] transition-all hover:scale-110 ${config.botones === color.key ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                     style={{ background: color.bg }}
                                                 />
@@ -221,7 +302,7 @@ export default function CustomControllerPage() {
                             {activeTab === 'joysticks' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
                                     <h3 className="text-xl font-bold mb-4">Joysticks</h3>
-                                    
+
                                     <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-4">Forma</p>
                                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
                                         {[
@@ -232,7 +313,7 @@ export default function CustomControllerPage() {
                                         ].map(shape => (
                                             <button
                                                 key={shape.key}
-                                                onClick={() => setConfig({...config, joy_shape: shape.key})}
+                                                onClick={() => setConfig({ ...config, joy_shape: shape.key })}
                                                 className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all ${config.joy_shape === shape.key ? 'border-cyan-400 bg-cyan-400/10' : 'border-white/10 hover:bg-white/5 hover:border-white/30'}`}
                                             >
                                                 <img src={shape.img} alt={shape.label} className="w-12 h-12 rounded bg-white object-contain mb-2" />
@@ -249,7 +330,7 @@ export default function CustomControllerPage() {
                                         ].map(color => (
                                             <button
                                                 key={`seta-${color.key}`}
-                                                onClick={() => setConfig({...config, joy_seta: color.key})}
+                                                onClick={() => setConfig({ ...config, joy_seta: color.key })}
                                                 className={`w-10 h-10 rounded-full border-[3px] transition-all hover:scale-110 ${config.joy_seta === color.key ? 'border-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                 style={{ background: color.bg }}
                                             />
@@ -264,7 +345,7 @@ export default function CustomControllerPage() {
                                         ].map(color => (
                                             <button
                                                 key={`base-${color.key}`}
-                                                onClick={() => setConfig({...config, joy_base: color.key})}
+                                                onClick={() => setConfig({ ...config, joy_base: color.key })}
                                                 className={`w-10 h-10 rounded-full border-[3px] transition-all hover:scale-110 ${config.joy_base === color.key ? 'border-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                 style={{ background: color.bg }}
                                             />
@@ -290,7 +371,7 @@ export default function CustomControllerPage() {
                                         ].map(color => (
                                             <div key={color.key} className="flex flex-col items-center gap-2">
                                                 <button
-                                                    onClick={() => setConfig({...config, cruceta: color.key})}
+                                                    onClick={() => setConfig({ ...config, cruceta: color.key })}
                                                     className={`w-12 h-12 rounded-full border-[3px] transition-all hover:scale-110 ${config.cruceta === color.key ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                     style={{ background: color.bg }}
                                                 />
@@ -318,7 +399,7 @@ export default function CustomControllerPage() {
                                         ].map(texture => (
                                             <button
                                                 key={texture.key}
-                                                onClick={() => setConfig({...config, textura: texture.key})}
+                                                onClick={() => setConfig({ ...config, textura: texture.key })}
                                                 className={`flex flex-col items-center border-[3px] rounded-xl overflow-hidden transition-all ${config.textura === texture.key ? 'border-cyan-400 scale-105 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'border-transparent hover:border-white/30'}`}
                                             >
                                                 <img src={texture.img} alt={texture.label} className="w-full aspect-square object-cover" />

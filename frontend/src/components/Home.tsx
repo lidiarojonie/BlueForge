@@ -198,9 +198,9 @@ export default function Home() {
                     <div>
                         <h4 className="text-white font-black uppercase tracking-widest mb-6 border-l-2 border-cyan-500 pl-3">Products</h4>
                         <ul className="space-y-3 text-gray-400 text-sm font-bold">
-                            <li><a href="#" className="hover:text-cyan-400 transition-colors">PS5 Custom</a></li>
-                            <li><a href="#" className="hover:text-cyan-400 transition-colors">PS4 Custom</a></li>
-                            <li><a href="#" className="hover:text-cyan-400 transition-colors">Xbox Elite</a></li>
+                            <li><a href="/personalizador?mando=ps5" className="hover:text-cyan-400 transition-colors">PS5 Custom</a></li>
+                            <li><a href="/personalizador?mando=ps4" className="hover:text-cyan-400 transition-colors">PS4 Custom</a></li>
+                            <li><a href="/personalizador?mando=xbox" className="hover:text-cyan-400 transition-colors">Xbox Elite</a></li>
                             <li><a href="#" className="hover:text-cyan-400 transition-colors">Accessories</a></li>
                         </ul>
                     </div>
