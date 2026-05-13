@@ -54,20 +54,10 @@ Seta Blanco (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-i
 Seta Blanco (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-blanco.png
 Seta Negro (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-negro.png
 Seta Negro (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-negro.png
-Seta Azul Oscuro (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-azul-oscuro.png
-Seta Azul Oscuro (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-azul-oscuro.png
 Seta Verde (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-verde.png
 Seta Verde (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-verde.png
-Seta Morado (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-morado.png
-Seta Morado (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-morado.png
-Seta Amarillo (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-amarillo.png
-Seta Amarillo (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-amarillo.png
 Seta Rojo (Izq): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-izquierdo-rojo.png
 Seta Rojo (Der): https://xcontrollers.es/wp-content/uploads/2017/09/joystick-derecho-rojo.png
-Seta Rosa (Izq): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-izquierdo-rosa.png
-Seta Rosa (Der): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-derecho-rosa.png
-Seta Naranja (Izq): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-izquierdo-naranja.png
-Seta Naranja (Der): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-derecho-naranja.png
 Seta Azul Claro (Izq): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-iquierdo-azul-claro.png
 Seta Azul Claro (Der): https://xcontrollers.es/wp-content/uploads/2017/10/joystick-derecho-azul-claro.png
 
