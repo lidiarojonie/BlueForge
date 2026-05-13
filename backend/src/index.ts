@@ -85,7 +85,6 @@ app.get("/api/parts", authenticateToken, requireRole("admin", "employee"), async
     }
 });
 
-// 🔥 NUEVA: Guardar un nuevo producto base desde la Intranet (Solo Admin)
 app.post("/api/products", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
     try {
         const { name, description, price, stock, imageUrl } = req.body;
@@ -104,6 +103,48 @@ app.post("/api/parts", authenticateToken, requireRole("admin"), async (req: Auth
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error al guardar la pieza" });
+    }
+});
+
+// EDITAR PRODUCTO BASE
+app.put("/api/products/:id", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const { name, description, price, stock, imageUrl } = req.body;
+        await ProductDAO.updateProduct(Number(req.params.id), name, description, price, stock, imageUrl);
+        res.json({ message: "Producto actualizado" });
+    } catch (err) {
+        res.status(500).json({ error: "Error al actualizar producto" });
+    }
+});
+
+// BORRAR PRODUCTO BASE
+app.delete("/api/products/:id", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        await ProductDAO.deleteProduct(Number(req.params.id));
+        res.json({ message: "Producto eliminado" });
+    } catch (err) {
+        res.status(500).json({ error: "Error al eliminar producto" });
+    }
+});
+
+// EDITAR PIEZA
+app.put("/api/parts/:id", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const { category, stock, price, color, imageUrl, baseProductId } = req.body;
+        await ProductDAO.updatePart(Number(req.params.id), category, stock, price, color, imageUrl, baseProductId);
+        res.json({ message: "Pieza actualizada" });
+    } catch (err) {
+        res.status(500).json({ error: "Error al actualizar pieza" });
+    }
+});
+
+// BORRAR PIEZA
+app.delete("/api/parts/:id", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        await ProductDAO.deletePart(Number(req.params.id));
+        res.json({ message: "Pieza eliminada" });
+    } catch (err) {
+        res.status(500).json({ error: "Error al eliminar pieza" });
     }
 });
 

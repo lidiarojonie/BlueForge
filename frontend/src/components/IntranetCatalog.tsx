@@ -5,20 +5,25 @@ import { Package, Plus, Edit3, Trash2, Boxes, Gamepad, Layers, X, Save } from 'l
 export default function IntranetCatalog() {
     const [activeTab, setActiveTab] = useState<'base' | 'parts'>('base');
     const [items, setItems] = useState<any[]>([]);
+    const [baseProductsList, setBaseProductsList] = useState<any[]>([]); // Para el desplegable de piezas
     const [isLoading, setIsLoading] = useState(true);
     
-    // Estados para el Modal (Ventana emergente)
+    // Modal y Formulario
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
+    const [editingId, setEditingId] = useState<number | null>(null); // Nulo = Crear, Número = Editar
+    
     const [formData, setFormData] = useState({
-        name: '', // Se usa para nombre de mando o color de pieza
+        name: '', 
         description: '',
         price: '',
         stock: '',
         imageUrl: '',
-        category: 'shell' // Por defecto para piezas
+        category: 'shell',
+        baseProductId: '' 
     });
 
+    // Cargar datos de la tabla principal
     const loadData = () => {
         setIsLoading(true);
         const endpoint = activeTab === 'base' ? '/api/products' : '/api/parts';
@@ -35,8 +40,19 @@ export default function IntranetCatalog() {
             });
     };
 
+    // Cargar la lista de mandos base SIEMPRE (para el desplegable de piezas)
+    const loadBaseProductsForSelect = () => {
+        fetch('http://localhost:3000/api/products', { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => setBaseProductsList(data))
+            .catch(err => console.error("Error cargando mandos base:", err));
+    };
+
     useEffect(() => {
         loadData();
+        if (activeTab === 'parts' && baseProductsList.length === 0) {
+            loadBaseProductsForSelect();
+        }
     }, [activeTab]);
 
     const categoryNames: Record<string, string> = {
@@ -47,14 +63,17 @@ export default function IntranetCatalog() {
         'd_pad': 'Cruceta'
     };
 
-    // Función para enviar los datos al Backend
+    //  GUARDAR O ACTUALIZAR
     const handleSave = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSaving(true);
 
-        const endpoint = activeTab === 'base' ? '/api/products' : '/api/parts';
+        const isUpdating = editingId !== null;
+        let endpoint = activeTab === 'base' ? '/api/products' : '/api/parts';
+        if (isUpdating) endpoint += `/${editingId}`; // Si actualizamos, añadimos el ID a la URL
         
-        // Adaptamos los datos según lo que estemos guardando
+        const method = isUpdating ? 'PUT' : 'POST';
+
         const bodyData = activeTab === 'base' 
             ? {
                 name: formData.name,
@@ -65,33 +84,84 @@ export default function IntranetCatalog() {
             }
             : {
                 category: formData.category,
-                color: formData.name, // En piezas usamos 'name' para guardar el color
+                color: formData.name,
                 price: parseFloat(formData.price),
                 stock: parseInt(formData.stock),
                 imageUrl: formData.imageUrl,
-                baseProductId: 1 // Por defecto al mando PS5 base
+                baseProductId: parseInt(formData.baseProductId)
             };
 
         try {
             const response = await fetch(`http://localhost:3000${endpoint}`, {
-                method: 'POST',
+                method: method,
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
                 body: JSON.stringify(bodyData)
             });
 
             if (response.ok) {
-                setIsModalOpen(false);
-                setFormData({ name: '', description: '', price: '', stock: '', imageUrl: '', category: 'shell' });
-                loadData(); // Recargamos la lista para ver el nuevo producto
+                closeModal();
+                loadData();
             } else {
-                alert("Error al guardar. Revisa tus permisos de Admin.");
+                alert("Error al guardar. Revisa tus permisos.");
             }
         } catch (error) {
             alert("Error de conexión con el servidor.");
         } finally {
             setIsSaving(false);
         }
+    };
+
+    //  ELIMINAR
+    const handleDelete = async (id: number) => {
+        if (!window.confirm("¿Seguro que quieres eliminar esto de la base de datos?")) return;
+
+        const endpoint = activeTab === 'base' ? `/api/products/${id}` : `/api/parts/${id}`;
+        
+        try {
+            const response = await fetch(`http://localhost:3000${endpoint}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+
+            if (response.ok) {
+                loadData();
+            } else {
+                alert("Error al eliminar.");
+            }
+        } catch (error) {
+            alert("Error de conexión.");
+        }
+    };
+
+    // Preparar el Modal para EDITAR
+    const openEditModal = (item: any) => {
+        setEditingId(item.id);
+        setFormData({
+            name: item.name, // En piezas 'name' trae el 'color'
+            description: item.description || '',
+            price: item.price.toString(),
+            stock: item.stock.toString(),
+            imageUrl: item.image_url || '',
+            category: item.category || 'shell',
+            baseProductId: item.base_product_id?.toString() || (baseProductsList[0]?.id?.toString() || '')
+        });
+        setIsModalOpen(true);
+    };
+
+    // Preparar el Modal para CREAR
+    const openCreateModal = () => {
+        setEditingId(null);
+        setFormData({
+            name: '', description: '', price: '', stock: '', imageUrl: '', category: 'shell', 
+            baseProductId: baseProductsList[0]?.id?.toString() || ''
+        });
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setEditingId(null);
     };
 
     return (
@@ -110,7 +180,7 @@ export default function IntranetCatalog() {
                     <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => setIsModalOpen(true)} // 🔥 AQUÍ ABRIMOS EL MODAL
+                        onClick={openCreateModal}
                         className="flex items-center gap-2 px-6 py-3 bg-cyan-500 text-black font-black uppercase tracking-widest rounded-xl hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]"
                     >
                         <Plus size={20} />
@@ -122,9 +192,7 @@ export default function IntranetCatalog() {
                     <button 
                         onClick={() => setActiveTab('base')}
                         className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-sm transition-all ${
-                            activeTab === 'base' 
-                            ? 'bg-white/10 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.1)]' 
-                            : 'bg-black/50 text-gray-500 border border-white/5 hover:text-white'
+                            activeTab === 'base' ? 'bg-white/10 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.1)]' : 'bg-black/50 text-gray-500 border border-white/5 hover:text-white'
                         }`}
                     >
                         <Gamepad size={18} /> Mandos Base
@@ -132,9 +200,7 @@ export default function IntranetCatalog() {
                     <button 
                         onClick={() => setActiveTab('parts')}
                         className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-sm transition-all ${
-                            activeTab === 'parts' 
-                            ? 'bg-white/10 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.1)]' 
-                            : 'bg-black/50 text-gray-500 border border-white/5 hover:text-white'
+                            activeTab === 'parts' ? 'bg-white/10 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.1)]' : 'bg-black/50 text-gray-500 border border-white/5 hover:text-white'
                         }`}
                     >
                         <Layers size={18} /> Componentes Sueltos
@@ -188,11 +254,11 @@ export default function IntranetCatalog() {
                                             </div>
                                         </div>
                                         
-                                        <div className="flex gap-2">
-                                            <button className="p-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-lg border border-white/10 transition-colors">
+                                        <div className="flex gap-2 relative z-10">
+                                            <button onClick={() => openEditModal(item)} className="p-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-lg border border-white/10 transition-colors">
                                                 <Edit3 size={16} />
                                             </button>
-                                            <button className="p-2 bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500 hover:text-white rounded-lg transition-colors">
+                                            <button onClick={() => handleDelete(item.id)} className="p-2 bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500 hover:text-white rounded-lg transition-colors">
                                                 <Trash2 size={16} />
                                             </button>
                                         </div>
@@ -204,7 +270,7 @@ export default function IntranetCatalog() {
                 )}
             </div>
 
-            {/* 🔥 MODAL PARA AÑADIR PRODUCTOS/PIEZAS 🔥 */}
+            {/* MODAL PARA AÑADIR / EDITAR */}
             <AnimatePresence>
                 {isModalOpen && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
@@ -214,27 +280,38 @@ export default function IntranetCatalog() {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="bg-zinc-900 border border-white/10 p-8 rounded-[2rem] w-full max-w-2xl shadow-2xl relative"
                         >
-                            <button 
-                                onClick={() => setIsModalOpen(false)}
-                                className="absolute top-6 right-6 p-2 text-gray-500 hover:text-white hover:bg-white/10 rounded-full transition-colors"
-                            >
+                            <button onClick={closeModal} className="absolute top-6 right-6 p-2 text-gray-500 hover:text-white hover:bg-white/10 rounded-full transition-colors">
                                 <X size={24} />
                             </button>
 
                             <h3 className="text-2xl font-black text-white uppercase italic mb-8 flex items-center gap-3">
-                                <Plus className="text-cyan-400" /> 
-                                Añadir {activeTab === 'base' ? 'Mando Base' : 'Componente'}
+                                {editingId ? <Edit3 className="text-cyan-400" /> : <Plus className="text-cyan-400" />} 
+                                {editingId ? 'Editar' : 'Añadir'} {activeTab === 'base' ? 'Mando Base' : 'Componente'}
                             </h3>
 
                             <form onSubmit={handleSave} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    {/* Nombre o Color */}
+                                    
+                                    {/* ASIGNACIÓN DE PIEZA A MANDO (SOLO PARA PIEZAS) */}
+                                    {activeTab === 'parts' && (
+                                        <div className="md:col-span-2 p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl">
+                                            <label className="text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-2">
+                                                <Gamepad size={14}/> Mando Base Compatible
+                                            </label>
+                                            <select required value={formData.baseProductId} onChange={e => setFormData({...formData, baseProductId: e.target.value})} className="w-full mt-2 bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-cyan-500 outline-none appearance-none font-bold">
+                                                <option value="" disabled>Selecciona a qué mando pertenece...</option>
+                                                {baseProductsList.map(bp => (
+                                                    <option key={bp.id} value={bp.id}>{bp.name} (ID: {bp.id})</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    )}
+
                                     <div>
                                         <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">{activeTab === 'base' ? 'Nombre del Mando' : 'Nombre del Color/Textura'}</label>
                                         <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full mt-2 bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-cyan-500 outline-none" placeholder={activeTab === 'base' ? 'Ej. PS5 Controller' : 'Ej. Carbono, Rojo...'}/>
                                     </div>
                                     
-                                    {/* Categoría (SOLO PARA PIEZAS) */}
                                     {activeTab === 'parts' && (
                                         <div>
                                             <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">Tipo de Pieza</label>
@@ -248,26 +325,22 @@ export default function IntranetCatalog() {
                                         </div>
                                     )}
 
-                                    {/* URL Imagen */}
                                     <div>
-                                        <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">URL de la Imagen (Nombre archivo)</label>
+                                        <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">URL de la Imagen</label>
                                         <input type="text" value={formData.imageUrl} onChange={e => setFormData({...formData, imageUrl: e.target.value})} className="w-full mt-2 bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-cyan-500 outline-none" placeholder="mando_rojo.png"/>
                                     </div>
 
-                                    {/* Precio */}
                                     <div>
                                         <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">Precio (€)</label>
                                         <input required type="number" step="0.01" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full mt-2 bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-cyan-500 outline-none" placeholder="14.99"/>
                                     </div>
 
-                                    {/* Stock */}
                                     <div>
                                         <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">Stock Disponible</label>
                                         <input required type="number" value={formData.stock} onChange={e => setFormData({...formData, stock: e.target.value})} className="w-full mt-2 bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-cyan-500 outline-none" placeholder="50"/>
                                     </div>
                                 </div>
                                 
-                                {/* Descripción (SOLO PARA MANDOS BASE) */}
                                 {activeTab === 'base' && (
                                     <div>
                                         <label className="text-xs text-gray-400 font-bold uppercase tracking-widest">Descripción</label>
@@ -276,7 +349,7 @@ export default function IntranetCatalog() {
                                 )}
 
                                 <button type="submit" disabled={isSaving} className="w-full py-5 bg-cyan-500 hover:bg-cyan-400 text-black font-black uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-4">
-                                    <Save size={20} /> {isSaving ? 'GUARDANDO...' : 'GUARDAR EN BASE DE DATOS'}
+                                    <Save size={20} /> {isSaving ? 'GUARDANDO...' : (editingId ? 'ACTUALIZAR EN BD' : 'GUARDAR EN BD')}
                                 </button>
                             </form>
                         </motion.div>
