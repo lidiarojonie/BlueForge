@@ -55,7 +55,7 @@ const requireRole = (...roles: string[]) => {
 };
 
 // ==========================================
-// RUTAS DE PRODUCTOS
+// RUTAS DE PRODUCTOS Y CATÁLOGO
 // ==========================================
 app.get("/api/products", async (req: Request, res: Response) => {
     try {
@@ -75,6 +75,38 @@ app.get("/api/products/:id", async (req: Request, res: Response) => {
         res.status(500).json({ error: "Error al obtener producto" });
     }
 });
+
+app.get("/api/parts", authenticateToken, requireRole("admin", "employee"), async (req: AuthRequest, res: Response) => {
+    try {
+        const parts = await ProductDAO.getAllParts();
+        res.json(parts);
+    } catch (err) {
+        res.status(500).json({ error: "Error al cargar las piezas personalizables" });
+    }
+});
+
+// 🔥 NUEVA: Guardar un nuevo producto base desde la Intranet (Solo Admin)
+app.post("/api/products", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const { name, description, price, stock, imageUrl } = req.body;
+        const newProduct = await ProductDAO.insertProduct(name, description, price, stock, imageUrl);
+        res.status(201).json({ message: "Producto añadido al catálogo", product: newProduct });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error al guardar el producto" });
+    }
+});
+app.post("/api/parts", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const { category, stock, price, color, imageUrl, baseProductId } = req.body;
+        const newPart = await ProductDAO.insertPart(category, stock, price, color, imageUrl, baseProductId || 1);
+        res.status(201).json({ message: "Pieza añadida", part: newPart });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error al guardar la pieza" });
+    }
+});
+
 
 // ==========================================
 // RUTAS DE AUTENTICACIÓN
@@ -116,6 +148,7 @@ app.post("/api/auth/login", async (req: Request, res: Response) => {
         res.status(500).json({ error: "Error interno en login" });
     }
 });
+
 // Obtener todos los pedidos (Solo empleados y admins)
 app.get("/api/orders", authenticateToken, requireRole("admin", "employee"), async (req: AuthRequest, res: Response) => {
     try {
@@ -180,7 +213,7 @@ app.get("/api/clock/history", authenticateToken, requireRole("admin", "employee"
 });
 
 // ==========================================
-// RUTAS DE PEDIDOS (NUEVO - SOLUCIONA EL 404)
+// RUTAS DE PEDIDOS
 // ==========================================
 app.post("/api/orders", authenticateToken, async (req: AuthRequest, res: Response) => {
     try {
