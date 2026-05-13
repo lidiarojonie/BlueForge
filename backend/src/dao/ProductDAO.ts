@@ -76,11 +76,13 @@ export class ProductDAO {
         );
     }
 
-    static async deleteProduct(id: number) {
-        await pool.query("DELETE FROM base_products WHERE base_product_id = $1", [id]);
+static async deleteProduct(id: number) {
+        // En vez de borrar la fila entera, la ocultamos de la tienda
+        await pool.query("UPDATE base_products SET active = FALSE WHERE base_product_id = $1", [id]);
     }
 
     static async deletePart(id: number) {
-        await pool.query("DELETE FROM customizable_parts WHERE customizable_part_id = $1", [id]);
+        // Hacemos lo mismo para las piezas personalizables
+        await pool.query("UPDATE customizable_parts SET active = FALSE WHERE customizable_part_id = $1", [id]);
     }
 }
