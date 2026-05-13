@@ -27,11 +27,6 @@ Naranja: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-naranja.png
 Morado: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-morado.png
 Amarillo: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-amarillo.png
 Rojos: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-rojo.png
-Cromado Rojo: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-rojo.png
-Cromado Dorado: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-dorado.png
-Cromado Plata: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-plata.png
-Cromado Azul: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-azul.png
-Cromado Verde: https://xcontrollers.es/wp-content/uploads/2017/09/derecha-cromado-verde.png
 
 ### CRUCETA ###
 Blanco: https://xcontrollers.es/wp-content/uploads/2017/09/cruceta-blanco.png
