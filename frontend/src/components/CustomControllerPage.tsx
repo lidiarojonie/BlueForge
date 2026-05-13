@@ -59,7 +59,7 @@ const TEXTURAS_PS5: Record<string, string | null> = {
 const LAYERS_PS4: Record<string, Record<string, string>> = {
     carcasa: {
         'Blanco': B + '2017/09/carcasa-mate-blanco.png',
-        'Negro': B + '2017/09/defecto-ps4.png',
+        'Negro': B + '2017/09/carcasa-mate-negro.png',
         'Rojo': B + '2017/09/carcasa-mate-red.png',
         'Azul': B + '2017/09/carcasa-mate-azul-pitufo.png',
         'Verde': B + '2017/09/carcasa-mate-mamba-green.png',
@@ -114,7 +114,7 @@ function getJoyUrlPS5(side: string, part: string, shape: string, color: string) 
 function getJoyUrlPS4(side: string, part: string, shape: string, color: string) {
     const sBase = side === 'IZQUIERDA' ? 'izda' : 'dcha';
     let bColor = color.toLowerCase();
-    
+
     // Map to available colors for interchangeable parts
     if (bColor === 'azul-claro' || bColor === 'azul-oscuro') bColor = 'azul';
     if (!['negro', 'rojo', 'azul', 'verde', 'blanco'].includes(bColor)) bColor = 'negro';
@@ -125,7 +125,7 @@ function getJoyUrlPS4(side: string, part: string, shape: string, color: string) 
         const parts = shape.toLowerCase().split('-');
         const shp = parts[0] || 'concavo';
         const hgt = parts[1] || 'alto';
-        
+
         return B + `2018/01/seta-${bColor}-${hgt}-${shp}-${sBase}.png`;
     }
 }
@@ -138,8 +138,8 @@ export default function CustomControllerPage() {
     const activeLayers = isPS4 ? LAYERS_PS4 : LAYERS_PS5;
     const activeTexturas = isPS4 ? TEXTURAS_PS4 : TEXTURAS_PS5;
     const getJoyUrl = isPS4 ? getJoyUrlPS4 : getJoyUrlPS5;
-    const baseImgUrl = isPS4 
-        ? B + '2017/10/COMPLETO-PARA-WEB-1110x800.png' 
+    const baseImgUrl = isPS4
+        ? B + '2017/10/COMPLETO-PARA-WEB-1110x800.png'
         : B + '2020/11/PS5-COMPLETO-PARA-WEB-1110x800.png';
     const controllerName = isPS4 ? 'PS4 DualShock Custom' : 'PS5 DualSense Custom';
 
