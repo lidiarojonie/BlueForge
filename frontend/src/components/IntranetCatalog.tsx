@@ -60,7 +60,8 @@ export default function IntranetCatalog() {
         'triggers': 'Triggers',
         'buttons': 'Buttons',
         'joysticks': 'Joysticks',
-        'd_pad': 'D-Pad'
+        'd_pad': 'D-Pad',
+        'texture': 'Texture'
     };
 
     //  GUARDAR O ACTUALIZAR
@@ -317,6 +318,7 @@ export default function IntranetCatalog() {
                                                 <option value="joysticks">Joysticks</option>
                                                 <option value="triggers">Triggers</option>
                                                 <option value="d_pad">D-Pad</option>
+                                                <option value="texture">Textures</option>
                                             </select>
                                         </div>
                                     )}
