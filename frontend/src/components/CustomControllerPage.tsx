@@ -7,14 +7,14 @@ const B = 'https://xcontrollers.es/wp-content/uploads/';
 
 const LAYERS_PS5: Record<string, Record<string, string>> = {
     carcasa: {
-        'Blanco': B + '2020/11/colores-simples/Blanco.png',
-        'Negro': B + '2020/11/colores-simples/Negro.png',
-        'Rojo': B + '2020/11/colores-simples/Rojo.png',
-        'Azul': B + '2020/11/colores-simples/Azul.png',
-        'Verde': B + '2020/11/colores-simples/Verde.png',
-        'Amarillo': B + '2020/11/colores-simples/Amarillo.png',
-        'Rosa': B + '2020/11/colores-simples/Rosa.png',
-        'Naranja': B + '2020/11/colores-simples/Naranja.png',
+        'White': B + '2020/11/colores-simples/Blanco.png',
+        'Black': B + '2020/11/colores-simples/Negro.png',
+        'Red': B + '2020/11/colores-simples/Rojo.png',
+        'Blue': B + '2020/11/colores-simples/Azul.png',
+        'Green': B + '2020/11/colores-simples/Verde.png',
+        'Yellow': B + '2020/11/colores-simples/Amarillo.png',
+        'Pink': B + '2020/11/colores-simples/Rosa.png',
+        'Orange': B + '2020/11/colores-simples/Naranja.png',
         'Brandywine': B + '2020/11/colores-perlados/Brandywine.png',
         'Cobalt-Blue': B + '2020/11/colores-perlados/Cobalt-Blue.png',
         'Lime-Gold': B + '2020/11/colores-perlados/Lime-Gold.png',
@@ -22,32 +22,32 @@ const LAYERS_PS5: Record<string, Record<string, string>> = {
         'Organic-Green': B + '2020/11/colores-perlados/Organic-Green.png',
     },
     botones: {
-        'Negros': B + '2020/11/botones/Negros.png',
-        'Blancos': B + '2020/11/botones/Blancos.png',
-        'Rojos': B + '2020/11/botones/Rojos.png',
-        'Amarillo': B + '2020/11/botones/Amarillo.png',
-        'Azul-claro': B + '2020/11/botones/Azul-claro.png',
-        'Azul-Oscuro': B + '2020/11/botones/Azul-Oscuro.png',
-        'Verde': B + '2020/11/botones/Verde.png',
-        'Rosas': B + '2020/11/botones/Rosas.png',
-        'Naranja': B + '2020/11/botones/Naranja.png',
-        'Morado': B + '2020/11/botones/Morado.png',
+        'Black': B + '2020/11/botones/Negros.png',
+        'White': B + '2020/11/botones/Blancos.png',
+        'Red': B + '2020/11/botones/Rojos.png',
+        'Yellow': B + '2020/11/botones/Amarillo.png',
+        'Blue-Light': B + '2020/11/botones/Azul-claro.png',
+        'Blue-Dark': B + '2020/11/botones/Azul-Oscuro.png',
+        'Green': B + '2020/11/botones/Verde.png',
+        'Pink': B + '2020/11/botones/Rosas.png',
+        'Orange': B + '2020/11/botones/Naranja.png',
+        'Purple': B + '2020/11/botones/Morado.png',
     },
     cruceta: {
-        'Negro': B + '2020/11/cruceta/Negro.png',
-        'Blanco': B + '2020/11/cruceta/Blanco.png',
-        'Rojo': B + '2020/11/cruceta/Rojo.png',
-        'Azul-claro': B + '2020/11/cruceta/Azul-claro.png',
-        'Verde': B + '2020/11/cruceta/Verde.png',
-        'Amarillo': B + '2020/11/cruceta/Amarillo.png',
-        'Naranja': B + '2020/11/cruceta/Naranja.png',
-        'Morado': B + '2020/11/cruceta/Morado.png',
+        'Black': B + '2020/11/cruceta/Negro.png',
+        'White': B + '2020/11/cruceta/Blanco.png',
+        'Red': B + '2020/11/cruceta/Rojo.png',
+        'Blue-Light': B + '2020/11/cruceta/Azul-claro.png',
+        'Green': B + '2020/11/cruceta/Verde.png',
+        'Pink': B + '2020/11/cruceta/Rosa.png',
+        'Orange': B + '2020/11/cruceta/Naranja.png',
+        'Purple': B + '2020/11/cruceta/Morado.png',
     },
 };
 
 const TEXTURAS_PS5: Record<string, string | null> = {
     'none': null,
-    'Carbono': B + '2020/11/texturas/Carbono.png',
+    'Carbon': B + '2020/11/texturas/Carbono.png',
     'Pollock': B + '2020/11/texturas/Pollock.png',
     'Blood': B + '2020/11/texturas/Blood.png',
     'Fresh': B + '2020/11/texturas/Fresh.png',
@@ -58,14 +58,14 @@ const TEXTURAS_PS5: Record<string, string | null> = {
 
 const LAYERS_PS4: Record<string, Record<string, string>> = {
     carcasa: {
-        'Blanco': B + '2017/09/carcasa-mate-blanco.png',
-        'Negro': B + '2017/09/carcasa-mate-negro.png',
-        'Rojo': B + '2017/09/carcasa-mate-red.png',
-        'Azul': B + '2017/09/carcasa-mate-azul-pitufo.png',
-        'Verde': B + '2017/09/carcasa-mate-mamba-green.png',
-        'Amarillo': B + '2017/09/carcasa-mate-mocus-yellow.png',
-        'Rosa': B + '2017/09/carcasa-mate-snob-pink.png',
-        'Naranja': B + '2017/11/carcasa-mate-race-orange2.png',
+        'White': B + '2017/09/carcasa-mate-blanco.png',
+        'Black': B + '2017/09/carcasa-mate-negro.png',
+        'Red': B + '2017/09/carcasa-mate-red.png',
+        'Blue': B + '2017/09/carcasa-mate-azul-pitufo.png',
+        'Green': B + '2017/09/carcasa-mate-mamba-green.png',
+        'Yellow': B + '2017/09/carcasa-mate-mocus-yellow.png',
+        'Pink': B + '2017/09/carcasa-mate-snob-pink.png',
+        'Orange': B + '2017/11/carcasa-mate-race-orange2.png',
         'Brandywine': B + '2017/11/carcasa-perlado-bandywine-CORREGIDO.png',
         'Cobalt-Blue': B + '2017/11/carcasa-perlado-cobalt-blue-CORREGIDO.png',
         'Lime-Gold': B + '2017/11/carcasa-perlado-lime-gold-CORREGIDO.png',
@@ -73,26 +73,26 @@ const LAYERS_PS4: Record<string, Record<string, string>> = {
         'Organic-Green': B + '2017/11/carcasa-perlado-organic-green-CORREGIDO.png',
     },
     botones: {
-        'Negros': B + '2017/09/derecha-negro.png',
-        'Blancos': B + '2017/09/derecha-blanco.png',
-        'Rojos': B + '2017/09/derecha-rojo.png',
-        'Amarillo': B + '2017/09/derecha-amarillo.png',
-        'Azul-claro': B + '2017/09/derecha-azul-claro.png',
-        'Azul-Oscuro': B + '2017/09/derecha-azul-oscuro.png',
-        'Verde': B + '2017/09/derecha-verde.png',
-        'Rosas': B + '2017/09/derecha-rosa.png',
-        'Naranja': B + '2017/09/derecha-naranja.png',
-        'Morado': B + '2017/09/derecha-morado.png',
+        'Black': B + '2017/09/derecha-negro.png',
+        'White': B + '2017/09/derecha-blanco.png',
+        'Red': B + '2017/09/derecha-rojo.png',
+        'Yellow': B + '2017/09/derecha-amarillo.png',
+        'Blue-Light': B + '2017/09/derecha-azul-claro.png',
+        'Blue-Dark': B + '2017/09/derecha-azul-oscuro.png',
+        'Green': B + '2017/09/derecha-verde.png',
+        'Pink': B + '2017/09/derecha-rosa.png',
+        'Orange': B + '2017/09/derecha-naranja.png',
+        'Purple': B + '2017/09/derecha-morado.png',
     },
     cruceta: {
-        'Negro': B + '2017/09/cruceta-negro.png',
-        'Blanco': B + '2017/09/cruceta-blanco.png',
-        'Rojo': B + '2017/09/cruceta-rojo.png',
-        'Azul-claro': B + '2017/09/cruceta-azul-claro.png',
-        'Verde': B + '2017/09/cruceta-verde.png',
-        'Amarillo': B + '2017/09/cruceta-amarillo.png',
-        'Naranja': B + '2017/09/cruceta-naranja.png',
-        'Morado': B + '2017/09/cruceta-morado.png',
+        'Black': B + '2017/09/cruceta-negro.png',
+        'White': B + '2017/09/cruceta-blanco.png',
+        'Red': B + '2017/09/cruceta-rojo.png',
+        'Blue-Light': B + '2017/09/cruceta-azul-claro.png',
+        'Green': B + '2017/09/cruceta-verde.png',
+        'Yellow': B + '2017/09/cruceta-amarillo.png',
+        'Orange': B + '2017/09/cruceta-naranja.png',
+        'Purple': B + '2017/09/cruceta-morado.png',
     },
 };
 
@@ -143,7 +143,7 @@ export default function CustomControllerPage() {
         : B + '2020/11/PS5-COMPLETO-PARA-WEB-1110x800.png';
     const controllerName = isPS4 ? 'PS4 DualShock Custom' : 'PS5 DualSense Custom';
 
-    const [activeTab, setActiveTab] = useState<'carcasa' | 'botones' | 'joysticks' | 'cruceta' | 'textura'>('carcasa');
+    const [activeTab, setActiveTab] = useState<'case' | 'buttons' | 'joysticks' | 'D-Pad' | 'texture'>('case');
 
     const [config, setConfig] = useState({
         carcasa: 'Blanco',
@@ -165,15 +165,15 @@ export default function CustomControllerPage() {
             stock: 99,
             image_url: baseImgUrl // Base image as placeholder
         });
-        alert(`¡Mando personalizado añadido al carrito!`);
+        alert(`¡Custom controller added to the cart!`);
     };
 
     return (
         <div className="pt-32 pb-16 min-h-screen bg-[#050505] text-white">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Configurador de Mandos {isPS4 ? 'PS4' : 'PS5'}</h1>
-                    <p className="text-gray-400 mt-2 text-lg">Crea el mando perfecto con colores, texturas y acabados exclusivos.</p>
+                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Controller Customization {isPS4 ? 'PS4' : 'PS5'}</h1>
+                    <p className="text-gray-400 mt-2 text-lg">Create the perfect controller with different colors and textures.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-zinc-900/50 p-8 rounded-3xl border border-white/10 shadow-2xl">
@@ -208,7 +208,7 @@ export default function CustomControllerPage() {
                     <div className="flex flex-col">
                         {/* TABS */}
                         <div className="flex flex-wrap gap-2 mb-8 border-b border-white/10 pb-4">
-                            {['carcasa', 'botones', 'joysticks', 'cruceta', 'textura'].map((tab) => (
+                            {['case', 'buttons', 'joysticks', 'D-Pad', 'texture'].map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab as any)}
@@ -225,19 +225,19 @@ export default function CustomControllerPage() {
                         {/* TAB CONTENT */}
                         <div className="flex-1 min-h-[300px]">
                             {/* CARCASA */}
-                            {activeTab === 'carcasa' && (
+                            {activeTab === 'case' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
-                                    <h3 className="text-xl font-bold mb-4">Color de Carcasa</h3>
+                                    <h3 className="text-xl font-bold mb-4">Case Color</h3>
 
-                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-6">Colores simples</p>
+                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-6">Plain Colors</p>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
-                                        {['Blanco', 'Negro', 'Rojo', 'Azul', 'Verde', 'Amarillo', 'Rosa', 'Naranja'].map(color => (
+                                        {['White', 'Black', 'Red', 'Blue', 'Green', 'Yellow', 'Pink', 'Orange'].map(color => (
                                             <div key={color} className="flex flex-col items-center gap-2">
                                                 <button
                                                     onClick={() => setConfig({ ...config, carcasa: color })}
                                                     className={`w-12 h-12 rounded-full border-[3px] transition-all hover:scale-110 ${config.carcasa === color ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'border-transparent'}`}
                                                     style={{
-                                                        background: color === 'Blanco' ? '#FFF' : color === 'Negro' ? '#1a1a1a' : color === 'Rojo' ? '#CC0000' : color === 'Azul' ? '#1565C0' : color === 'Verde' ? '#2E7D32' : color === 'Amarillo' ? '#FFD700' : color === 'Rosa' ? '#E91E63' : '#E64A19'
+                                                        background: color === 'White' ? '#FFF' : color === 'Black' ? '#1a1a1a' : color === 'Red' ? '#CC0000' : color === 'Blue' ? '#1565C0' : color === 'Green' ? '#2E7D32' : color === 'Yellow' ? '#FFD700' : color === 'Pink' ? '#E91E63' : '#E64A19'
                                                     }}
                                                 />
                                                 <span className="text-xs text-gray-400">{color}</span>
@@ -245,7 +245,7 @@ export default function CustomControllerPage() {
                                         ))}
                                     </div>
 
-                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-8">Perlados</p>
+                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-8">Shiny</p>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
                                         {[
                                             { key: 'Brandywine', img: B + '2017/09/perlado-rojo.png' },
@@ -269,21 +269,21 @@ export default function CustomControllerPage() {
                             )}
 
                             {/* BOTONES */}
-                            {activeTab === 'botones' && (
+                            {activeTab === 'buttons' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
-                                    <h3 className="text-xl font-bold mb-6">Color de Botones</h3>
+                                    <h3 className="text-xl font-bold mb-6">Buttons Color</h3>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
                                         {[
-                                            { key: 'Negros', bg: '#1a1a1a', label: 'Negro' },
-                                            { key: 'Blancos', bg: '#FFF', label: 'Blanco' },
-                                            { key: 'Rojos', bg: '#CC0000', label: 'Rojo' },
-                                            { key: 'Amarillo', bg: '#FFD700', label: 'Amarillo' },
-                                            { key: 'Azul-claro', bg: '#42A5F5', label: 'Azul' },
-                                            { key: 'Azul-Oscuro', bg: '#1565C0', label: 'Azul Osc.' },
-                                            { key: 'Verde', bg: '#2E7D32', label: 'Verde' },
-                                            { key: 'Rosas', bg: '#E91E63', label: 'Rosa' },
-                                            { key: 'Naranja', bg: '#E64A19', label: 'Naranja' },
-                                            { key: 'Morado', bg: '#7B1FA2', label: 'Morado' },
+                                            { key: 'Black', bg: '#1a1a1a', label: 'Black' },
+                                            { key: 'White', bg: '#FFF', label: 'White' },
+                                            { key: 'Red', bg: '#CC0000', label: 'Red' },
+                                            { key: 'Yellow', bg: '#FFD700', label: 'Yellow' },
+                                            { key: 'Blue-Light', bg: '#42A5F5', label: 'Light Blue' },
+                                            { key: 'Blue-Dark', bg: '#1565C0', label: 'Dark Blue' },
+                                            { key: 'Green', bg: '#2E7D32', label: 'Green' },
+                                            { key: 'Pink', bg: '#E91E63', label: 'Pink' },
+                                            { key: 'Orange', bg: '#E64A19', label: 'Orange' },
+                                            { key: 'Purple', bg: '#7B1FA2', label: 'Purple' },
                                         ].map(color => (
                                             <div key={color.key} className="flex flex-col items-center gap-2">
                                                 <button
@@ -303,13 +303,13 @@ export default function CustomControllerPage() {
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
                                     <h3 className="text-xl font-bold mb-4">Joysticks</h3>
 
-                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-4">Forma</p>
+                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3 mt-4">Shape</p>
                                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
                                         {[
-                                            { key: 'Concavo-alto', img: B + '2018/01/icon-concavo-alto.jpg', label: 'Cóncavo Alto' },
-                                            { key: 'Concavo-bajo', img: B + '2018/01/icon-concavo-bajo.jpg', label: 'Cóncavo Bajo' },
-                                            { key: 'Convexo-alto', img: B + '2018/01/icon-convexo-alto.jpg', label: 'Convexo Alto' },
-                                            { key: 'Convexo-bajo', img: B + '2018/01/icon-convexo-bajo.jpg', label: 'Convexo Bajo' },
+                                            { key: 'Concavo-alto', img: B + '2018/01/icon-concavo-alto.jpg', label: 'Concave Tall' },
+                                            { key: 'Concavo-bajo', img: B + '2018/01/icon-concavo-bajo.jpg', label: 'Concave Short' },
+                                            { key: 'Convexo-alto', img: B + '2018/01/icon-convexo-alto.jpg', label: 'Convex Tall' },
+                                            { key: 'Convexo-bajo', img: B + '2018/01/icon-convexo-bajo.jpg', label: 'Convex Short' },
                                         ].map(shape => (
                                             <button
                                                 key={shape.key}
@@ -322,11 +322,11 @@ export default function CustomControllerPage() {
                                         ))}
                                     </div>
 
-                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3">Color de Seta</p>
+                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3">Top part color</p>
                                     <div className="flex flex-wrap gap-4 mb-8">
                                         {[
-                                            { key: 'Negro', bg: '#1a1a1a' }, { key: 'Blanco', bg: '#FFF' },
-                                            { key: 'Rojo', bg: '#CC0000' }, { key: 'Azul', bg: '#1565C0' }, { key: 'Verde', bg: '#2E7D32' }
+                                            { key: 'Black', bg: '#1a1a1a' }, { key: 'White', bg: '#FFF' },
+                                            { key: 'Red', bg: '#CC0000' }, { key: 'Blue', bg: '#1565C0' }, { key: 'Green', bg: '#2E7D32' }
                                         ].map(color => (
                                             <button
                                                 key={`seta-${color.key}`}
@@ -337,7 +337,7 @@ export default function CustomControllerPage() {
                                         ))}
                                     </div>
 
-                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3">Color de Base</p>
+                                    <p className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-3">Base color</p>
                                     <div className="flex flex-wrap gap-4">
                                         {[
                                             { key: 'Negro', bg: '#1a1a1a' }, { key: 'Blanco', bg: '#FFF' },
@@ -355,19 +355,19 @@ export default function CustomControllerPage() {
                             )}
 
                             {/* CRUCETA */}
-                            {activeTab === 'cruceta' && (
+                            {activeTab === 'D-Pad' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
                                     <h3 className="text-xl font-bold mb-6">Cruceta (D-Pad)</h3>
                                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
                                         {[
-                                            { key: 'Negro', bg: '#1a1a1a', label: 'Negro' },
-                                            { key: 'Blanco', bg: '#FFF', label: 'Blanco' },
-                                            { key: 'Rojo', bg: '#CC0000', label: 'Rojo' },
-                                            { key: 'Azul-claro', bg: '#42A5F5', label: 'Azul' },
-                                            { key: 'Verde', bg: '#2E7D32', label: 'Verde' },
-                                            { key: 'Amarillo', bg: '#FFD700', label: 'Amarillo' },
-                                            { key: 'Naranja', bg: '#E64A19', label: 'Naranja' },
-                                            { key: 'Morado', bg: '#7B1FA2', label: 'Morado' },
+                                            { key: 'Black', bg: '#1a1a1a', label: 'Black' },
+                                            { key: 'White', bg: '#FFF', label: 'White' },
+                                            { key: 'Red', bg: '#CC0000', label: 'Red' },
+                                            { key: 'Blue-Light', bg: '#42A5F5', label: 'Blue' },
+                                            { key: 'Green', bg: '#2E7D32', label: 'Green' },
+                                            { key: 'Yellow', bg: '#FFD700', label: 'Yellow' },
+                                            { key: 'Orange', bg: '#E64A19', label: 'Orange' },
+                                            { key: 'Purple', bg: '#7B1FA2', label: 'Purple' },
                                         ].map(color => (
                                             <div key={color.key} className="flex flex-col items-center gap-2">
                                                 <button
@@ -383,13 +383,13 @@ export default function CustomControllerPage() {
                             )}
 
                             {/* TEXTURA */}
-                            {activeTab === 'textura' && (
+                            {activeTab === 'texture' && (
                                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
                                     <h3 className="text-xl font-bold mb-6">Textura</h3>
                                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
                                         {[
-                                            { key: 'none', img: B + '2017/09/vacio.png', label: 'Sin textura' },
-                                            { key: 'Carbono', img: B + '2017/09/icon-carbono.png', label: 'Carbono' },
+                                            { key: 'none', img: B + '2017/09/vacio.png', label: 'No Texture' },
+                                            { key: 'Carbono', img: B + '2017/09/icon-carbono.png', label: 'Carbon Fiber' },
                                             { key: 'Pollock', img: B + '2017/09/icon-pollock.png', label: 'Pollock' },
                                             { key: 'Blood', img: B + '2017/09/icono-blood.png', label: 'Blood' },
                                             { key: 'Fresh', img: B + '2017/09/icono-fresh.png', label: 'Fresh' },
@@ -422,7 +422,7 @@ export default function CustomControllerPage() {
                                 className="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-black text-lg rounded-xl uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
                             >
                                 <ShoppingCart size={24} />
-                                Añadir al Carrito
+                                Add to Cart
                             </button>
                         </div>
                     </div>
