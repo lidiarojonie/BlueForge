@@ -76,7 +76,7 @@ app.get("/api/products/:id", async (req: Request, res: Response) => {
     }
 });
 
-app.get("/api/parts", authenticateToken, requireRole("admin", "employee"), async (req: AuthRequest, res: Response) => {
+app.get("/api/parts", async (req: Request, res: Response) => {
     try {
         const parts = await ProductDAO.getAllParts();
         res.json(parts);
