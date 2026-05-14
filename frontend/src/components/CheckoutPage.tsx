@@ -191,9 +191,9 @@ export default function CheckoutPage() {
 
                             {isAddingAddress ? (
                                 <form onSubmit={handleSaveAddress} className="bg-black/40 p-6 rounded-2xl border border-white/5 space-y-4 animate-in fade-in zoom-in duration-300">
-                                    <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Add Adress</h4>
+                                    <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Add Address</h4>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <input required type="text" placeholder="Alias (Ej: House, Office...)" value={newAddress.alias} onChange={e => setNewAddress({...newAddress, alias: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
+                                        <input required type="text" placeholder="Alias (e.g. House, Office...)" value={newAddress.alias} onChange={e => setNewAddress({...newAddress, alias: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
                                         <input required type="text" placeholder="Street and Number" value={newAddress.street} onChange={e => setNewAddress({...newAddress, street: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
                                         <input required type="text" placeholder="City" value={newAddress.city} onChange={e => setNewAddress({...newAddress, city: e.target.value})} className="bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
                                         <input required type="text" placeholder="Postal Code" value={newAddress.zip} onChange={e => setNewAddress({...newAddress, zip: e.target.value})} className="bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
@@ -201,7 +201,7 @@ export default function CheckoutPage() {
                                     <div className="flex gap-3 pt-2">
                                         <button type="submit" className="px-4 py-2 bg-cyan-500 text-black font-bold rounded-xl flex-1 hover:bg-cyan-400 transition-colors">Save and Use</button>
                                         {savedAddresses.length > 0 && (
-                                            <button type="button" onClick={() => setIsAddingAddress(false)} className="px-4 py-2 bg-white/5 text-white font-bold rounded-xl hover:bg-white/10 transition-colors">Cancelar</button>
+                                            <button type="button" onClick={() => setIsAddingAddress(false)} className="px-4 py-2 bg-white/5 text-white font-bold rounded-xl hover:bg-white/10 transition-colors">Cancel</button>
                                         )}
                                     </div>
                                 </form>
