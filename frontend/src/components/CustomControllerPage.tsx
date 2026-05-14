@@ -76,7 +76,7 @@ export default function CustomControllerPage() {
     const [searchParams] = useSearchParams();
     
     const isPS4 = searchParams.get('mando') === 'ps4';
-    const dbBaseId = isPS4 ? 2 : 1; 
+    const dbBaseId = isPS4 ? 2 : 3; 
     const controllerName = isPS4 ? 'Custom PS4 DualShock' : 'Custom PS5 DualSense';
     const baseImgUrl = isPS4
         ? 'https://xcontrollers.es/wp-content/uploads/2017/10/COMPLETO-PARA-WEB-1110x800.png'
