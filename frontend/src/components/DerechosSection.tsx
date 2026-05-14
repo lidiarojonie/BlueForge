@@ -46,7 +46,7 @@ export default function DerechosSection() {
                             <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><Briefcase size={28} /></div>
                             <h4 className="text-xl font-bold text-white mb-4">Movilidad Funcional</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                La empresa te cambia de funciones. Si te mandan tareas de una categoría superior por más de 6 meses (en un año), <span className="text-white font-bold">tienes derecho a reclamar el ascenso y el sueldo correspondiente.</span>
+                                La empresa te cambia de funciones. Si son dentro del mismo grupo profesional, el trabajador debe aceptar. Si te mandan tareas de una categoría superior fuera del grupo profesional por más de 6 meses (en un año), <span className="text-white font-bold">tienes derecho a reclamar el ascenso y el sueldo correspondiente.</span>
                             </p>
                         </div>
 
@@ -54,7 +54,8 @@ export default function DerechosSection() {
                             <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><Map size={28} /></div>
                             <h4 className="text-xl font-bold text-white mb-4">Movilidad Geográfica</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                Traslado forzoso que requiere cambiar de residencia. Tienes 3 opciones: Aceptar (te pagan gastos), Recurrir ante el juzgado, o <span className="text-white font-bold">Extinguir el contrato cobrando 20 días por año trabajado.</span>
+                                Traslado forzoso que requiere cambiar de residencia (aviso con 30 días de antelación). Tienes 3 opciones: Aceptar (te pagan gastos), Recurrir ante el juzgado, o <span className="text-white font-bold">Extinguir el contrato cobrando 20 días por año trabajado. </span>
+                                Si es colectivo, puede abrirse un periodo de consultas con representatnes trabajadores (no mas de 15 dias)
                             </p>
                         </div>
 
@@ -62,7 +63,8 @@ export default function DerechosSection() {
                             <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-6"><AlertOctagon size={28} /></div>
                             <h4 className="text-xl font-bold text-white mb-4">Modificación Sustancial</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                Cambios drásticos en horario, turnos o salario. Requiere justificación económica de la empresa y 15 días de preaviso. <span className="text-white font-bold">Puedes rescindir tu contrato con indemnización si te perjudica.</span>
+                                Cambios drásticos en horario, turnos o salario. Requiere justificación económica de la empresa y 15 días de preaviso. Si es individual se puede aceptar, recurrir ante el Juzgado de lo Social (20 días hábiles) o <span className="text-white font-bold">extinguir tu contrato con indemnización. </span>
+                                Si es colectivo se abrirá un periodo de consultas y si hay desacuerdo, se recurrirá al Tribunal Superior de Justicia o Juzgado de lo Social, según si supera el ámbito de una provincia o no.
                             </p>
                         </div>
                     </div>
@@ -97,7 +99,7 @@ export default function DerechosSection() {
                                 <h4 className="text-2xl font-black text-purple-400 border-b border-purple-500/20 pb-2">Colectivo (ERE)</h4>
                                 <p className="text-gray-400 text-sm">Despido objetivo masivo que afecta a gran parte de la plantilla. Exige negociación previa con el Comité.</p>
                                 <div className="bg-black/50 p-4 rounded-xl text-white font-mono text-sm border border-white/5">
-                                    💰 Indemnización: <br /><span className="text-lg text-purple-400">Negociable</span><br />(Mínimo 20 días / año)
+                                    💰 Indemnización: <br /><span className="text-lg text-purple-400">20 días / año</span><br />(Máximo 12 mensualidades)
                                 </div>
                             </div>
                         </div>
@@ -116,7 +118,7 @@ export default function DerechosSection() {
                         <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-cyan-500/30 transition-all">
                             <Calendar className="text-cyan-400 mb-6" size={36} />
                             <h4 className="text-xl font-bold text-white mb-3">Vacaciones</h4>
-                            <p className="text-gray-400 text-sm">23 días laborables al año según Convenio TIC. Debes preavisar con al menos 2 meses de antelación.</p>
+                            <p className="text-gray-400 text-sm">30 días anuales (que comprenderán al menos 26 dias laborales) retribuidos conforme al promedio obtenido por la persona trabajadora.</p>
                         </div>
 
                         {/* CORREGIDO: Matrimonio y Pareja de Hecho */}
@@ -157,7 +159,7 @@ export default function DerechosSection() {
                         <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-blue-400/30 transition-all">
                             <Users className="text-blue-400 mb-6" size={36} />
                             <h4 className="text-xl font-bold text-white mb-3">Nacimiento (Baja)</h4>
-                            <p className="text-gray-400 text-sm">16 semanas de baja retribuida e intransferible por nacimiento, adopción o acogimiento de un menor.</p>
+                            <p className="text-gray-400 text-sm">19 semanas de baja retribuida e intransferible a cada progenitor por nacimiento, adopción o acogimiento de un menor.</p>
                         </div>
 
                         <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5 shadow-lg hover:border-yellow-500/30 transition-all">

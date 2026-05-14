@@ -147,9 +147,9 @@ export default function ComiteSection() {
                                 </div>
                                 <p className="text-gray-500 line-clamp-2">Ley general aplicable en España. Marca los mínimos innegociables.</p>
                             </a>
-                            <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-7766" target="_blank" rel="noreferrer" className="group flex flex-col justify-center p-5 bg-black/60 border border-white/5 rounded-2xl text-xs text-gray-300 hover:border-red-500/50 hover:bg-zinc-800 transition-all gap-2 h-full">
+                            <a href="https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1309373420303" target="_blank" rel="noreferrer" className="group flex flex-col justify-center p-5 bg-black/60 border border-white/5 rounded-2xl text-xs text-gray-300 hover:border-red-500/50 hover:bg-zinc-800 transition-all gap-2 h-full">
                                 <div className="flex justify-between items-center font-bold text-sm text-white">
-                                    Convenio Sector TIC <FileText size={16} className="text-red-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    Convenio Sector Siderometalurgia <FileText size={16} className="text-red-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 </div>
                                 <p className="text-gray-500 line-clamp-2">Acuerdo específico para informática. Mejora las condiciones básicas.</p>
                             </a>
