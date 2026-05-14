@@ -160,7 +160,7 @@ app.post("/api/auth/register", async (req: Request, res: Response) => {
         const role = email.toLowerCase().endsWith('@empleado.com') ? 'employee' : 'customer';
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = await UserDAO.createUser(username, email, hashedPassword, role);
+        const user = await UserDAO.createUser(username, 'Desconocido', '', '1900-01-01', email, hashedPassword, role);
         const token = jwt.sign({ id: user.id, username: user.username, role: user.role } as JwtPayload, JWT_SECRET, { expiresIn: "2h" });
 
         res.cookie("token", token, { httpOnly: true, secure: false, sameSite: "lax", maxAge: 2 * 60 * 60 * 1000 });
@@ -221,6 +221,40 @@ app.get("/api/auth/me", authenticateToken, (req: AuthRequest, res: Response) => 
 app.post("/api/auth/logout", (req: Request, res: Response) => {
     res.clearCookie("token");
     res.json({ message: "Sesión cerrada correctamente" });
+});
+
+// ==========================================
+// RUTAS DE USUARIOS (ADMIN)
+// ==========================================
+app.get("/api/admin/users", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const users = await UserDAO.getAllUsers();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener usuarios" });
+    }
+});
+
+app.patch("/api/admin/users/:id/role", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const { role } = req.body;
+        await UserDAO.updateUserRole(Number(req.params.id), role);
+        res.json({ message: "Rol actualizado" });
+    } catch (error) {
+        res.status(500).json({ error: "Error al actualizar rol" });
+    }
+});
+
+app.post("/api/admin/users", authenticateToken, requireRole("admin"), async (req: AuthRequest, res: Response) => {
+    try {
+        const { firstName, lastName, phone, birthDate, email, password, role } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = await UserDAO.createUser(firstName, lastName, phone, birthDate, email, hashedPassword, role || 'customer');
+        res.status(201).json({ message: "Usuario creado", user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al crear usuario" });
+    }
 });
 
 // ==========================================
