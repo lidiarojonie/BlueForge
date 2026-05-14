@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import type { CartItem, Product } from '../types';
+import { useUser } from './UserContext';
 
 interface CartContextType {
   cart: CartItem[];
@@ -23,15 +24,46 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const saved = sessionStorage.getItem('cart');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const { customer, loading } = useUser(); 
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
+  // 🔥 1. EL GESTOR DE CARTERAS (Carga el carrito correcto para cada persona)
   useEffect(() => {
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+    if (loading) return; // Esperamos a saber quién es el usuario
 
+    const userId = customer?.id || 'guest';
+    const storageKey = `cart_${userId}`; // Ejemplo: "cart_1" o "cart_guest"
+    
+    // Miramos si el invitado dejó algo en el carrito
+    const guestCartString = localStorage.getItem('cart_guest');
+    const guestCart = guestCartString ? JSON.parse(guestCartString) : [];
+
+    // Si acabamos de iniciar sesión Y teníamos cosas como invitado, lo "heredamos"
+    if (customer && guestCart.length > 0) {
+        setCart(guestCart);
+        localStorage.setItem(storageKey, JSON.stringify(guestCart));
+        localStorage.removeItem('cart_guest'); // Limpiamos el de invitado
+    } else {
+        // Si no, simplemente cargamos el carrito que le toque a este usuario
+        const savedCart = localStorage.getItem(storageKey);
+        setCart(savedCart ? JSON.parse(savedCart) : []);
+    }
+    
+    setIsInitialized(true);
+  }, [customer, loading]);
+
+  // 🔥 2. EL GUARDADO AUTOMÁTICO (Guarda los cambios en la caja fuerte del usuario actual)
+  useEffect(() => {
+    if (!isInitialized || loading) return;
+    
+    const userId = customer?.id || 'guest';
+    const storageKey = `cart_${userId}`;
+    
+    localStorage.setItem(storageKey, JSON.stringify(cart));
+  }, [cart, customer, loading, isInitialized]);
+
+  // Funciones del carrito (Añadir, quitar, etc.)
   const addToCart = (product: Product) => {
     setCart(prev => {
       const existing = prev.find(item => item.product.id === product.id);
@@ -63,7 +95,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         .map(item => {
           if (item.product.id === productId) {
             const newQuantity = item.quantity + delta;
-            // Si intentamos subir, comprobar stock
             if (delta > 0 && newQuantity > item.product.stock) {
               alert(`No hay suficiente stock. Máximo disponible: ${item.product.stock}`);
               return item;

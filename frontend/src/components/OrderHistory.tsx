@@ -11,21 +11,15 @@ interface OrderItem {
 }
 
 interface Order {
-  id: number;
-  status: string;
+  order_id: number;
+  order_status: string;
   total: number | string;
-  address: string;
-  created_at: string;
+  address?: string; 
+  order_date: string;
 }
 
 interface OrderDetail extends Order {
   items?: OrderItem[];
-}
-
-interface User {
-  id: number;
-  email: string;
-  name: string;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -36,12 +30,13 @@ const STATUS_COLORS: Record<string, string> = {
   cancelled: '#ef4444'     // Rojo
 };
 
+// 🔥 Traducido al inglés
 const STATUS_LABELS: Record<string, string> = {
-  pending: 'Pendiente',
-  processing: 'En proceso',
-  shipped: 'Enviado',
-  delivered: 'Entregado',
-  cancelled: 'Cancelado'
+  pending: 'Pending',
+  processing: 'Processing',
+  shipped: 'Shipped',
+  delivered: 'Delivered',
+  cancelled: 'Cancelled'
 };
 
 function OrderHistory() {
@@ -52,7 +47,6 @@ function OrderHistory() {
   const [error, setError] = useState('');
   const { customer } = useUser();
 
-  // Cargar pedidos al montarse
   useEffect(() => {
     const loadOrders = async () => {
       try {
@@ -60,7 +54,7 @@ function OrderHistory() {
         setError('');
 
         if (!customer) {
-          setError('Usuario no autenticado');
+          setError('User not authenticated');
           setIsLoading(false);
           return;
         }
@@ -80,19 +74,18 @@ function OrderHistory() {
         const data = await response.json();
         setOrders(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error('Error al cargar pedidos:', err);
-        setError('No se pudieron cargar los pedidos. Intenta más tarde.');
+        console.error('Error loading orders:', err);
+        setError('Could not load orders. Please try again later.');
       } finally {
         setIsLoading(false);
       }
     };
 
     loadOrders();
-  }, []);
+  }, [customer]);
 
-  // Cargar detalle de un pedido
   const handleRowClick = async (orderId: number) => {
-    if (selectedOrder?.id === orderId) {
+    if (selectedOrder?.order_id === orderId) {
       setSelectedOrder(null);
       return;
     }
@@ -111,16 +104,18 @@ function OrderHistory() {
       const data: OrderDetail = await response.json();
       setSelectedOrder(data);
     } catch (err) {
-      console.error('Error al cargar detalle:', err);
+      console.error('Error loading order details:', err);
       setSelectedOrder(null);
     } finally {
       setIsLoadingDetail(false);
     }
   };
 
-  const formatDate = (dateString: string): string => {
+  // 🔥 Formato de fecha en inglés ('en-US')
+  const formatDate = (dateString?: string): string => {
+    if (!dateString) return 'Date not available';
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', {
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -136,8 +131,8 @@ function OrderHistory() {
     return (
       <div className="order-history">
         <div className="order-history-container">
-          <h2>Mi historial de pedidos</h2>
-          <div className="loading-message">Cargando pedidos...</div>
+          <h2>My Order History</h2>
+          <div className="loading-message">Loading orders...</div>
         </div>
       </div>
     );
@@ -147,7 +142,7 @@ function OrderHistory() {
     return (
       <div className="order-history">
         <div className="order-history-container">
-          <h2>Mi historial de pedidos</h2>
+          <h2>My Order History</h2>
           <div className="error-message">{error}</div>
         </div>
       </div>
@@ -158,8 +153,8 @@ function OrderHistory() {
     return (
       <div className="order-history">
         <div className="order-history-container">
-          <h2>Mi historial de pedidos</h2>
-          <div className="empty-message">No hay pedidos todavía.</div>
+          <h2>My Order History</h2>
+          <div className="empty-message">No orders yet.</div>
         </div>
       </div>
     );
@@ -168,70 +163,69 @@ function OrderHistory() {
   return (
     <div className="order-history">
       <div className="order-history-container">
-        <h2>Mi historial de pedidos</h2>
+        <h2>My Order History</h2>
 
         <div className="orders-table-wrapper">
           <table className="orders-table">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Estado</th>
+                <th>Order #</th>
+                <th>Status</th>
                 <th>Total</th>
-                <th>Fecha</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order) => (
                 <tr
-                  key={order.id}
-                  className={`order-row ${selectedOrder?.id === order.id ? 'selected' : ''}`}
-                  onClick={() => handleRowClick(order.id)}
+                  key={order.order_id}
+                  className={`order-row ${selectedOrder?.order_id === order.order_id ? 'selected' : ''}`}
+                  onClick={() => handleRowClick(order.order_id)}
                   style={{ cursor: 'pointer' }}
                 >
-                  <td className="order-id">#{order.id}</td>
+                  <td className="order-id">#{order.order_id}</td>
                   <td>
                     <span
                       className="status-badge"
                       style={{ 
-                        backgroundColor: STATUS_COLORS[order.status],
+                        backgroundColor: STATUS_COLORS[order.order_status] || '#6b7280',
                         color: 'white'
                       }}
-                      title={order.status}
+                      title={order.order_status}
                     >
-                      {STATUS_LABELS[order.status] || order.status}
+                      {STATUS_LABELS[order.order_status] || order.order_status}
                     </span>
                   </td>
                   <td className="order-total">{formatPrice(order.total)}</td>
-                  <td className="order-date">{formatDate(order.created_at)}</td>
+                  <td className="order-date">{formatDate(order.order_date)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        {/* Detalle del pedido seleccionado */}
         {selectedOrder && !isLoadingDetail && (
           <div className="order-detail">
-            <h3>Detalle del pedido #{selectedOrder.id}</h3>
+            <h3>Order Details #{selectedOrder.order_id}</h3>
 
             <div className="detail-header">
               <p>
-                <strong>Dirección:</strong> {selectedOrder.address}
+                <strong>Shipping Address:</strong> {selectedOrder.address || 'Not specified'}
               </p>
               <p>
-                <strong>Fecha:</strong> {formatDate(selectedOrder.created_at)}
+                <strong>Date:</strong> {formatDate(selectedOrder.order_date)}
               </p>
             </div>
 
             {selectedOrder.items && selectedOrder.items.length > 0 && (
               <div className="detail-items">
-                <h4>Productos</h4>
+                <h4>Products</h4>
                 <table className="items-table">
                   <thead>
                     <tr>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
-                      <th>Precio unitario</th>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Unit Price</th>
                       <th>Subtotal</th>
                     </tr>
                   </thead>
@@ -259,7 +253,7 @@ function OrderHistory() {
                 </table>
 
                 <div className="detail-total">
-                  <strong>Total del pedido:</strong>
+                  <strong>Order Total:</strong>
                   <span>{formatPrice(selectedOrder.total)}</span>
                 </div>
               </div>
@@ -269,7 +263,7 @@ function OrderHistory() {
 
         {isLoadingDetail && (
           <div className="order-detail">
-            <p className="loading-message">Cargando detalle...</p>
+            <p className="loading-message">Loading details...</p>
           </div>
         )}
       </div>
