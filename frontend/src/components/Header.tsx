@@ -60,7 +60,7 @@ function Header() {
                 PS5 CUSTOM
             </button>
             <button 
-              onClick={() => navigate('/personalizador?mando=xbox')} 
+              onClick={() => navigate('/xbox-elite')} 
               className="text-base font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
             >
                 XBOX ELITE

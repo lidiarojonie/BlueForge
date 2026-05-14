@@ -138,7 +138,7 @@ export default function CheckoutPage() {
                 <header className="border-b border-white/10 pb-6">
                     <h1 className="text-4xl font-black text-white flex items-center gap-4">
                         <ShoppingBag className="text-cyan-400" size={36} />
-                        Finalizar <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Pedido</span>
+                        Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Order</span>
                     </h1>
                 </header>
 
@@ -156,7 +156,7 @@ export default function CheckoutPage() {
                         {/* SECCIÓN 1: MIS DIRECCIONES */}
                         <section className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 shadow-xl">
                             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                <Truck className="text-cyan-400" /> 1. Dirección de Envío
+                                <Truck className="text-cyan-400" /> 1. Shipping Address
                             </h2>
 
                             {savedAddresses.length > 0 && (
@@ -191,17 +191,17 @@ export default function CheckoutPage() {
 
                             {isAddingAddress ? (
                                 <form onSubmit={handleSaveAddress} className="bg-black/40 p-6 rounded-2xl border border-white/5 space-y-4 animate-in fade-in zoom-in duration-300">
-                                    <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Add Adress</h4>
+                                    <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Add Address</h4>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <input required type="text" placeholder="Alias (Ej: Casa, Oficina...)" value={newAddress.alias} onChange={e => setNewAddress({...newAddress, alias: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
-                                        <input required type="text" placeholder="Calle y número" value={newAddress.street} onChange={e => setNewAddress({...newAddress, street: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
-                                        <input required type="text" placeholder="Ciudad" value={newAddress.city} onChange={e => setNewAddress({...newAddress, city: e.target.value})} className="bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
-                                        <input required type="text" placeholder="Código Postal" value={newAddress.zip} onChange={e => setNewAddress({...newAddress, zip: e.target.value})} className="bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
+                                        <input required type="text" placeholder="Alias (e.g. House, Office...)" value={newAddress.alias} onChange={e => setNewAddress({...newAddress, alias: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
+                                        <input required type="text" placeholder="Street and Number" value={newAddress.street} onChange={e => setNewAddress({...newAddress, street: e.target.value})} className="col-span-2 bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
+                                        <input required type="text" placeholder="City" value={newAddress.city} onChange={e => setNewAddress({...newAddress, city: e.target.value})} className="bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
+                                        <input required type="text" placeholder="Postal Code" value={newAddress.zip} onChange={e => setNewAddress({...newAddress, zip: e.target.value})} className="bg-zinc-900 border border-white/10 p-3 rounded-xl text-white focus:border-cyan-500 focus:outline-none" />
                                     </div>
                                     <div className="flex gap-3 pt-2">
-                                        <button type="submit" className="px-4 py-2 bg-cyan-500 text-black font-bold rounded-xl flex-1 hover:bg-cyan-400 transition-colors">Guardar y Usar</button>
+                                        <button type="submit" className="px-4 py-2 bg-cyan-500 text-black font-bold rounded-xl flex-1 hover:bg-cyan-400 transition-colors">Save and Use</button>
                                         {savedAddresses.length > 0 && (
-                                            <button type="button" onClick={() => setIsAddingAddress(false)} className="px-4 py-2 bg-white/5 text-white font-bold rounded-xl hover:bg-white/10 transition-colors">Cancelar</button>
+                                            <button type="button" onClick={() => setIsAddingAddress(false)} className="px-4 py-2 bg-white/5 text-white font-bold rounded-xl hover:bg-white/10 transition-colors">Cancel</button>
                                         )}
                                     </div>
                                 </form>
@@ -277,7 +277,7 @@ export default function CheckoutPage() {
                                         <img src={item.product.image_url} alt={item.product.name} className="w-16 h-16 object-contain bg-white/5 rounded-lg p-1" />
                                         <div className="flex-1">
                                             <p className="text-white text-sm font-bold line-clamp-1">{item.product.name}</p>
-                                            <p className="text-gray-500 text-xs mt-1">Cant: {item.quantity}</p>
+                                            <p className="text-gray-500 text-xs mt-1">Quant: {item.quantity}</p>
                                         </div>
                                         <div className="flex flex-col items-end gap-2">
                                             <p className="text-cyan-400 font-bold">€{(getPrice(item.product.price) * item.quantity).toFixed(2)}</p>
@@ -300,7 +300,7 @@ export default function CheckoutPage() {
                                 </div>
                                 <div className="flex justify-between text-gray-400">
                                     <span>Shipping</span>
-                                    <span className="text-green-400 font-bold">Gratis</span>
+                                    <span className="text-green-400 font-bold">Free</span>
                                 </div>
                                 <div className="flex justify-between text-white text-2xl font-black pt-4 border-t border-white/10">
                                     <span>Total</span>

@@ -11,10 +11,10 @@ interface ProductCardProps {
     onAddToCart?: (product: Product) => void;
 }
 
-// Nueva función de estrellas usando iconos elegantes
+// Stars function using elegant icons
 function renderStars(rating: number | null | undefined) {
     if (rating === null || rating === undefined) {
-        return <span className="text-gray-500 text-xs font-medium uppercase tracking-wider">Sin valoraciones</span>;
+        return <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest">No reviews</span>;
     }
     const filledStars = Math.round(rating);
     return (
@@ -32,16 +32,14 @@ function renderStars(rating: number | null | undefined) {
 
 function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCart }: ProductCardProps) {
     const isInactive = product.active === false;
-    // Estado para controlar la animación del carrito
+    // Animation state for the cart
     const [isAdded, setIsAdded] = useState(false);
 
     const handleAddToCart = (e: React.MouseEvent) => {
-        e.stopPropagation(); // Evita que al hacer clic se abra la página del producto
+        e.stopPropagation(); 
         if (onAddToCart) {
             onAddToCart(product);
-            // Activamos el check verde
             setIsAdded(true);
-            // A los 1.5 segundos lo devolvemos a su estado normal (carrito cyan)
             setTimeout(() => setIsAdded(false), 1500);
         }
     };
@@ -53,7 +51,7 @@ function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCar
                 isInactive ? 'border-red-500/30 opacity-75' : 'border-white/5 hover:border-cyan-500/50'
             }`}
         >
-            {/* CONTENEDOR DE LA IMAGEN */}
+            {/* IMAGE CONTAINER */}
             <div className="relative h-56 bg-black overflow-hidden flex items-center justify-center p-4">
                 <img 
                     src={product.image_url} 
@@ -61,19 +59,19 @@ function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCar
                     className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" 
                 />
                 
-                {/* Overlay si está deshabilitado */}
+                {/* Overlay if disabled */}
                 {isInactive && (
                     <div className="absolute inset-0 bg-red-900/80 backdrop-blur-sm flex items-center justify-center">
                         <span className="text-white font-black tracking-widest border-2 border-white/20 px-4 py-2 rounded-lg bg-black/50 rotate-[-10deg]">
-                            DESHABILITADO
+                            DISABLED
                         </span>
                     </div>
                 )}
 
-                {/* Botón flotante de añadir al carrito CON ANIMACIÓN */}
+                {/* Floating add to cart button */}
                 {onAddToCart && !isInactive && product.stock > 0 && (
                     <button
-                        title="Añadir al carrito"
+                        title="Add to Cart"
                         onClick={handleAddToCart}
                         className={`absolute bottom-4 right-4 p-3 rounded-xl transition-all duration-300 z-10 ${
                             isAdded 
@@ -86,7 +84,7 @@ function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCar
                 )}
             </div>
 
-            {/* INFORMACIÓN DEL PRODUCTO */}
+            {/* PRODUCT INFO */}
             <div className="p-5 flex flex-col flex-grow bg-gradient-to-b from-transparent to-black/40">
                 <h3 className="text-lg font-bold text-white mb-2 line-clamp-1" title={product.name}>
                     {product.name}
@@ -101,17 +99,17 @@ function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCar
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
                     {renderStars(product.average_rating)}
                     <span className={`text-xs font-bold uppercase tracking-wider ${product.stock > 0 ? "text-green-400" : "text-red-500"}`}>
-                        {product.stock > 0 ? `Stock: ${product.stock}` : "Agotado"}
+                        {product.stock > 0 ? `Stock: ${product.stock}` : "Sold Out"}
                     </span>
                 </div>
             </div>
 
-            {/* BOTONES DE ADMINISTRADOR */}
+            {/* ADMIN BUTTONS */}
             {(onEdit || onDelete || onToggle) && (
                 <div className="flex items-center gap-2 p-3 bg-black border-t border-white/10">
                     {onEdit && (
                         <button 
-                            title="Editar stock" 
+                            title="Edit Stock" 
                             onClick={(e) => { e.stopPropagation(); onEdit(product); }}
                             className="flex-1 py-2 bg-zinc-900 hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 rounded-lg flex items-center justify-center transition-colors border border-white/5 hover:border-cyan-500/30"
                         >
@@ -120,7 +118,7 @@ function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCar
                     )}
                     {onToggle && (
                         <button 
-                            title={product.active ? "Deshabilitar" : "Habilitar"} 
+                            title={product.active ? "Disable" : "Enable"} 
                             onClick={(e) => { e.stopPropagation(); onToggle(product); }}
                             className={`flex-1 py-2 bg-zinc-900 rounded-lg flex items-center justify-center transition-colors border border-white/5 ${
                                 product.active 
@@ -133,7 +131,7 @@ function ProductCard({ product, onSelect, onEdit, onDelete, onToggle, onAddToCar
                     )}
                     {onDelete && (
                         <button 
-                            title="Borrar" 
+                            title="Delete" 
                             onClick={(e) => { e.stopPropagation(); onDelete(product.id); }}
                             className="flex-1 py-2 bg-zinc-900 hover:bg-red-500/20 text-gray-400 hover:text-red-400 rounded-lg flex items-center justify-center transition-colors border border-white/5 hover:border-red-500/30"
                         >

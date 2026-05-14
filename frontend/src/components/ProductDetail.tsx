@@ -41,7 +41,7 @@ export function ProductDetail() {
 
     const handleSubmitReview = () => {
         if (!id) {
-            setMsg("ID de producto no válido");
+            setMsg("Invalid product ID");
             return;
         }
 
@@ -59,7 +59,7 @@ export function ProductDetail() {
                 return data;
             })
             .then((data) => {
-                setMsg(data?.error ? `${data.error}` : "✔ Reseña enviada");
+                setMsg(data?.error ? `${data.error}` : "✔ Review submitted");
                 if (!data?.error) {
                     setNewComment("");
                     setNewRating(5);
@@ -68,7 +68,7 @@ export function ProductDetail() {
             })
             .catch((error) => {
                 console.error("Error submitting review:", error);
-                setMsg("Error al enviar la reseña");
+                setMsg("Error submitting review");
             });
     };
 
@@ -77,34 +77,34 @@ export function ProductDetail() {
     }
 
     if (!product) {
-        return <div>Cargando...</div>;
+        return <div>Loading...</div>;
     }
     
     return (
         <div className="product-detail-container">
             <div className="product-detail">
-                <button className="back-button" onClick={() => navigate("/")}>← Volver</button>
+                <button className="back-button" onClick={() => navigate("/")}>← Back</button>
                 <img src={product.image_url} alt={product.name} />
                 <h3>{product.name}</h3>
                 {product.description && <p className="description">{product.description}</p>}
                 <p className="price">{Number(product.price).toFixed(2)} €</p>
                 <p className={`stock ${product.stock > 0 ? "in-stock" : "out-of-stock"}`}>
-                    {product.stock > 0 ? `En Stock - ${product.stock} unidades` : "Sin Stock - 0 unidades"}
+                    {product.stock > 0 ? `In Stock - ${product.stock} units` : "Out of Stock - 0 units"}
                 </p>
 
                 <button className="add-to-cart-button" onClick={() => addToCart(product)} disabled={product.stock === 0}>
-                    Añadir al carrito
+                    Add to Cart
                 </button>
             </div>
 
-            {/* Sección de reseñas */}
+            {/* Reviews section */}
             <div className="reviews-section">
-                <h2>Reseñas ({reviews.length})</h2>
+                <h2>Reviews ({reviews.length})</h2>
                 
-                {/* Lista de reseñas */}
+                {/* Reviews list */}
                 <div className="reviews-list">
                     {reviews.length === 0 ? (
-                        <p>No hay reseñas aún. ¡Sé el primero en dejar una!</p>
+                        <p>No reviews yet. Be the first to leave one!</p>
                     ) : (
                         reviews.map((review) => (
                             <div key={review.id} className="review-card">
@@ -121,38 +121,38 @@ export function ProductDetail() {
                     )}
                 </div>
 
-                {/* Formulario de nueva reseña */}
+                {/* New review form */}
                 <div className="review-form">
-                    <h3>Deja tu reseña</h3>
+                    <h3>Leave a Review</h3>
                     
                     <div className="form-group">
-                        <label htmlFor="rating">Puntuación:</label>
+                        <label htmlFor="rating">Rating:</label>
                         <select 
                             id="rating"
                             value={newRating} 
                             onChange={(e) => setNewRating(Number(e.target.value))}
                         >
-                            <option value={1}>1 - Muy malo</option>
-                            <option value={2}>2 - Malo</option>
-                            <option value={3}>3 - Normal</option>
-                            <option value={4}>4 - Bueno</option>
-                            <option value={5}>5 - Excelente</option>
+                            <option value={1}>1 - Terrible</option>
+                            <option value={2}>2 - Bad</option>
+                            <option value={3}>3 - Okay</option>
+                            <option value={4}>4 - Good</option>
+                            <option value={5}>5 - Excellent</option>
                         </select>
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="comment">Comentario:</label>
+                        <label htmlFor="comment">Comment:</label>
                         <textarea
                             id="comment"
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}
-                            placeholder="Cuéntanos tu experiencia con este producto..."
+                            placeholder="Tell us about your experience with this product..."
                             rows={4}
                         />
                     </div>
 
                     <button className="submit-review-btn" onClick={handleSubmitReview}>
-                        Enviar reseña
+                        Submit Review
                     </button>
 
                     {msg && <p className={msg.includes("✔") ? "success-msg" : "error-msg"}>{msg}</p>}

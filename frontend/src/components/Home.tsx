@@ -89,6 +89,22 @@ export default function Home() {
                             <p className="text-xl md:text-2xl text-gray-300 mt-8 max-w-lg font-medium leading-relaxed">
                                 Design your ultimate weapon. Custom shells, rapid-fire triggers, and premium grips.
                             </p>
+
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => {
+                                    if (featured[idx].id === 'xbox') {
+                                        navigate('/xbox-elite');
+                                    } else {
+                                        navigate(`/personalizador?mando=${featured[idx].id}`);
+                                    }
+                                }}
+                                className={`mt-8 px-10 py-4 ${featured[idx].id === 'xbox' ? 'bg-green-500' : 'bg-cyan-500'} text-black font-black uppercase tracking-widest rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all flex items-center gap-3`}
+                            >
+                                {featured[idx].id === 'xbox' ? 'Ver Detalles' : 'Configurar Ahora'}
+                                <Zap size={20} />
+                            </motion.button>
                         </motion.div>
                     </div>
 
@@ -101,7 +117,14 @@ export default function Home() {
                                 animate={{opacity:1, scale:1, x: 0, y: [0, -20, 0]}}
                                 exit={{opacity:0, scale:0.8, x: -100}}
                                 transition={{ duration: 0.6, type: "spring", y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
-                                className="relative z-10 w-full flex justify-center"
+                                className="relative z-10 w-full flex justify-center cursor-pointer pointer-events-auto"
+                                onClick={() => {
+                                    if (featured[idx].id === 'xbox') {
+                                        navigate('/xbox-elite');
+                                    } else {
+                                        navigate(`/personalizador?mando=${featured[idx].id}`);
+                                    }
+                                }}
                             >
                                 <img 
                                     src={featured[idx].image} 
@@ -200,7 +223,7 @@ export default function Home() {
                         <ul className="space-y-3 text-gray-400 text-sm font-bold">
                             <li><a href="/personalizador?mando=ps5" className="hover:text-cyan-400 transition-colors">PS5 Custom</a></li>
                             <li><a href="/personalizador?mando=ps4" className="hover:text-cyan-400 transition-colors">PS4 Custom</a></li>
-                            <li><a href="/personalizador?mando=xbox" className="hover:text-cyan-400 transition-colors">Xbox Elite</a></li>
+                            <li><a href="/xbox-elite" className="hover:text-cyan-400 transition-colors">Xbox Elite</a></li>
                             <li><a href="#" className="hover:text-cyan-400 transition-colors">Accessories</a></li>
                         </ul>
                     </div>

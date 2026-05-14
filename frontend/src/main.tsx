@@ -25,6 +25,7 @@ import TablonLogros from './components/TablonLogros.tsx';
 import DerechosSection from './components/DerechosSection.tsx';
 import ContactoComite from './components/ContactoComite.tsx';
 import ContactPage from './components/ContactPage.tsx';
+import ComingSoon from './components/ComingSoon.tsx';
 
 // --- ADMIN & USER COMPONENTES ---
 import AdminUsers from './components/AdminUsers.tsx';
@@ -58,6 +59,7 @@ function AppContent() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/personalizador" element={<CustomControllerPage />} />
         <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/xbox-elite" element={<ComingSoon />} />
         
         <Route path="checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
         <Route path="/mis-pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
