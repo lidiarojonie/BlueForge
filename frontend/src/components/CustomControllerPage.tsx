@@ -183,8 +183,8 @@ export default function CustomControllerPage() {
         <div className="pt-32 pb-16 min-h-screen bg-[#050505] text-white font-sans">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Configurador de Mandos {isPS4 ? 'PS4' : 'PS5'}</h1>
-                    <p className="text-gray-400 mt-2 text-lg">Crea el mando perfecto con colores, texturas y acabados exclusivos.</p>
+                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Controller Customization {isPS4 ? 'PS4' : 'PS5'}</h1>
+                    <p className="text-gray-400 mt-2 text-lg">Create the perfect controller with different colors and textures.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-zinc-900/50 p-8 rounded-[2rem] border border-white/10 shadow-2xl">

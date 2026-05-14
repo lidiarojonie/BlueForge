@@ -20,6 +20,7 @@ import OrdersPanel from './components/OrdersPanel.tsx';
 import IntranetCatalog from './components/IntranetCatalog.tsx';
 import AddProductPage from './components/AddProductPage.tsx';
 import ComiteSection from './components/ComiteSection.tsx';
+import IntranetUsers from './components/IntranetUsers.tsx';
 import TablonLogros from './components/TablonLogros.tsx'; 
 import DerechosSection from './components/DerechosSection.tsx';
 import ContactoComite from './components/ContactoComite.tsx';
@@ -79,6 +80,7 @@ function AppContent() {
           <Route path="pedidos" element={<OrdersPanel />} />
           <Route path="catalogo" element={<IntranetCatalog />} />
           <Route path="catalogo/nuevo" element={<AddProductPage />} />
+          <Route path="usuarios" element={<IntranetUsers />} />
           <Route path="historico" element={<ClockHistory />} />
           <Route path="comite" element={<ComiteSection />} />
         </Route>

@@ -9,7 +9,8 @@ import {
     Boxes, 
     History, 
     ShieldAlert,
-    ExternalLink
+    ExternalLink,
+    Users
 } from 'lucide-react';
 
 import mainLogo from '../imgs/new_logo.png';
@@ -48,6 +49,7 @@ function IntranetLayout() {
         { path: "/intranet/historico", name: "Histórico", icon: History },
         { path: "/intranet/pedidos", name: "Pedidos", icon: Package },
         { path: "/intranet/catalogo", name: "Catálogo", icon: Boxes },
+        ...(user?.role === 'admin' ? [{ path: "/intranet/usuarios", name: "Usuarios", icon: Users }] : []),
         { 
             path: "/intranet/comite", 
             name: "Comité", 
