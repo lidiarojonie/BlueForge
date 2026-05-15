@@ -16,7 +16,7 @@ export default function TablonLogros() {
                 <header className="space-y-4">
                     <h2 className="text-5xl font-black text-white italic uppercase tracking-tighter">Tablón de <span className="text-cyan-400">Avances y Logros</span></h2>
                     <p className="text-gray-400 text-xl max-w-4xl leading-relaxed">
-                        Aquí rendimos cuentas. Comparamos nuestras victorias conseguidas y nuestros objetivos futuros directamente con el <strong>Convenio Colectivo TIC</strong> para que puedas ver el impacto real de nuestras negociaciones.
+                        Aquí rendimos cuentas. Comparamos nuestras victorias conseguidas y nuestros objetivos futuros directamente con el <strong>Convenio Sector Siderometalurgia</strong> para que puedas ver el impacto real de nuestras negociaciones.
                     </p>
                 </header>
 
@@ -40,7 +40,7 @@ export default function TablonLogros() {
                             {/* Comparativa */}
                             <div className="flex flex-col gap-2 mt-4 border-t border-white/5 pt-4">
                                 <div className="bg-zinc-800/80 p-3 rounded-xl border border-white/5">
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio TIC Base</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio Sector Siderometalurgia</p>
                                     <p className="text-sm text-gray-300 font-medium">40 horas semanales</p>
                                 </div>
                                 <div className="bg-green-500/10 p-3 rounded-xl border border-green-500/20">
@@ -62,7 +62,7 @@ export default function TablonLogros() {
                             {/* Comparativa */}
                             <div className="flex flex-col gap-2 mt-4 border-t border-white/5 pt-4">
                                 <div className="bg-zinc-800/80 p-3 rounded-xl border border-white/5">
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio TIC Base</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio Sector Siderometalurgia</p>
                                     <p className="text-sm text-gray-300 font-medium">Gastos no fijados / A negociar</p>
                                 </div>
                                 <div className="bg-green-500/10 p-3 rounded-xl border border-green-500/20">
@@ -84,7 +84,7 @@ export default function TablonLogros() {
                             {/* Comparativa */}
                             <div className="flex flex-col gap-2 mt-4 border-t border-white/5 pt-4">
                                 <div className="bg-zinc-800/80 p-3 rounded-xl border border-white/5">
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio TIC Base</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio Sector Siderometalurgia</p>
                                     <p className="text-sm text-gray-300 font-medium">Solo acceso a Sanidad Pública</p>
                                 </div>
                                 <div className="bg-green-500/10 p-3 rounded-xl border border-green-500/20">
@@ -115,7 +115,7 @@ export default function TablonLogros() {
                             {/* Comparativa */}
                             <div className="flex flex-col gap-2 mt-2 border-t border-white/5 pt-4">
                                 <div className="bg-zinc-800/80 p-3 rounded-xl border border-white/5">
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio TIC Base</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio Sector Siderometalurgia</p>
                                     <p className="text-sm text-gray-300 font-medium">Jornada partida estándar</p>
                                 </div>
                                 <div className="bg-cyan-500/10 p-3 rounded-xl border border-cyan-500/20">
@@ -141,7 +141,7 @@ export default function TablonLogros() {
                             {/* Comparativa */}
                             <div className="flex flex-col gap-2 mt-2 border-t border-white/5 pt-4">
                                 <div className="bg-zinc-800/80 p-3 rounded-xl border border-white/5">
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio TIC Base</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio Sector Siderometalurgia</p>
                                     <p className="text-sm text-gray-300 font-medium">Salario bruto con retención IRPF</p>
                                 </div>
                                 <div className="bg-cyan-500/10 p-3 rounded-xl border border-cyan-500/20">
@@ -167,7 +167,7 @@ export default function TablonLogros() {
                             {/* Comparativa */}
                             <div className="flex flex-col gap-2 mt-2 border-t border-white/5 pt-4">
                                 <div className="bg-zinc-800/80 p-3 rounded-xl border border-white/5">
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio TIC Base</p>
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Convenio Sector Siderometalurgia</p>
                                     <p className="text-sm text-gray-300 font-medium">Equipamiento informático básico</p>
                                 </div>
                                 <div className="bg-cyan-500/10 p-3 rounded-xl border border-cyan-500/20">
