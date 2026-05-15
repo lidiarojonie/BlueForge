@@ -18,28 +18,28 @@ const featured = [
         id: 'ps5',
         title: "CUSTOM PS5",
         subtitle: "NEXT-GEN DOMINANCE",
-        image: ps5Img, 
+        image: ps5Img,
         color: "text-cyan-400",
         bgDiagonal: "from-cyan-600/60 to-blue-900/10",
-        glowColor: "rgba(34,211,238,0.4)" 
+        glowColor: "rgba(34,211,238,0.4)"
     },
     {
         id: 'xbox',
         title: "XBOX ELITE",
         subtitle: "UNMATCHED PRECISION",
-        image: xboxImg, 
+        image: xboxImg,
         color: "text-green-400",
         bgDiagonal: "from-green-600/60 to-emerald-900/10",
-        glowColor: "rgba(74,222,128,0.4)" 
+        glowColor: "rgba(74,222,128,0.4)"
     },
     {
         id: 'ps4',
         title: "PS4 CLASSIC",
         subtitle: "RETRO PERFORMANCE",
-        image: ps4Img, 
+        image: ps4Img,
         color: "text-blue-500",
         bgDiagonal: "from-blue-600/60 to-indigo-900/10",
-        glowColor: "rgba(59,130,246,0.4)" 
+        glowColor: "rgba(59,130,246,0.4)"
     }
 ];
 
@@ -65,22 +65,22 @@ export default function Home() {
                 </div>
 
                 <div className="max-w-[90rem] mx-auto px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 w-full relative">
-                    
+
                     {/* TEXTS (Left) */}
                     <div className="flex flex-col gap-6 order-2 lg:order-1 items-center lg:items-start lg:col-span-6 relative z-20">
-                        <motion.div initial={{opacity:0, x:-50}} animate={{opacity:1, x:0}} transition={{ duration: 0.5 }}>
+                        <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
                             <p className="text-gray-400 font-bold uppercase tracking-[0.4em] text-xs md:text-sm flex items-center gap-2 mb-4">
                                 <Zap size={16} className="text-yellow-400" /> GUARANTEED ELITE PERFORMANCE
                             </p>
                             <AnimatePresence mode="wait">
-                                <motion.h2 
+                                <motion.h2
                                     key={`title-${featured[idx].id}`}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
                                     className="text-[5rem] md:text-[8rem] lg:text-[9.5rem] font-black italic uppercase leading-[0.85] tracking-tighter drop-shadow-2xl"
                                 >
-                                    {featured[idx].title.split(' ')[0]} <br/>
+                                    {featured[idx].title.split(' ')[0]} <br />
                                     <span className={featured[idx].color}>
                                         {featured[idx].title.split(' ')[1]}
                                     </span>
@@ -90,7 +90,7 @@ export default function Home() {
                                 Design your ultimate weapon. Custom shells, rapid-fire triggers, and premium grips.
                             </p>
 
-                            <motion.button 
+                            <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => {
@@ -102,7 +102,7 @@ export default function Home() {
                                 }}
                                 className={`mt-8 px-10 py-4 ${featured[idx].id === 'xbox' ? 'bg-green-500' : 'bg-cyan-500'} text-black font-black uppercase tracking-widest rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all flex items-center gap-3`}
                             >
-                                {featured[idx].id === 'xbox' ? 'Ver Detalles' : 'Configurar Ahora'}
+                                {featured[idx].id === 'xbox' ? 'View Details' : 'Custom Now'}
                                 <Zap size={20} />
                             </motion.button>
                         </motion.div>
@@ -113,9 +113,9 @@ export default function Home() {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={featured[idx].id}
-                                initial={{opacity:0, scale:0.8, x: 100}}
-                                animate={{opacity:1, scale:1, x: 0, y: [0, -20, 0]}}
-                                exit={{opacity:0, scale:0.8, x: -100}}
+                                initial={{ opacity: 0, scale: 0.8, x: 100 }}
+                                animate={{ opacity: 1, scale: 1, x: 0, y: [0, -20, 0] }}
+                                exit={{ opacity: 0, scale: 0.8, x: -100 }}
                                 transition={{ duration: 0.6, type: "spring", y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
                                 className="relative z-10 w-full flex justify-center cursor-pointer pointer-events-auto"
                                 onClick={() => {
@@ -126,9 +126,9 @@ export default function Home() {
                                     }
                                 }}
                             >
-                                <img 
-                                    src={featured[idx].image} 
-                                    alt="Pro Controller" 
+                                <img
+                                    src={featured[idx].image}
+                                    alt="Pro Controller"
                                     className="w-[110%] lg:w-[120%] max-w-[900px] object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.8)]"
                                     style={{ clipPath: 'inset(2px)' }}
                                 />
@@ -143,7 +143,7 @@ export default function Home() {
             {/* ===================================== */}
             <section className="py-24 bg-[#08080c] relative border-t border-white/5">
                 <div className="max-w-7xl mx-auto px-8">
-                    
+
                     <div className="text-center mb-20">
                         <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-wider">
                             <span className="text-white">BlueForge</span> <span className="text-cyan-500">Design</span>
