@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useUser } from '../context/UserContext';
 import { MapPin, Plus, CheckCircle2, CreditCard, ShoppingBag, ArrowLeft, Truck, Wallet, Landmark, Trash2 } from 'lucide-react';
 
+
 interface OrderItem {
   product_id: number;
   quantity: number;

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Share2, Globe, X } from 'lucide-react'; // 🔥 AÑADIDOS ICONOS NUEVOS
 import { useSearchParams } from 'react-router-dom';
 
 const B = 'https://xcontrollers.es/wp-content/uploads/';
 
-// 🔥 PALETA DE COLORES PARA EL MENÚ (Color Swatches)
+// 🔥 PALETA DE COLORES PARA EL MENÚ
 const COLOR_HEX: Record<string, string> = {
     'blanco': '#f8f9fa', 'blancos': '#f8f9fa',
     'negro': '#1f2022', 'negros': '#1f2022',
@@ -25,7 +25,6 @@ const COLOR_HEX: Record<string, string> = {
     'organic-green': '#4d7c0f'
 };
 
-// 🔥 DICCIONARIO PARA TRADUCIR AL INGLÉS LO QUE VE EL USUARIO
 const UI_TRANSLATIONS: Record<string, string> = {
     'blanco': 'White', 'blancos': 'White',
     'negro': 'Black', 'negros': 'Black',
@@ -48,7 +47,6 @@ const SHAPE_NAMES_EN: Record<string, string> = {
     'Convexo-bajo': 'Low Convex'
 };
 
-// Funciones de Joysticks
 function getJoyUrlPS5(side: string, part: string, shape: string, color: string) {
     return B + '2020/11/joysticks/' + shape + '/' + side + '/' + part + '/' + color + '.png';
 }
@@ -101,6 +99,11 @@ export default function CustomControllerPage() {
         shell: null, buttons: null, joystick_base: null, joystick_mushroom: null, d_pad: null, texture: null
     });
 
+    // 🔥 ESTADOS PARA EL MODAL DE LA GALERÍA 🔥
+    const [showPublishModal, setShowPublishModal] = useState(false);
+    const [publishForm, setPublishForm] = useState({ author_name: '', build_name: '' });
+    const [isPublishing, setIsPublishing] = useState(false);
+
     useEffect(() => {
         setSelectedParts({ shell: null, buttons: null, joystick_base: null, joystick_mushroom: null, d_pad: null, texture: null });
         setConfig({ joy_shape: 'Concavo-alto' });
@@ -123,7 +126,91 @@ export default function CustomControllerPage() {
             .catch(console.error);
     }, [dbBaseId]);
 
-    // Función que prepara el color en español para la URL de la imagen
+    useEffect(() => {
+        const buildHash = searchParams.get('build');
+        
+        if (buildHash && dbParts.length > 0) {
+            try {
+                const savedBuildIds = JSON.parse(atob(buildHash));
+                
+                const findPart = (id: number | null) => 
+                    id ? dbParts.find(p => (p.id || p.customizable_part_id) === id) || null : null;
+
+                setSelectedParts({
+                    shell: findPart(savedBuildIds.s),
+                    buttons: findPart(savedBuildIds.b),
+                    joystick_base: findPart(savedBuildIds.jb),
+                    joystick_mushroom: findPart(savedBuildIds.jm),
+                    d_pad: findPart(savedBuildIds.d),
+                    texture: findPart(savedBuildIds.t)
+                });
+
+                if (savedBuildIds.sh) {
+                    setConfig({ joy_shape: savedBuildIds.sh });
+                }
+            } catch (e) {
+                console.error("Enlace de build inválido o corrupto");
+            }
+        }
+    }, [searchParams, dbParts]);
+
+    // Función auxiliar para obtener el objeto compactado de la build
+    const getCompactBuild = () => ({
+        s: selectedParts.shell?.id || selectedParts.shell?.customizable_part_id || null,
+        b: selectedParts.buttons?.id || selectedParts.buttons?.customizable_part_id || null,
+        jb: selectedParts.joystick_base?.id || selectedParts.joystick_base?.customizable_part_id || null,
+        jm: selectedParts.joystick_mushroom?.id || selectedParts.joystick_mushroom?.customizable_part_id || null,
+        d: selectedParts.d_pad?.id || selectedParts.d_pad?.customizable_part_id || null,
+        t: selectedParts.texture?.id || selectedParts.texture?.customizable_part_id || null,
+        sh: config.joy_shape
+    });
+
+    const handleShareBuild = () => {
+        const hash = btoa(JSON.stringify(getCompactBuild()));
+        const shareUrl = `${window.location.origin}/personalizador?mando=${isPS4 ? 'ps4' : 'ps5'}&build=${hash}`;
+        
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('🎮 Build link copied to clipboard!\nYou can now paste it and share it with anyone.');
+        }).catch(err => {
+            console.error('Error copying:', err);
+            alert('Could not copy the link automatically. Here is your hash: ' + hash);
+        });
+    };
+
+    // 🔥 NUEVO: FUNCIÓN PARA PUBLICAR EN LA GALERÍA 🔥
+    const handlePublishToGallery = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsPublishing(true);
+        
+        const hash = btoa(JSON.stringify(getCompactBuild()));
+
+        try {
+            const res = await fetch('http://localhost:3000/api/gallery', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    author_name: publishForm.author_name,
+                    build_name: publishForm.build_name,
+                    base_product_id: dbBaseId,
+                    build_hash: hash
+                })
+            });
+
+            if (res.ok) {
+                alert('✨ Masterpiece published successfully to the Forge Gallery!');
+                setShowPublishModal(false);
+                setPublishForm({ author_name: '', build_name: '' });
+            } else {
+                alert('Error publishing your build. Please try again.');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Connection error. Please check your backend.');
+        } finally {
+            setIsPublishing(false);
+        }
+    };
+
     const getCleanColor = (part: any) => {
         if (!part) return 'Negro';
         let name = part.name || part.color || '';
@@ -132,7 +219,6 @@ export default function CustomControllerPage() {
         return translations[name] || name;
     };
 
-    // Función que traduce el nombre de la BD para mostrárselo al usuario
     const getDisplayName = (part: any) => {
         if (!part) return '';
         let name = (part.name || part.color || '').replace(/ Base/ig, '').replace(/ Seta/ig, '').trim();
@@ -229,7 +315,7 @@ export default function CustomControllerPage() {
                     <p className="text-gray-400 mt-2 text-lg">Build your perfect controller with custom colors, textures, and finishes.</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-zinc-900/50 p-8 rounded-[2rem] border border-white/10 shadow-2xl">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-zinc-900/50 p-8 rounded-[2rem] border border-white/10 shadow-2xl relative">
 
                     {/* ZONA IZQUIERDA: PREVIEW DINÁMICO */}
                     <div className="flex flex-col items-center justify-center bg-[radial-gradient(ellipse_at_center,rgba(60,60,60,1)_0%,rgba(10,10,10,1)_100%)] rounded-3xl p-8 border border-white/5 relative overflow-hidden h-[400px] md:h-[500px]">
@@ -341,21 +427,96 @@ export default function CustomControllerPage() {
                             )}
                         </div>
 
+                        {/* BARRA INFERIOR CON LOS 3 BOTONES */}
                         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
-                            <div>
+                            <div className="w-full sm:w-auto text-center sm:text-left">
                                 <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Total</p>
                                 <p className="text-4xl font-black text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
                                     €{totalPrice.toFixed(2)}
                                 </p>
                             </div>
-                            <button
-                                onClick={handleAddToCart}
-                                className="w-full sm:w-auto px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-black font-black text-lg rounded-2xl uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
-                            >
-                                <ShoppingCart size={24} /> Add to Cart
-                            </button>
+                            
+                            <div className="flex gap-3 w-full sm:w-auto">
+                                <button
+                                    onClick={handleShareBuild}
+                                    title="Copy Build Link"
+                                    className="p-4 bg-zinc-800 hover:bg-zinc-700 text-white rounded-2xl transition-all border border-white/10 flex items-center justify-center hover:scale-[1.05] shadow-lg"
+                                >
+                                    <Share2 size={24} />
+                                </button>
+
+                                {/* 🔥 BOTÓN PARA ABRIR MODAL DE GALERÍA 🔥 */}
+                                <button
+                                    onClick={() => setShowPublishModal(true)}
+                                    title="Publish to Forge Gallery"
+                                    className="p-4 bg-fuchsia-600 hover:bg-fuchsia-500 text-white rounded-2xl transition-all border border-white/10 flex items-center justify-center hover:scale-[1.05] shadow-[0_0_20px_rgba(192,38,211,0.4)]"
+                                >
+                                    <Globe size={24} />
+                                </button>
+
+                                <button
+                                    onClick={handleAddToCart}
+                                    className="flex-1 sm:flex-none px-6 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-black text-lg rounded-2xl uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+                                >
+                                    <ShoppingCart size={24} className="hidden sm:block" /> Add to Cart
+                                </button>
+                            </div>
                         </div>
                     </div>
+
+                    {/* 🔥 MODAL PARA PUBLICAR EN LA GALERÍA 🔥 */}
+                    {showPublishModal && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in p-4">
+                            <div className="bg-zinc-900 border border-white/10 p-8 rounded-3xl shadow-2xl max-w-md w-full relative animate-in zoom-in-95">
+                                <button 
+                                    onClick={() => setShowPublishModal(false)} 
+                                    className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors"
+                                >
+                                    <X size={24} />
+                                </button>
+                                
+                                <h2 className="text-2xl font-black uppercase text-white mb-2 flex items-center gap-3 tracking-tight">
+                                    <Globe className="text-fuchsia-500" /> Publish Build
+                                </h2>
+                                <p className="text-gray-400 text-sm mb-6">Show off your design in the Forge Gallery so other players can see it, use it, and vote for it.</p>
+                                
+                                <form onSubmit={handlePublishToGallery} className="space-y-5">
+                                    <div>
+                                        <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Build Name</label>
+                                        <input 
+                                            required 
+                                            type="text" 
+                                            maxLength={30} 
+                                            placeholder="e.g. Neon Demon, Stealth Pro..." 
+                                            value={publishForm.build_name} 
+                                            onChange={e => setPublishForm({...publishForm, build_name: e.target.value})} 
+                                            className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-fuchsia-500 focus:outline-none focus:ring-1 focus:ring-fuchsia-500 transition-colors" 
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Creator Name</label>
+                                        <input 
+                                            required 
+                                            type="text" 
+                                            maxLength={20} 
+                                            placeholder="Your Gamertag..." 
+                                            value={publishForm.author_name} 
+                                            onChange={e => setPublishForm({...publishForm, author_name: e.target.value})} 
+                                            className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-fuchsia-500 focus:outline-none focus:ring-1 focus:ring-fuchsia-500 transition-colors" 
+                                        />
+                                    </div>
+                                    <button 
+                                        type="submit" 
+                                        disabled={isPublishing} 
+                                        className="w-full py-4 mt-2 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-black text-sm uppercase tracking-widest rounded-xl transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(192,38,211,0.3)]"
+                                    >
+                                        {isPublishing ? 'Publishing...' : 'Upload to Gallery'}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    )}
+
                 </div>
             </div>
         </div>

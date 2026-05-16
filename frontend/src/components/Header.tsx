@@ -1,9 +1,9 @@
 import { useCart } from '../context/CartContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-import { ShoppingCart, User, Lock } from 'lucide-react';
+import { ShoppingCart, User, Lock, Flame, Bot, Globe } from 'lucide-react';
 
-import mainLogo from '../imgs/new_logo.png'; // Asegúrate de que el nombre coincide con el tuyo
+import mainLogo from '../imgs/new_logo.png'; 
 
 function Header() {
   const navigate = useNavigate();
@@ -23,6 +23,9 @@ function Header() {
           navigate('/');
       }
   };
+
+  // Clase CSS unificada para TODOS los botones del menú central
+  const navLinkClass = "text-base font-bold text-gray-300 hover:text-cyan-400 transition-all duration-300 uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:scale-105 drop-shadow-md hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]";
 
   return (
     <header className="fixed top-0 w-full z-50 font-sans shadow-2xl">
@@ -45,64 +48,61 @@ function Header() {
             />
         </div>
 
-        {/* CENTER LINKS (Ahora más grandes con text-base) */}
-        <nav className="hidden lg:flex items-center gap-10">
-            <button 
-              onClick={() => navigate('/personalizador?mando=ps4')} 
-              className="text-base font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
-            >
+        {/* CENTER LINKS (Todos con la misma dinámica) */}
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+            <button onClick={() => navigate('/personalizador?mando=ps4')} className={navLinkClass}>
                 PS4 CUSTOM
             </button>
-            <button 
-              onClick={() => navigate('/personalizador?mando=ps5')} 
-              className="text-base font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
-            >
+            <button onClick={() => navigate('/personalizador?mando=ps5')} className={navLinkClass}>
                 PS5 CUSTOM
             </button>
-            <button 
-              onClick={() => navigate('/xbox-elite')} 
-              className="text-base font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
-            >
+            <button onClick={() => navigate('/xbox-elite')} className={navLinkClass}>
                 XBOX ELITE
+            </button>
+
+            <button onClick={() => navigate('/gallery')} className={navLinkClass}>
+                <Globe size={18} /> GALLERY
+            </button>
+
+            <button onClick={() => navigate('/assistant')} className={navLinkClass}>
+                <Bot size={18} /> ASSISTANT
+            </button>
+
+            <button onClick={() => navigate('/drops')} className={navLinkClass}>
+                <Flame size={18} /> DROPS
             </button>
 
             {/* INTRANET / CONTACT */}
             {(customer?.role === 'admin' || customer?.role === 'employee') ? (
-                <button 
-                  onClick={() => navigate('/intranet')}
-                  className="text-base font-black text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-widest cursor-pointer flex items-center gap-2"
-                >
+                <button onClick={() => navigate('/intranet')} className={navLinkClass}>
                     <Lock size={18} /> INTRANET
                 </button>
             ) : (
-               <button 
-                  onClick={() => navigate('/contacto')}
-                  className="text-base font-bold text-gray-200 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer"
-                >
+               <button onClick={() => navigate('/contacto')} className={navLinkClass}>
                     CONTACT
                 </button>
             )}
         </nav>
 
-        {/* ACTIONS (Iconos y textos más grandes) */}
+        {/* ACTIONS */}
         <div className="flex items-center gap-8 flex-shrink-0">
           {!customer ? (
             <div className="flex items-center gap-4">
-              <button onClick={() => navigate('/login')} className="hidden md:block text-sm font-black text-gray-400 hover:text-white uppercase tracking-widest cursor-pointer">Log In</button>
+              <button onClick={() => navigate('/login')} className="hidden md:block text-sm font-black text-gray-400 hover:text-cyan-400 uppercase tracking-widest cursor-pointer transition-colors">Log In</button>
               <button onClick={() => navigate('/register')} className="flex items-center justify-center w-12 h-12 rounded-full border border-gray-600 hover:border-cyan-400 hover:text-cyan-400 text-gray-300 transition-colors cursor-pointer">
                   <User size={22} />
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-6">
-              <span onClick={() => navigate('/mis-pedidos')} className="flex items-center gap-2 text-sm font-black text-white cursor-pointer hover:text-cyan-400 uppercase tracking-widest">
+              <span onClick={() => navigate('/mis-pedidos')} className="flex items-center gap-2 text-sm font-black text-white cursor-pointer hover:text-cyan-400 transition-colors uppercase tracking-widest">
                 <User size={20} className="text-cyan-500" /> {customer.username}
               </span>
-              <button onClick={handleLogout} className="text-sm font-bold text-gray-500 hover:text-red-500 uppercase cursor-pointer tracking-widest">Logout</button>
+              <button onClick={handleLogout} className="text-sm font-bold text-gray-500 hover:text-red-500 transition-colors uppercase cursor-pointer tracking-widest">Logout</button>
             </div>
           )}
 
-          {/* CART ICON (Aumentado a size 28) */}
+          {/* CART ICON */}
           <div 
             className="relative cursor-pointer group flex items-center gap-2" 
             onClick={() => navigate(customer ? '/checkout' : '/login')}
