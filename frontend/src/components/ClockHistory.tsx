@@ -7,7 +7,7 @@ export default function ClockHistory() {
     const [history, setHistory] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Cargar historial desde tu API (PostgreSQL -> DAO -> Express)
+    // Cargar historial desde tu API
     useEffect(() => {
         fetch('http://localhost:3000/api/clock/history', { credentials: 'include' })
             .then(res => res.json())
@@ -21,10 +21,23 @@ export default function ClockHistory() {
             });
     }, []);
 
+    // 🔥 EL PARCHE DEFINITIVO (A LO BRUTO) PARA LAS ZONAS HORARIAS
+    const getSafeDate = (dbDate: string) => {
+        if (!dbDate) return new Date();
+        
+        const dateObj = new Date(dbDate);
+        
+        // Como el backend o la BBDD nos están robando 2 horas por el cambio de zona horaria,
+        // se las sumamos nosotros a la fuerza directamente al reloj.
+        dateObj.setHours(dateObj.getHours() + 2);
+        
+        return dateObj;
+    };
+
     // Función para exportar a Excel
     const handleExportExcel = () => {
         const dataToExport = history.map(row => {
-            const dateObj = new Date(row.recorded_at);
+            const dateObj = getSafeDate(row.recorded_at);
             return {
                 'Fecha': dateObj.toLocaleDateString('es-ES'),
                 'Hora': dateObj.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
@@ -108,8 +121,8 @@ export default function ClockHistory() {
                                     </tr>
                                 ) : (
                                     history.map((row) => {
-                                        // 🕒 FORMATEO DE LA FECHA DE POSTGRESQL
-                                        const dateObj = new Date(row.recorded_at);
+                                        // 🕒 APLICAMOS LA MAGIA DEL PARCHE AQUÍ
+                                        const dateObj = getSafeDate(row.recorded_at);
                                         const dateStr = dateObj.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
                                         const timeStr = dateObj.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
 

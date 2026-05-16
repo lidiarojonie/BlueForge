@@ -10,6 +10,9 @@ import NotFound from './NotFound.tsx';
 import { CartProvider } from './context/CartContext.tsx';
 import Home from './components/Home.tsx';
 import CustomControllerPage from './components/CustomControllerPage.tsx';
+import DropsPage from './components/DropsPage.tsx';
+import ForgeAssistant from './components/ForgeAssistant.tsx'
+import GalleryPage from './components/GalleryPage.tsx';
 
 // --- INTRANET COMPONENTES ---
 import IntranetLayout from './components/IntranetLayout.tsx';
@@ -60,7 +63,9 @@ function AppContent() {
         <Route path="/personalizador" element={<CustomControllerPage />} />
         <Route path="/contacto" element={<ContactPage />} />
         <Route path="/xbox-elite" element={<ComingSoon />} />
-        
+        <Route path="/drops" element={<DropsPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/assistant" element={<ForgeAssistant />} />
         <Route path="checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
         <Route path="/mis-pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
         <Route path="/order-success" element={<PrivateRoute><OrderSuccess /></PrivateRoute>} />
@@ -73,7 +78,7 @@ function AppContent() {
         }>
           <Route index element={<IntranetHome />} />
           
-          {/* AQUÍ ESTÁN LAS RUTAS QUE FALTABAN (Sin la barra / inicial) */}
+          {/* AQUÍ ESTÁN LAS RUTAS QUE FALTABAN*/}
           <Route path="logros" element={<TablonLogros />} />
           <Route path="derechos" element={<DerechosSection />} />
           <Route path="contacto-comite" element={<ContactoComite />} />

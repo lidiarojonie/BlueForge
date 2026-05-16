@@ -303,6 +303,73 @@ app.post("/api/orders", authenticateToken, async (req: AuthRequest, res: Respons
     }
 });
 
+
+// ==========================================
+// 🔥 NUEVO: RUTAS DE FORGE GALLERY (COMUNIDAD) 🔥
+// ==========================================
+
+// Obtener todas las builds compartidas (Ordenadas por likes)
+app.get("/api/gallery", async (req: Request, res: Response) => {
+    try {
+        const result = await pool.query(`
+            SELECT shared_build_id AS id, author_name, build_name, base_product_id, build_hash, likes, created_at 
+            FROM shared_builds 
+            ORDER BY likes DESC, created_at DESC 
+            LIMIT 50
+        `);
+        res.json(result.rows);
+    } catch (error) {
+        console.error("Error cargando galería:", error);
+        res.status(500).json({ error: "Error al cargar la galería" });
+    }
+});
+
+// Guardar una nueva build (No requiere auth, pero pedimos nombre)
+app.post("/api/gallery", async (req: Request, res: Response) => {
+    try {
+        const { author_name, build_name, base_product_id, build_hash } = req.body;
+        
+        if (!author_name || !build_name || !base_product_id || !build_hash) {
+            return res.status(400).json({ error: "Faltan datos obligatorios" });
+        }
+
+        const result = await pool.query(`
+            INSERT INTO shared_builds (author_name, build_name, base_product_id, build_hash) 
+            VALUES ($1, $2, $3, $4) 
+            RETURNING *
+        `, [author_name, build_name, base_product_id, build_hash]);
+        
+        res.status(201).json({ message: "Build compartida en la galería", build: result.rows[0] });
+    } catch (error) {
+        console.error("Error publicando en galería:", error);
+        res.status(500).json({ error: "Error interno al publicar" });
+    }
+});
+
+// Sumar o restar un Like
+app.post("/api/gallery/:id/like", async (req: Request, res: Response) => {
+    try {
+        const { action } = req.body; // 'add' o 'remove'
+        const buildId = Number(req.params.id);
+
+        let query = "UPDATE shared_builds SET likes = likes + 1 WHERE shared_build_id = $1 RETURNING likes";
+        if (action === 'remove') {
+            query = "UPDATE shared_builds SET likes = GREATEST(likes - 1, 0) WHERE shared_build_id = $1 RETURNING likes";
+        }
+
+        const result = await pool.query(query, [buildId]);
+        
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: "Build no encontrada" });
+        }
+
+        res.json({ message: "Like actualizado", likes: result.rows[0].likes });
+    } catch (error) {
+        console.error("Error actualizando like:", error);
+        res.status(500).json({ error: "Error al dar like" });
+    }
+});
+
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor DAO escuchando en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
 });
