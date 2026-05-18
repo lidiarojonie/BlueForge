@@ -118,3 +118,45 @@ Fresh: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Fresh.png
 Dollar: https://xcontrollers.es/wp-content/uploads/2020/11/texturas/Dollar.png
 Joker: https://xcontrollers.es/wp-content/uploads/2020/11/texturas-colores-simples/Joker.png
 Snake: https://xcontrollers.es/wp-content/uploads/2020/11/texturas-colores-simples/Snake.png
+
+
+Rutas
+SHELL
+./imgs/Personalizacion/PS5/Shell/Black.png
+/src/imgs/Personalizacion/PS5/Shell/Blue.png
+/src/imgs/Personalizacion/PS5/Shell/Green.png
+/src/imgs/Personalizacion/PS5/Shell/Orange.png
+/src/imgs/Personalizacion/PS5/Shell/Purple.png
+/src/imgs/Personalizacion/PS5/Shell/Pink.png
+/src/imgs/Personalizacion/PS5/Shell/Red.png
+/src/imgs/Personalizacion/PS5/Shell/White.png
+/src/imgs/Personalizacion/PS5/Shell/Yellow.png
+
+BUTTONS
+/src/imgs/Personalizacion/PS5/Buttons/Black.png
+/src/imgs/Personalizacion/PS5/Buttons/DarkBlue.png
+/src/imgs/Personalizacion/PS5/Buttons/Green.png
+/src/imgs/Personalizacion/PS5/Buttons/LightBlue.png
+/src/imgs/Personalizacion/PS5/Buttons/Orange.png
+/src/imgs/Personalizacion/PS5/Buttons/Purple.png
+/src/imgs/Personalizacion/PS5/Buttons/Pink.png
+/src/imgs/Personalizacion/PS5/Buttons/Red.png
+/src/imgs/Personalizacion/PS5/Buttons/Yellow.png
+
+DPAD
+/src/imgs/Personalizacion/PS5/D-Pad/Black.png
+/src/imgs/Personalizacion/PS5/D-Pad/Blue.png
+/src/imgs/Personalizacion/PS5/D-Pad/Green.png
+/src/imgs/Personalizacion/PS5/D-Pad/Orange.png
+/src/imgs/Personalizacion/PS5/D-Pad/Purple.png
+/src/imgs/Personalizacion/PS5/D-Pad/Red.png
+/src/imgs/Personalizacion/PS5/D-Pad/Yellow.png
+
+TEXTURE
+/src/imgs/Personalizacion/PS5/Textures/CarbonFiber.png
+/src/imgs/Personalizacion/PS5/Textures/Pollock.png
+/src/imgs/Personalizacion/PS5/Textures/Blood.png
+/src/imgs/Personalizacion/PS5/Textures/Fresh.png
+/src/imgs/Personalizacion/PS5/Textures/Dollar.png
+/src/imgs/Personalizacion/PS5/Textures/Joker.png
+/src/imgs/Personalizacion/PS5/Textures/Snake.png
