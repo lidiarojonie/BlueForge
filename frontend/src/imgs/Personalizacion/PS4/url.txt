@@ -70,3 +70,46 @@ Blood: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-blood.
 Fresh: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-textura-fresh.png
 Snake: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-snake-2.png
 Joker: https://xcontrollers.es/wp-content/uploads/2017/09/carcasa-transparente-jocker-7.png
+
+
+paths
+/src/imgs/Personalizacion/PS4/Shell/Blue.png
+/src/imgs/Personalizacion/PS4/Shell/Green.png
+/src/imgs/Personalizacion/PS4/Shell/Orange.png
+/src/imgs/Personalizacion/PS4/Shell/Purple.png
+/src/imgs/Personalizacion/PS4/Shell/Red.png
+/src/imgs/Personalizacion/PS4/Shell/White.png
+/src/imgs/Personalizacion/PS4/Shell/Pink.png
+/src/imgs/Personalizacion/PS4/Shell/Yellow.png
+/src/imgs/Personalizacion/PS4/Shell/LimeGold.png
+/src/imgs/Personalizacion/PS4/Shell/CobaltBlue.png
+/src/imgs/Personalizacion/PS4/Shell/OrganicGreen.png
+/src/imgs/Personalizacion/PS4/Shell/Brandywine.png
+
+
+/src/imgs/Personalizacion/PS4/Buttons/White.png
+/src/imgs/Personalizacion/PS4/Buttons/DarkBlue.png
+/src/imgs/Personalizacion/PS4/Buttons/LightBlue.png
+/src/imgs/Personalizacion/PS4/Buttons/Green.png
+/src/imgs/Personalizacion/PS4/Buttons/Orange.png
+/src/imgs/Personalizacion/PS4/Buttons/Purple.png
+/src/imgs/Personalizacion/PS4/Buttons/Red.png
+/src/imgs/Personalizacion/PS4/Buttons/Yellow.png
+/src/imgs/Personalizacion/PS4/Buttons/Pink.png
+
+/src/imgs/Personalizacion/PS4/Dpad/White.png
+/src/imgs/Personalizacion/PS4/Dpad/Blue.png
+/src/imgs/Personalizacion/PS4/Dpad/Green.png
+/src/imgs/Personalizacion/PS4/Dpad/Orange.png
+/src/imgs/Personalizacion/PS4/Dpad/Purple.png
+/src/imgs/Personalizacion/PS4/Dpad/Red.png
+/src/imgs/Personalizacion/PS4/Dpad/Yellow.png
+
+/src/imgs/Personalizacion/PS4/Texture/CarbonFibre.png
+/src/imgs/Personalizacion/PS4/Texture/Pollock.png
+/src/imgs/Personalizacion/PS4/Texture/Dollar.png
+/src/imgs/Personalizacion/PS4/Texture/Blood.png
+/src/imgs/Personalizacion/PS4/Texture/Fresh.png
+/src/imgs/Personalizacion/PS4/Texture/Snake.png
+/src/imgs/Personalizacion/PS4/Texture/Joker.png
+
