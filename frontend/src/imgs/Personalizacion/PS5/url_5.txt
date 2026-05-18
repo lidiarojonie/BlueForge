@@ -122,7 +122,7 @@ Snake: https://xcontrollers.es/wp-content/uploads/2020/11/texturas-colores-simpl
 
 Rutas
 SHELL
-./imgs/Personalizacion/PS5/Shell/Black.png
+/src/imgs/Personalizacion/PS5/Shell/Black.png
 /src/imgs/Personalizacion/PS5/Shell/Blue.png
 /src/imgs/Personalizacion/PS5/Shell/Green.png
 /src/imgs/Personalizacion/PS5/Shell/Orange.png
@@ -131,6 +131,10 @@ SHELL
 /src/imgs/Personalizacion/PS5/Shell/Red.png
 /src/imgs/Personalizacion/PS5/Shell/White.png
 /src/imgs/Personalizacion/PS5/Shell/Yellow.png
+/src/imgs/Personalizacion/PS5/Shell/LimeGold.png
+/src/imgs/Personalizacion/PS5/Shell/CobaltBlue.png
+/src/imgs/Personalizacion/PS5/Shell/OrganicGreen.png
+/src/imgs/Personalizacion/PS5/Shell/Brandywine.png
 
 BUTTONS
 /src/imgs/Personalizacion/PS5/Buttons/Black.png
@@ -144,19 +148,19 @@ BUTTONS
 /src/imgs/Personalizacion/PS5/Buttons/Yellow.png
 
 DPAD
-/src/imgs/Personalizacion/PS5/D-Pad/Black.png
-/src/imgs/Personalizacion/PS5/D-Pad/Blue.png
-/src/imgs/Personalizacion/PS5/D-Pad/Green.png
-/src/imgs/Personalizacion/PS5/D-Pad/Orange.png
-/src/imgs/Personalizacion/PS5/D-Pad/Purple.png
-/src/imgs/Personalizacion/PS5/D-Pad/Red.png
-/src/imgs/Personalizacion/PS5/D-Pad/Yellow.png
+/src/imgs/Personalizacion/PS5/DPad/Black.png
+/src/imgs/Personalizacion/PS5/DPad/Blue.png
+/src/imgs/Personalizacion/PS5/DPad/Green.png
+/src/imgs/Personalizacion/PS5/DPad/Orange.png
+/src/imgs/Personalizacion/PS5/DPad/Purple.png
+/src/imgs/Personalizacion/PS5/DPad/Red.png
+/src/imgs/Personalizacion/PS5/DPad/Yellow.png
 
 TEXTURE
-/src/imgs/Personalizacion/PS5/Textures/CarbonFiber.png
-/src/imgs/Personalizacion/PS5/Textures/Pollock.png
-/src/imgs/Personalizacion/PS5/Textures/Blood.png
-/src/imgs/Personalizacion/PS5/Textures/Fresh.png
-/src/imgs/Personalizacion/PS5/Textures/Dollar.png
-/src/imgs/Personalizacion/PS5/Textures/Joker.png
-/src/imgs/Personalizacion/PS5/Textures/Snake.png
+/src/imgs/Personalizacion/PS5/Texture/CarbonFibre.png
+/src/imgs/Personalizacion/PS5/Texture/Pollock.png
+/src/imgs/Personalizacion/PS5/Texture/Blood.png
+/src/imgs/Personalizacion/PS5/Texture/Fresh.png
+/src/imgs/Personalizacion/PS5/Texture/Dollar.png
+/src/imgs/Personalizacion/PS5/Texture/Joker.png
+/src/imgs/Personalizacion/PS5/Texture/Snake.png
