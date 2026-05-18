@@ -95,9 +95,10 @@ function Header() {
             </div>
           ) : (
             <div className="flex items-center gap-6">
-              <span onClick={() => navigate('/mis-pedidos')} className="flex items-center gap-2 text-sm font-black text-white cursor-pointer hover:text-cyan-400 transition-colors uppercase tracking-widest">
+              <span onClick={() => navigate('/profile')} className="flex items-center gap-2 text-sm font-black text-white cursor-pointer hover:text-cyan-400 transition-colors uppercase tracking-widest hover:scale-105">
                 <User size={20} className="text-cyan-500" /> {customer.username}
               </span>
+              <button onClick={() => navigate('/mis-pedidos')} className="text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors uppercase cursor-pointer tracking-widest">Orders</button>
               <button onClick={handleLogout} className="text-sm font-bold text-gray-500 hover:text-red-500 transition-colors uppercase cursor-pointer tracking-widest">Logout</button>
             </div>
           )}
