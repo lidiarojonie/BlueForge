@@ -214,50 +214,8 @@ app.put("/api/orders/:id/status", authenticateToken, requireRole("admin", "emplo
     }
 });
 
-app.get("/api/auth/me", authenticateToken, async (req: AuthRequest, res: Response) => {
-    try {
-        const user = await UserDAO.getUserById(req.customer!.id);
-        if (!user) {
-            return res.status(404).json({ error: "User not found" });
-        }
-        res.json({ customer: { ...user, username: user.firstName } });
-    } catch (error) {
-        console.error("Error fetching user:", error);
-        res.status(500).json({ error: "Error fetching user data" });
-    }
-});
-
-app.put("/api/users/profile", authenticateToken, async (req: AuthRequest, res: Response) => {
-    try {
-        const userId = req.customer!.id;
-        const { firstName, lastName, phone, birthDate, email, currentPassword, newPassword } = req.body;
-
-        if (!firstName || !lastName || !email) {
-            return res.status(400).json({ error: "Name and email are required" });
-        }
-
-        if (newPassword) {
-            const user = await UserDAO.getUserByEmailOrName(email);
-            if (!user) {
-                return res.status(400).json({ error: "User not found" });
-            }
-
-            const passwordMatch = await bcrypt.compare(currentPassword, user.password);
-            if (!passwordMatch) {
-                return res.status(400).json({ error: "Current password is incorrect" });
-            }
-
-            const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-            const updatedUser = await UserDAO.updateUserProfile(userId, firstName, lastName, phone || "", birthDate || "1900-01-01", email, hashedNewPassword);
-            return res.json({ message: "Profile updated successfully", customer: updatedUser });
-        }
-
-        const updatedUser = await UserDAO.updateUserProfile(userId, firstName, lastName, phone || "", birthDate || "1900-01-01", email);
-        res.json({ message: "Profile updated successfully", customer: updatedUser });
-    } catch (error) {
-        console.error("Error updating profile:", error);
-        res.status(500).json({ error: "Error updating profile" });
-    }
+app.get("/api/auth/me", authenticateToken, (req: AuthRequest, res: Response) => {
+    res.json({ customer: req.customer });
 });
 
 app.post("/api/auth/logout", (req: Request, res: Response) => {

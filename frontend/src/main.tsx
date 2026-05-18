@@ -36,7 +36,6 @@ import LoginPage from './components/LoginPage.tsx';
 import RegisterPage from './components/RegisterPage.tsx';
 import OrderHistory from './components/OrderHistory.tsx';
 import OrderSuccess from './components/OrderSuccess.tsx';
-import ProfilePage from './components/ProfilePage.tsx';
 import { UserProvider, useUser } from './context/UserContext.tsx';
 import PrivateRoute from './components/PrivateRoute.tsx';
 
@@ -69,7 +68,6 @@ function AppContent() {
         <Route path="/assistant" element={<ForgeAssistant />} />
         <Route path="checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
         <Route path="/mis-pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
-        <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
         <Route path="/order-success" element={<PrivateRoute><OrderSuccess /></PrivateRoute>} />
         
         {/* 🔥 EL BLOQUE DE LA INTRANET 🔥 */}
