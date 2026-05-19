@@ -121,9 +121,14 @@ export default function CheckoutPage() {
                 <ShoppingBag size={64} className="text-gray-600 mb-6" />
                 <h2 className="text-3xl font-black mb-4">Your cart is empty</h2>
                 <p className="text-gray-400 mb-6">Your cart hasn't got any items. Go back to the store and add some products.</p>
-                <button onClick={() => navigate('/')} className="px-6 py-3 bg-cyan-500 text-black font-bold rounded-xl hover:bg-cyan-400 transition-colors">
-                    ← Go back to the store
-                </button>
+                <div className="flex gap-4">
+                    <button onClick={() => navigate('/')} className="px-6 py-3 bg-cyan-500 text-black font-bold rounded-xl hover:bg-cyan-400 transition-colors">
+                        ← Go back to the store
+                    </button>
+                    <button onClick={() => navigate('/assistant')} className="px-6 py-3 bg-fuchsia-600 text-white font-bold rounded-xl hover:bg-fuchsia-500 transition-colors shadow-[0_0_15px_rgba(192,38,211,0.4)]">
+                        Go to Assistant →
+                    </button>
+                </div>
             </div>
         );
     }
