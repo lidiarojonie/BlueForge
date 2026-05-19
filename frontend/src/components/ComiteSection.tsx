@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Scale, FileText, Award, ExternalLink, ShieldCheck, HelpCircle, ArrowRight, PlayCircle, MessageSquare, Mail, ChevronRight } from 'lucide-react';
+import { Scale, FileText, Award, ExternalLink, ShieldCheck, HelpCircle, ArrowRight, MessageSquare, Mail, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import comiteVideo from '../imgs/Video Comité de Empresa BlueForge.mp4';
 
 export default function ComiteSection() {
     const navigate = useNavigate();
@@ -35,24 +36,19 @@ export default function ComiteSection() {
                     </div>
                 </section>
 
-                {/* 2. VÍDEO INTRODUCTORIO */}
-                <section className="relative aspect-[21/9] bg-zinc-900 rounded-[3rem] border border-white/10 overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-                        <motion.button whileHover={{ scale: 1.1 }} className="p-6 bg-cyan-500 rounded-full text-black shadow-[0_0_40px_rgba(34,211,238,0.5)] mb-6">
-                            <PlayCircle size={48} />
-                        </motion.button>
-                        <h2 className="text-3xl font-black text-white tracking-widest uppercase italic text-center drop-shadow-lg">
-                            Tutorial del <span className="text-cyan-400">Comité v1.0</span>
-                        </h2>
-                        <p className="mt-2 text-gray-300 font-medium tracking-wide">Aprende a gestionar tus derechos en menos de 2 minutos.</p>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1500" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" alt="background" />
+                {/* 2. VÍDEO INTRODUCTORIO (MODIFICADO CON VIDEO REAL) */}
+                <section className="relative aspect-video md:aspect-[21/9] bg-zinc-900 rounded-[3rem] border border-white/10 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <video 
+                        className="w-full h-full object-cover" 
+                        controls 
+                        poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1500"
+                    >
+                        <source src={comiteVideo} type="video/mp4" />
+                        Tu navegador no soporta el formato de vídeo.
+                    </video>
                 </section>
 
                 {/* 3. ORGANIGRAMA DEL COMITÉ */}
-
-                {/* ORGANIGRAMA DEL COMITÉ */}
                 <section className="space-y-12 bg-zinc-900/30 p-12 rounded-[3rem] border border-white/5">
                     <h3 className="text-center text-2xl font-black uppercase tracking-[0.2em] text-white">Miembros Electos del Comité</h3>
 
@@ -84,7 +80,7 @@ export default function ComiteSection() {
                     </div>
                 </section>
 
-                {/* 🔥 LOS NUEVOS BOTONES PREMIUM 🔥 */}
+                {/* 4. LOS BOTONES PREMIUM */}
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                     {/* Tarjeta 1: Derechos */}
@@ -171,7 +167,7 @@ export default function ComiteSection() {
                         </div>
                         <button
                             onClick={() => navigate('/intranet/contacto-comite')}
-                            className="px-10 py-6 bg-cyan-500 text-black font-black rounded-3xl hover:bg-cyan-400 transition-all flex items-center gap-4 group shadow-[0_20px_50px_rgba(34,211,238,0.3)] uppercase tracking-widest"
+                            className="px-10 py-6 bg-cyan-500 text-black font-black rounded-3xl hover:bg-cyan-400 transition-all flex items-center gap-4 group shadow-[0_20px_50px_rgba(34,211,238,0.3)] uppercase tracking-widest cursor-pointer"
                         >
                             <Mail size={24} /> ENVIAR MENSAJE
                             <ChevronRight className="group-hover:translate-x-2 transition-transform" />
